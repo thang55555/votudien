@@ -1,0 +1,42 @@
+<%- include("./layouts/head.ejs")%>
+
+<body class="page-template-default page page-id-23868 theme-mtw-haiau woocommerce-no-js"><noscript><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WPQ49BL" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+          <%- include("./layouts/menu.ejs")%>
+    <style type="text/css">
+        .woocommerce .woocommerce-result-count {
+
+            margin: 0 0 1em;
+
+            display: none;
+
+        }
+    </style>
+    <div class="container mainpage">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-9 noidung">
+                <h1 itemprop="name">Nhà sản xuất</h1>
+                <p>
+                <div class="woocommerce columns-4">
+                    <ul class="products columns-4">
+                                      <%for(item of products){%>
+                        <li class="product-category product first">
+                            <a aria-label="Truy cập danh mục sản phẩm ABB"
+                                href="/san-pham?id=<%=item.id%>"><img fetchpriority="high" decoding="async"
+                                    src="./images/update/<%=item.images%>"
+                                    alt="<%=item.name%>" width="300" height="300" />
+                                <h2 class="woocommerce-loop-category__title">
+                                    <%=item.name%> <mark class="count">(<%=item.total%>)</mark></h2>
+                            </a>
+                        </li>
+                          <% } %>
+                    </ul>
+                </div><br />
+               
+                </p>
+      
+            </div>
+        </div>
+    </div>
+               <%- include("./layouts/footer.ejs")%>

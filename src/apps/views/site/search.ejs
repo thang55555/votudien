@@ -1,0 +1,302 @@
+<%- include("./layouts/head.ejs")%>
+
+    <body
+        class="home page-template-default page page-id-2 woocommerce-demo-store lightbox lazy-icons nav-dropdown-has-arrow">
+        <div id="wrapper">
+
+            <%- include("./layouts/header.ejs")%>
+
+                <div class="shop-page-title category-page-title page-title ">
+
+                    <div class="page-title-inner flex-row  medium-flex-wrap container">
+                        <div class="flex-col flex-grow medium-text-center">
+                            <h1 class="shop-page-title is-xlarge">Tìm kiếm</h1>
+                            <div class="is-smaller">
+                                <nav class="woocommerce-breadcrumb breadcrumbs"><a href="/">Trang chủ</a> 
+                                     <span class="divider">/</span> <a href="/san-pham">Sản phẩm</a>
+                                     <span class="divider">&#47;</span> Tìm kiếm: <%=keyword%></nav>
+                            </div>
+                        </div><!-- .flex-left -->
+
+                        <div class="flex-col medium-text-center">
+
+
+                            <p class="woocommerce-result-count hide-for-medium">
+                                Xem tất cả <%=totalRows%> kết quả</p>
+                            <form class="woocommerce-ordering" method="get" action="/search"   enctype="multipart/form-data">
+                                <select name="orderby" class="orderby" id="orderby-select" >
+                                            <option value="" >--Tùy chọn bộ lọc--</option>
+                                    <option value="popularity" selected='selected'>Thứ tự theo mức độ phổ biến</option>
+                                    <option value="date">Thứ tự theo sản phẩm mới</option>
+                                    <option value="price">Thứ tự giá tăng dần: thấp đến cao</option>
+                                    <option value="price-desc">Thứ tự theo giá giảm dần: cao xuống thấp</option>
+                                </select>
+                                <input type="hidden" name="paged" value="1" />
+                                <input type="hidden" name="s" value="<%=keyword%>" />
+                            </form>
+<script>
+const selectElement = document.getElementById("orderby-select");
+
+// Khi người dùng thay đổi lựa chọn
+selectElement.addEventListener("change", function () {
+    const selectedValue = this.value;
+    // Lưu vào localStorage
+    localStorage.setItem("selectedOrderBy", selectedValue);
+});
+
+// Khi trang được tải lại
+window.addEventListener("DOMContentLoaded", function () {
+    const savedValue = localStorage.getItem("selectedOrderBy");
+    const referrer = document.referrer;
+
+    if (referrer) {
+        const referrerPath = new URL(referrer).pathname;
+
+        // So sánh trang trước là /san-pham hoặc tùy chỉnh path của bạn
+        if (referrerPath === "/search" && savedValue) {
+            selectElement.value = savedValue;
+
+            Array.from(selectElement.options).forEach(option => {
+                option.removeAttribute("selected");
+                if (option.value === savedValue) {
+                    option.setAttribute("selected", "selected");
+                }
+            });
+        } else {
+            localStorage.removeItem("selectedOrderBy");
+            selectElement.value = "";
+        }
+    } else {
+        // Trường hợp người dùng truy cập trực tiếp không có referrer
+        localStorage.removeItem("selectedOrderBy");
+        selectElement.value = "";
+    }
+});
+</script>
+
+
+
+
+                        </div><!-- .flex-right -->
+
+                    </div><!-- flex-row -->
+                </div><!-- .page-title -->
+
+                <main id="main" class="">
+                    <div id="content" class="content-area page-wrapper" role="main">
+                        <div class="row row-main">
+                            <div class="large-12 col">
+                                <div class="col-inner">
+                                    <section class="section body-section" id="section_1562703827">
+                                        <div class="section-content relative">
+
+                                            <div class="row" id="row-493977635">
+                                                <!-- sidebar -->
+                                                <%- include("./layouts/sidebar.ejs")%>
+                                                    <!-- end sidebar -->
+
+
+                                                    <div class="col large-9">
+                                                        <div class="shop-container">
+
+                                                            <div
+                                                                class="products row row-small large-columns-4 medium-columns-3 small-columns-2 has-equal-box-heights">
+                                                                <%for(item of product){%>
+                                                                    <div
+                                                                        class="product-small col has-hover post-391 product type-product status-publish has-post-thumbnail product_cat-rem-cac-loai product_cat-rem-cau-vong product_cat-rem-cuon product_cat-rem-cuon-tranh product_cat-rem-go-cao-cap product_cat-rem-la-doc product_cat-rem-nhom product_cat-rem-roman product_cat-rem-vai-can-nang-nhiet-100 product_cat-vai-von-cac-loai product_tag-rem-cao-cap product_tag-rem-nhap-khau first instock sale shipping-taxable purchasable product-type-simple">
+                                                                        <div class="col-inner">
+
+                                                                            <div
+                                                                                class="badge-container absolute left top z-1">
+                                                                                <div class="callout badge badge-square">
+                                                                                    <div
+                                                                                        class="badge-inner secondary on-sale">
+                                                                                        <span class="onsale">-<%=
+                                                                                                Math.round(100-(item.pricesale/item.price)*100)%>
+                                                                                                %</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="product-small box ">
+                                                                                <div class="box-image">
+                                                                                    <div class="image-zoom">
+                                                                                        <a
+                                                                                            href="/san-pham/<%=item._id%>">
+                                                                                            <img width="300"
+                                                                                                height="300"
+                                                                                                src="./images/update/<%=item.images[0].name%>"
+                                                                                                data-src="./images/update/<%=item.images[0].name%>"
+                                                                                                class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
+                                                                                                alt="<%=item.images[0].name%>"
+                                                                                                srcset=""
+                                                                                                data-srcset="./images/update/<%=item.images[0].name%>"
+                                                                                                sizes="(max-width: 300px) 100vw, 300px" />
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="image-tools is-small top right show-on-hover">
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="image-tools is-small hide-for-small bottom left show-on-hover">
+                                                                                    </div>
+                                                                                    <div
+                                                                                        class="image-tools grid-tools text-center hide-for-small bottom hover-slide-in show-on-hover">
+                                                                                    </div>
+                                                                                </div><!-- box-image -->
+
+                                                                                <div class="box-text box-text-products">
+                                                                                    <div class="title-wrapper">
+                                                                                        <p class="name product-title"><a
+                                                                                                href="/san-pham/<%=item._id%>">
+                                                                                                <%=item.name%>
+                                                                                            </a></p>
+                                                                                    </div>
+                                                                                    <div class="price-wrapper">
+                                                                                        <span class="price"><del><span
+                                                                                                    class="woocommerce-Price-amount amount">
+                                                                                                    <%= new
+                                                                                                        Intl.NumberFormat("vi-VN",
+                                                                                                        {
+                                                                                                        style: "currency"
+                                                                                                        ,
+                                                                                                        currency: "VND"
+                                                                                                        ,
+                                                                                                        minimumFractionDigits:
+                                                                                                        0,
+                                                                                                        }).format(item.price)%>
+                                                                                                        <span
+                                                                                                            class="woocommerce-Price-currencySymbol"></span>
+                                                                                                </span></del>
+                                                                                            <ins><span
+                                                                                                    class="woocommerce-Price-amount amount">
+                                                                                                    <%= new
+                                                                                                        Intl.NumberFormat("vi-VN",
+                                                                                                        {
+                                                                                                        style: "currency"
+                                                                                                        ,
+                                                                                                        currency: "VND"
+                                                                                                        ,
+                                                                                                        minimumFractionDigits:
+                                                                                                        0,
+                                                                                                        }).format(item.pricesale)%>
+                                                                                                        <span
+                                                                                                            class="woocommerce-Price-currencySymbol"></span>
+                                                                                                </span></ins></span>
+                                                                                    </div>
+                                                                                    <div class="add-to-cart-button"><a
+                                                                                            href="/cart/<%=item._id%>"
+                                                                                            rel="nofollow"
+                                                                                            class="ajax_add_to_cart add_to_cart_button product_type_simple button primary is-flat mb-0 is-small">Thêm
+                                                                                            vào giỏ</a></div>
+                                                                                </div><!-- box-text -->
+                                                                            </div><!-- box -->
+                                                                        </div><!-- .col-inner -->
+                                                                    </div><!-- col -->
+
+                                                                    <%}%>
+
+                                                                        <!-- pagination -->
+                                                                        <div class="container">
+                                                                            <nav aria-label="Page navigation example"
+                                                                                style="text-align: center;">
+                                                                                <ul
+                                                                                    class="page-numbers nav-pagination links text-center">
+                                                                                    <% if(hasPrev){%>
+                                                                                        <li class="page-item"><a
+                                                                                                class="page-number "
+                                                                                                href="/search?page=<%= prev %>&s=<%= keyword %>&orderby=<%= keyword2 %>">&laquo;</a>
+                                                                                        </li>
+                                                                                        <% }%>
+                                                                                            <% for(i of pages){%>
+                                                                                                <% if(i==="..." ){%>
+                                                                                                    <li
+                                                                                                        class="page-item <%= page === i ? 'active' : '' %>">
+                                                                                                        <span
+                                                                                                            class="page-number current"
+                                                                                                            <%=i%></span>
+                                                                                                    </li>
+                                                                                                    <% }else{%>
+                                                                                                        <li
+                                                                                                            class="page-item">
+                                                                                                            <a class="page-number <%= page === i ? 'active' : '' %>"
+                                                                                                                href="/search?page=<%= i %>&s=<%= keyword %>&orderby=<%= keyword2 %>">
+                                                                                                                <%=i%>
+                                                                                                            </a>
+                                                                                                        </li>
+                                                                                                        <%}%>
+                                                                                                            <% }%>
+                                                                                                                <%
+                                                                                                                    if(hasNext){%>
+                                                                                                                    <li
+                                                                                                                        class="page-item">
+                                                                                                                        <a class="page-number "
+                                                                                                                            href="/search?page=<%= next %>&s=<%= keyword %>&orderby=<%= keyword2 %>">&raquo;</a>
+                                                                                                                    </li>
+                                                                                                                    <%
+                                                                                                                        }%>
+                                                                                </ul>
+                                                                                <style>
+                                                                                    .active {
+                                                                                        background-color: #0099ff;
+                                                                                        color: white;
+                                                                                    }
+                                                                                </style>
+                                                                            </nav>
+                                                                        </div>
+
+
+                                                                        <!-- end pagination -->
+                                                            </div><!-- row -->
+                                                            <p class="text-center">
+                                                                <button
+                                                                    class="view-more-button products-archive button primary hidden">View
+                                                                    more</button>
+                                                            </p>
+
+                                                        </div><!-- shop container -->
+                                                    </div>
+
+
+
+
+
+                                            </div>
+                                        </div><!-- .section-content -->
+
+
+                                        <style scope="scope">
+                                            #section_1562703827 {
+                                                padding-top: 0px;
+                                                padding-bottom: 25px;
+                                            }
+                                        </style>
+                                    </section>
+
+
+
+                                </div><!-- .col-inner -->
+                            </div><!-- .large-12 -->
+                        </div><!-- .row -->
+                    </div>
+
+                </main><!-- #main -->
+
+                <%- include("./layouts/footer.ejs")%>
+
+        </div><!-- #wrapper -->
+
+        <!-- Mobile Sidebar -->
+        <%- include("./layouts/sider.ejs")%>
+            <!-- #mobile-menu -->
+
+            <script id="lazy-load-icons">
+                /* Lazy load icons css file */
+                var fl_icons = document.createElement('link');
+                fl_icons.rel = 'stylesheet';
+                fl_icons.href = 'wp-content/themes/flatsome/assets/css/fl-icons.css';
+                fl_icons.type = 'text/css';
+                var fl_icons_insert = document.getElementsByTagName('link')[0];
+                fl_icons_insert.parentNode.insertBefore(fl_icons, fl_icons_insert);
+            </script>
+            <%- include("./layouts/login.ejs")%>
+          <%- include("./layouts/footer2.ejs")%>

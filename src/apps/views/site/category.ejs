@@ -1,0 +1,81 @@
+<%- include("./layouts/head.ejs")%>
+<%- include("./layouts/header.ejs")%>
+<%- include("./layouts/menu.ejs")%>
+
+
+
+
+    <div id="body">
+        <div class="container">
+            <div class="products">
+                <div><img style="width: -webkit-fill-available;" src="images/New folder/<%=category.image%>"/></div>
+
+                <div class="row section row-cols-lg-1 row-cols-md-1 row-cols-1 style_cate">
+                    <h2 class="h2_cate">
+                        <p><%=category.title%> (hiện có <%=total%> sản phẩm)</p>
+                    </h2>
+                </div>
+
+                <div class="product-list row row-cols-lg-6 row-cols-md-4 row-cols-3">
+                    <% for(product of products){%>
+                    <div class="product-item">
+                        <div class="product-itemn-inner card">
+
+                            
+                             
+                            
+                            <div class="<%=product.spmoi? "iconnew" : "anall" %>">
+                                <img src="./images/New folder/icon new.png" />
+                            </div>
+                            
+
+                            <!-- <div class="<%=product.spbanchay? "iconhot" : "annode" %>">
+                                <img src="./images/New folder/icon hot.gif" />
+                            </div>
+
+                            <div class="<%=product.spsale? "sale" : "annode" %>">
+                                <p class="nhapnhay">-<%= Math.round(product.price/product.pricesale)%>%</p>
+                            </div> -->
+
+
+                 
+
+                            <div class="salesp" style="<%=product.spmoi? "" : "margin-top: 0;" %>">
+                                <a href="/product/<%=product.slug%>/<%=product._id%>"><img src="images/New folder/<%=product.images[0].image%>"
+                                        title="NƯỚC HOA GUCCI GUILTY ELIXIR DE PARFUM POUR" />
+                                </a>
+                                <h2><a href="/product/<%=product.slug%>/<%=product._id%>"><%=product.name%></a></h2>
+                                <p style="margin-bottom: 0px;"><span
+                                        style="text-decoration: line-through;"><%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                        minimumFractionDigits: 0, }).format(product.price)%></span> <span
+                                        style="font-weight: bold; color: #eb1f27;">(-<%= Math.round(100-(product.pricesale/product.price)*100)%>%)</span></p>
+                                <p>
+                                    <sapn class="giasale"><%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                        minimumFractionDigits: 0, }).format(product.pricesale)%></sapn>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mask">
+                            <a href="/product/<%=product.slug%>/<%=product._id%>"><img src="./images/New folder/icon-tim.png" /> </a>
+                            <a href="/addcart/<%=product._id%>"><img src="./images/New folder/icon-cart-den.png" /> </a>
+                        </div>
+                    </div>
+                    <% }%>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("./layouts/footer.ejs")%>
+
+
+    <script>
+         // thanh 3 chấm menu
+         function myFunction(x) {
+            x.classList.toggle("change");
+        }
+    </script>
+
+</body>
+
+</html>

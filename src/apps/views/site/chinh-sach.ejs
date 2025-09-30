@@ -1,0 +1,98 @@
+<%- include("./layouts/head.ejs")%>
+
+    <body
+        class="home page-template-default page page-id-2 woocommerce-demo-store lightbox lazy-icons nav-dropdown-has-arrow">
+        <div id="wrapper">
+
+            <%- include("./layouts/header.ejs")%>
+
+
+                <main id="main" class="">
+                    <div id="content" class="content-area page-wrapper" role="main">
+                        <div class="row row-main" style="background: white;">
+                            <div class="large-12 col">
+                                <div class="col-inner" style="padding-top: 15px;">
+
+ <h1>🎯 Chính Sách Hoàn Trả & Hoàn Tiền – Rèm Anh Thư</h1>
+
+  <p>Chúng tôi luôn cam kết mang đến cho quý khách hàng những sản phẩm rèm chất lượng cùng trải nghiệm mua sắm hài lòng nhất. Trong trường hợp sản phẩm không đáp ứng như mong đợi, Rèm Anh Thư hỗ trợ chính sách đổi trả và hoàn tiền như sau:</p>
+
+  <h2>✅ 1. Điều kiện áp dụng hoàn trả</h2>
+  <ul>
+    <li>Sản phẩm bị lỗi kỹ thuật do sản xuất hoặc lỗi trong quá trình thi công của Rèm Anh Thư.</li>
+    <li>Sản phẩm bị giao nhầm mẫu, sai kích thước so với đơn đặt hàng.</li>
+    <li>Yêu cầu hoàn trả được gửi trong vòng <strong>3 ngày kể từ ngày nhận hàng</strong>.</li>
+    <li>Sản phẩm <strong>chưa qua sử dụng, không hư hại</strong>, còn nguyên bao bì (nếu có).</li>
+  </ul>
+
+  <h2>❌ 2. Trường hợp không hỗ trợ hoàn trả</h2>
+  <ul>
+    <li>Sản phẩm được thiết kế, đo may <strong>theo yêu cầu riêng</strong> của khách hàng.</li>
+    <li>Sản phẩm đã qua sử dụng, bẩn, rách, hoặc bị hư hại do lỗi người dùng.</li>
+    <li>Quá thời hạn 3 ngày sau khi nhận hàng.</li>
+  </ul>
+
+  <h2>💵 3. Chính sách hoàn tiền</h2>
+  <ul>
+    <li>Với các đơn hàng đủ điều kiện hoàn trả, Rèm Anh Thư sẽ hoàn tiền theo hình thức:
+      <ul>
+        <li><strong>Chuyển khoản ngân hàng</strong> (trong 3–5 ngày làm việc).</li>
+        <li>Hoặc đổi sang sản phẩm khác theo giá trị tương đương.</li>
+      </ul>
+    </li>
+    <li>Trường hợp khách hàng yêu cầu đổi mẫu do thay đổi ý thích, <strong>chi phí vận chuyển và chênh lệch giá (nếu có)</strong> do khách hàng chi trả.</li>
+  </ul>
+
+  <h2>📞 4. Quy trình hoàn trả</h2>
+  <ol>
+    <li>Liên hệ qua <strong>hotline/zalo: <%=thongtintrang.sdt%></strong> hoặc fanpage để thông báo tình trạng.</li>
+    <li>Gửi hình ảnh, video chứng minh lỗi sản phẩm (nếu có).</li>
+    <li>Chúng tôi sẽ xác nhận và hướng dẫn hoàn trả hoặc đổi sản phẩm mới.</li>
+  </ol>
+
+  <h2>❤️ Rèm Anh Thư cam kết</h2>
+  <p>Luôn đặt <strong>trách nhiệm & sự hài lòng của khách hàng</strong> lên hàng đầu. Hỗ trợ đổi trả nhanh chóng – minh bạch – không gây phiền hà.</p>
+
+   <style>
+
+    h1, h2 {
+      color: #007b7f;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    .note {
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+
+
+
+                                </div><!-- .col-inner -->
+                            </div><!-- .large-12 -->
+                        </div><!-- .row -->
+                    </div>
+
+                </main><!-- #main -->
+
+
+                <%- include("./layouts/footer.ejs")%>
+
+        </div><!-- #wrapper -->
+
+        <!-- Mobile Sidebar -->
+        <%- include("./layouts/sider.ejs")%>
+            <!-- #mobile-menu -->
+
+            <script id="lazy-load-icons">
+                /* Lazy load icons css file */
+                var fl_icons = document.createElement('link');
+                fl_icons.rel = 'stylesheet';
+                fl_icons.href = 'wp-content/themes/flatsome/assets/css/fl-icons.css';
+                fl_icons.type = 'text/css';
+                var fl_icons_insert = document.getElementsByTagName('link')[0];
+                fl_icons_insert.parentNode.insertBefore(fl_icons, fl_icons_insert);
+            </script>
+            <%- include("./layouts/login.ejs")%>
+                <%- include("./layouts/footer2.ejs")%>

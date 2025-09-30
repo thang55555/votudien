@@ -1,0 +1,71 @@
+const thanhtoan2 = async (req, res) => {
+    const { body, session, protocol } = req;
+    const cart = session.cart || [];
+
+    // Nếu giỏ hàng trống, chuyển về trang chủ hoặc báo lỗi
+    if (cart.length === 0) {
+        return res.redirect("/gio-hang"); // hoặc res.render("site/cart-empty")
+    }
+
+    // Tính tổng tiền
+    const tongtien = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+    // Tạo mã đơn và ngày hiện tại
+    const madon = Math.floor(100000 + Math.random() * 900000);
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('vi-VN'); // ex: 03/07/2025
+
+    // Chuẩn hóa dữ liệu đơn hàng
+    const orderData = {
+        name: `${body.billing_first_name || ""} ${body.billing_last_name || ""}`.trim(),
+        cty: body.billing_company || "",
+        add1: body.billing_address_1 || "",
+        add2: body.billing_address_2 || "",
+        phone: body.billing_phone || "",
+        mail: body.billing_email || "",
+        note: body.order_comments || "",
+        thanhtoan: body.payment_method || "Chưa chọn",
+        madon,
+        date: formattedDate,
+        item: cart
+    };
+
+    // Lưu đơn hàng vào MongoDB
+    await new OrderModel(orderData).save();
+
+    // Gửi email xác nhận
+    const origin = `${protocol}://${req.get("host")}`;
+    const thongtintrang = res.locals.thongtintrang;
+
+    const html = await ejs.renderFile(
+        path.join(req.app.get("views"), "site/email-order.ejs"),
+        { order2: orderData, tongtien, origin, thongtintrang, }
+    );
+
+    await transporter.sendMail({
+        from: '"Rèm Cửa Anh Thư" <kinhdoanh.deevisco@gmail.com>',
+        to: orderData.mail,
+        subject: `Xác nhận mã đơn hàng ${madon} từ Rèm Cửa Anh Thư`,
+        html
+    });
+
+    // Reset giỏ hàng
+    session.cart = [];
+
+    const seo = {
+        title: "Rèm Cửa Cao Cấp Anh Thư | Thiết Kế Đẹp, Giá Tốt",
+        description: `Rèm cửa Anh Thư chuyên cung cấp các loại rèm vải cao cấp, rèm tự động, rèm sáo gỗ... Thi công chuyên nghiệp, bảo hành lâu dài. Gọi ngay: ${thongtintrang.sdt}`,
+        keywords: "rèm cửa, rèm cửa cao cấp, rèm vải, rèm tự động, rèm cửa Anh Thư, rèm sáo gỗ",
+        image: "rem-vai-phong-khach-1-2.jpg",
+        pricesale: "350000",
+        name: "Rèm Cửa Cao Cấp Anh Thư | Thiết Kế Đẹp, Giá Tốt",
+        _id: "thanhtoan2",
+        view: "2982"
+    };
+    const fullUrl = res.locals.fullUrl;
+    res.render("site/thanh-toan-2", {
+        tongtien,
+        order: orderData,
+        seo, fullUrl,
+    });
+};

@@ -1,0 +1,202 @@
+<div class="col cot3 hide-for-small medium-3 small-12 large-3">
+    <div class="col-inner" style="background-color:rgb(255, 255, 255);">
+
+        <h3 class="widget-tieude" ><span class="fa fa-comments"></span> Hỗ trợ
+            trực tuyến</h3>
+
+        <div class="icon-box featured-box icon-box-left text-left" >
+            <div class="icon-box-img" style="width: 30px">
+                <div class="icon">
+                    <div class="icon-inner">
+                        <img width="200" height="200" src="wp-content/uploads/2018/04/icon.png"
+                            class="attachment-medium size-medium" alt=""
+                            srcset="https://manhrem.mauthemewp.com/wp-content/uploads/2018/04/icon.png 200w, https://manhrem.mauthemewp.com/wp-content/uploads/2018/04/icon-150x150.png 150w, https://manhrem.mauthemewp.com/wp-content/uploads/2018/04/icon-100x100.png 100w"
+                            sizes="(max-width: 200px) 100vw, 200px"  />
+                    </div>
+                </div>
+            </div>
+            <div class="icon-box-text last-reset">
+
+                <p><span style="font-size: 110%; color: #005A99;">Tư vấn bán
+                        hàng 1</span><br /><span style="font-size: 95%;">Mr.
+                        Thư <%=thongtintrang.sdt%></span></p>
+            </div>
+        </div><!-- .icon-box -->
+
+
+
+
+        <div class="icon-box featured-box icon-box-left text-left">
+            <div class="icon-box-img" style="width: 30px">
+                <div class="icon">
+                    <div class="icon-inner">
+                        <img width="200" height="200" src="wp-content/uploads/2018/04/icon-email.png"
+                            class="attachment-medium size-medium" alt=""
+                            srcset="https://manhrem.mauthemewp.com/wp-content/uploads/2018/04/icon-email.png 200w, https://manhrem.mauthemewp.com/wp-content/uploads/2018/04/icon-email-150x150.png 150w, https://manhrem.mauthemewp.com/wp-content/uploads/2018/04/icon-email-100x100.png 100w"
+                            sizes="(max-width: 200px) 100vw, 200px"  />
+                    </div>
+                </div>
+            </div>
+            <div class="icon-box-text last-reset">
+
+                <p><span style="font-size: 110%; color: #005A99;">Email liên
+                        hệ</span><br /><span style="font-size: 95%;">
+                        <%=thongtintrang.email%>
+                    </span></p>
+            </div>
+        </div><!-- .icon-box -->
+
+
+        <h3 class="widget-tieude"><span class="fa fa-star"></span> Sản phẩm nổi
+            bật</h3>
+        <ul class="product_list_widget" style="overflow: auto; height: 600px;">
+
+            <%for(item of spnoibat){%>
+                <li>
+                    <a href="/san-pham/<%=item._id%>" title="Tranh lâu đài TH 174 nhập khẩu Đài Loan">
+                         <picture>
+        <source 
+        srcset="./images/update/<%= item.images[0].name.replace(/\.(jpg|jpeg|png)$/i, '.webp') %>"
+        type="image/webp" type="image/webp">
+                        <img width="300" height="300" src="./images/update/<%=item.images[0].name%>"
+                            data-src="./images/update/<%=item.images[0].name%>"
+                            class="lazy-load attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image"
+                            alt="<%=item.images[0].name%>" srcset=""
+                            data-srcset="./images/update/<%=item.images[0].name%>"
+                            sizes="(max-width: 300px) 100vw, 300px" 
+                            /> <span class="product-title">
+                            <%=item.name%>
+                        </span>
+                         </picture>
+                    </a>
+                    <del><span class="woocommerce-Price-amount amount">
+                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                minimumFractionDigits: 0, }).format(item.price)%><span
+                                    class="woocommerce-Price-currencySymbol"></span>
+                        </span></del>
+                    <ins><span class="woocommerce-Price-amount amount">
+                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                minimumFractionDigits: 0, }).format(item.pricesale)%><span
+                                    class="woocommerce-Price-currencySymbol"></span>
+                        </span></ins>
+                </li>
+                <%}%>
+
+        </ul>
+        <div class="img has-hover x md-x lg-x y md-y lg-y" id="image_641738332">
+            <div class="img-inner dark">
+                <img width="700" height="300"
+                    src="wp-content/uploads/2018/04/rem-cau-vong-can-sang-chong-nang-700x300.jpg"
+                    class="attachment-original size-original" alt=""
+                    srcset="https://manhrem.mauthemewp.com/wp-content/uploads/2018/04/rem-cau-vong-can-sang-chong-nang-700x300.jpg 700w, https://manhrem.mauthemewp.com/wp-content/uploads/2018/04/rem-cau-vong-can-sang-chong-nang-700x300-300x129.jpg 300w, https://manhrem.mauthemewp.com/wp-content/uploads/2018/04/rem-cau-vong-can-sang-chong-nang-700x300-600x257.jpg 600w"
+                    sizes="(max-width: 700px) 100vw, 700px" />
+            </div>
+
+            <style scope="scope">
+                #image_641738332 {
+                    width: 100%;
+                }
+            </style>
+        </div>
+
+        <h3 class="widget-tieude"><span class="fa fa-file"></span> Tin tức nổi
+            bật</h3>
+
+
+        <div class="row large-columns-1 medium-columns-1 small-columns-1 slider row-slider slider-nav-simple slider-nav-push"
+            data-flickity-options='{"imagesLoaded": true, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": true,"prevNextButtons": true,"percentPosition": true,"pageDots": false, "rightToLeft": false, "autoPlay" : false}'>
+            <%for(item of tintuc1){%>
+                <div class="col post-item">
+                    <div class="col-inner">
+                        <a href="/tin-tuc/<%=item._id%>" class="plain">
+                            <div class="box box-normal box-text-bottom box-blog-post has-hover">
+                                <div class="box-image">
+                                    <div class="image-cover" style="padding-top:56.25%;">
+                                         <picture>
+        <source 
+        srcset="./images/update/<%= item.image.replace(/\.(jpg|jpeg|png)$/i, '.webp') %>"
+        type="image/webp" type="image/webp">
+                                        <img width="480" height="300" src="./images/update/<%=item.image%>"
+                                            data-src="./images/update/<%=item.image%>"
+                                            class="lazy-load attachment-original size-original wp-post-image"
+                                            alt="<%=item.image%>" srcset=""
+                                            data-srcset="./images/update/<%=item.image%>"
+                                            sizes="(max-width: 480px) 100vw, 480px"  />
+                                         </picture>
+                                    </div>
+                                </div><!-- .box-image -->
+                                <div class="box-text text-left">
+                                    <div class="box-text-inner blog-post-inner">
+
+
+                                        <h4 class="post-title is-large ">
+                                            <%=item.name%>
+                                        </h4>
+                                        <div class="clamp-text">
+                                            <%-item.content2%>
+                                        </div>
+                                 
+                                    </div><!-- .box-text-inner -->
+                                </div><!-- .box-text -->
+                            </div><!-- .box -->
+                        </a><!-- .link -->
+                    </div><!-- .col-inner -->
+                </div><!-- .col -->
+                <%}%>
+                       <style>
+                                            .clamp-text {
+                                                display: -webkit-box;
+                                                -webkit-box-orient: vertical;
+                                                -webkit-line-clamp: 2;
+                                                /* số dòng muốn hiển thị */
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                            }
+                                        </style>
+        </div>
+        <div class="gap-element" style="display:block; height:auto; padding-top:10px" class="clearfix"></div>
+
+
+        <div class="row large-columns-1 medium-columns-1 small-columns-1">
+            <%for(item of tintuc2){%>
+                <div class="col post-item">
+                    <div class="col-inner">
+                        <a href="/tin-tuc/<%=item._id%>" class="plain">
+                            <div class="box box-vertical box-text-middle box-blog-post has-hover">
+                                <div class="box-image" style="width:21%;">
+                                    <div class="image-cover" style="padding-top:89%;">
+                                         <picture>
+        <source 
+        srcset="./images/update/<%= item.image.replace(/\.(jpg|jpeg|png)$/i, '.webp') %>"
+        type="image/webp" type="image/webp">
+                                        <img width="480" height="300" src="./images/update/<%=item.image%>"
+                                            data-src="./images/update/<%=item.image%>"
+                                            class="lazy-load attachment-original size-original wp-post-image"
+                                            alt="<%=item.image%>" srcset=""
+                                            data-srcset="./images/update/<%=item.image%>"
+                                            sizes="(max-width: 480px) 100vw, 480px"  />
+                                            </picture>
+                                    </div>
+                                </div><!-- .box-image -->
+                                <div class="box-text text-left">
+                                    <div class="box-text-inner blog-post-inner">
+
+
+                                        <h5 class="post-title is-large ">
+                                            <%=item.name%>
+                                        </h5>
+                                        <div class="is-divider"></div>
+
+
+
+                                    </div><!-- .box-text-inner -->
+                                </div><!-- .box-text -->
+                            </div><!-- .box -->
+                        </a><!-- .link -->
+                    </div><!-- .col-inner -->
+                </div><!-- .col -->
+                <%}%>
+        </div>
+        <div class="gap-element" style="display:block; height:auto; padding-top:10px" class="clearfix"></div>
+    </div>
+</div>

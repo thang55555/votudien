@@ -1,0 +1,62 @@
+<%- include("../layout/head", {title: "Edit caterogy" })%>
+    <%- include("../layout/header")%>
+        <%- include("../layout/siderbar")%>
+
+            <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li><a href="/admin/dashboard"><svg class="glyph stroked home">
+                                    <use xlink:href="#stroked-home"></use>
+                                </svg></a></li>
+                        <li><a href="/admin/hang">Quản lý hãng</a></li>
+                        <li ><%=product.name%></li>
+                    </ol>
+                </div><!--/.row-->
+
+              
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="col-md-8">
+                                    <div class="<%=data.error? " alert alert-danger" : "" %>" ><%=data.error%>
+                                    </div>
+                                    <form role="form" method="post" enctype="multipart/form-data"  action="/admin/update-hang/<%=product._id%>?page=<%=page%>">
+                                        <div class="form-group">
+                                            <label>Tên hãng:</label>
+                                            <input type="text" name="name" required value="<%=product.name%>"
+                                                class="form-control" placeholder="Tên danh mục...">
+                                        </div>
+                                                    <div class="form-group">
+                                            <label>Thẻ title:</label>
+                                            <input required name="title" value="<%=product.title%>" class="form-control" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thẻ description:</label>
+                                            <input required name="description" value="<%=product.description%>" class="form-control" placeholder="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thẻ keywords:</label>
+                                            <input required name="keywords" value="<%=product.keywords%>" class="form-control" placeholder="">
+                                        </div> 
+                                            <div class="form-group">
+                                            <label>Ảnh Hãng</label>
+
+                                            <input name="images" type="file"  />
+                                            <br>
+
+                                        </div>
+                                            <input type="hidden" name="page" value="<%=page%>">
+                                        <button type="submit" name="sbm" class="btn btn-primary">Cập nhật</button>
+                                        <button type="reset" class="btn btn-default">Làm mới</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- /.col-->
+                </div> <!--/.main-->
+
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-table.js"></script>	
+                <%- include("../layout/footer")%>

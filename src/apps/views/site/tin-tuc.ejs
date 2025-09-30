@@ -1,0 +1,184 @@
+<%- include("./layouts/head.ejs")%>
+
+    <body
+        class="home page-template-default page page-id-2 woocommerce-demo-store lightbox lazy-icons nav-dropdown-has-arrow">
+        <div id="wrapper">
+
+            <%- include("./layouts/header.ejs")%>
+
+                <div class="shop-page-title category-page-title page-title ">
+
+                    <div class="page-title-inner flex-row  medium-flex-wrap container">
+                        <div class="flex-col flex-grow medium-text-center">
+                            <h1 class="shop-page-title is-xlarge">Sản phẩm</h1>
+                            <div class="is-smaller">
+                                <nav class="woocommerce-breadcrumb breadcrumbs"><a href="/">Trang chủ /</a> Tin Tức
+                                </nav>
+                            </div>
+                            <div class="category-filtering category-filter-row show-for-medium">
+                                <a href="#" data-open="#shop-sidebar" data-visible-after="true" data-pos="left"
+                                    class="filter-button uppercase plain">
+                                    <i class="icon-menu"></i>
+                                    <strong>Lọc</strong>
+                                </a>
+                                <div class="inline-block">
+                                </div>
+                            </div>
+                        </div><!-- .flex-left -->
+
+
+
+                    </div><!-- flex-row -->
+                </div><!-- .page-title -->
+
+                <main id="main" class="">
+                    <div id="content" class="content-area page-wrapper" role="main">
+                        <div class="row row-main">
+                            <div class="large-12 col">
+                                <div class="col-inner">
+                                    <section class="section body-section" id="section_1562703827">
+                                        <div class="section-content relative">
+
+                                            <div class="row" id="row-493977635">
+                                                <!-- sidebar -->
+                                                <%- include("./layouts/sidebar.ejs")%>
+                                                    <!-- end sidebar -->
+                                                    <div class="large-9 col medium-col-first" style="background: white; padding-top: 10px;">
+                                                        <div id="row-1977289709"
+                                                            class="row large-columns-3 medium-columns- small-columns-1 row-masonry">
+                                                            <%for(item of product){%>
+                                                                <div class="col post-item">
+                                                                    <div class="col-inner">
+                                                                        <a href="/tin-tuc/<%=item._id%>" class="plain">
+                                                                            <div
+                                                                                class="box box-text-bottom box-blog-post has-hover">
+                                                                                <div class="box-image">
+                                                                                    <div class="image-cover"
+                                                                                        style="padding-top:56%;">
+                                                                                        <img width="300" height="171"
+                                                                                            src="./images/update/<%=item.image%>"
+                                                                                            class="attachment-medium size-medium wp-post-image"
+                                                                                            alt="<%=item.image%>"
+                                                                                            decoding="async"
+                                                                                            loading="lazy"
+                                                                                            srcset="./images/update/<%=item.image%>"
+                                                                                            sizes="(max-width: 300px) 100vw, 300px">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="box-text text-left">
+                                                                                    <div
+                                                                                        class="box-text-inner blog-post-inner">
+
+
+                                                                                        <h5
+                                                                                            class="post-title is-large ">
+                                                                                            <%=item.name%>
+                                                                                        </h5>
+
+                                                                                        <div class="clamp-text">
+                                                                                            <%-item.content2%>
+                                                                                        </div>
+                                                                                        <style>
+                                                                                            .clamp-text {
+                                                                                                display: -webkit-box;
+                                                                                                -webkit-box-orient: vertical;
+                                                                                                -webkit-line-clamp: 2;
+                                                                                                /* số dòng muốn hiển thị */
+                                                                                                overflow: hidden;
+                                                                                                text-overflow: ellipsis;
+                                                                                            }
+                                                                                        </style>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <%}%>
+                                                        </div>
+                                                        <!-- pagination -->
+                                                        <div class="container">
+                                                            <nav aria-label="Page navigation example"
+                                                                style="text-align: center;">
+                                                                <ul
+                                                                    class="page-numbers nav-pagination links text-center">
+                                                                    <% if(hasPrev){%>
+                                                                        <li class="page-item"><a class="page-number "
+                                                                                href="/tin-tuc/?page=<%=prev%>">&laquo;</a>
+                                                                        </li>
+                                                                        <% }%>
+                                                                            <% for(i of pages){%>
+                                                                                <% if(i==="..." ){%>
+                                                                                    <li
+                                                                                        class="page-item <%= page === i ? 'active' : '' %>">
+                                                                                        <span
+                                                                                            class="page-number current"
+                                                                                            <%=i%></span>
+                                                                                    </li>
+                                                                                    <% }else{%>
+                                                                                        <li class="page-item">
+                                                                                            <a class="page-number <%= page === i ? 'active' : '' %>"
+                                                                                                href="/tin-tuc/?page=<%=i%>">
+                                                                                                <%=i%>
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <%}%>
+                                                                                            <% }%>
+                                                                                                <% if(hasNext){%>
+                                                                                                    <li
+                                                                                                        class="page-item">
+                                                                                                        <a class="page-number "
+                                                                                                            href="/tin-tuc/?page=<%=next%>">&raquo;</a>
+                                                                                                    </li>
+                                                                                                    <% }%>
+                                                                </ul>
+                                                                <style>
+                                                                    .active {
+                                                                        background-color: #0099ff;
+                                                                        color: white;
+                                                                    }
+                                                                </style>
+                                                            </nav>
+                                                        </div>
+                                                        <!-- end pagination -->
+                                                    </div>
+                                            </div>
+                                        </div><!-- .section-content -->
+
+
+                                        <style scope="scope">
+                                            #section_1562703827 {
+                                                padding-top: 0px;
+                                                padding-bottom: 25px;
+                                            }
+                                        </style>
+                                    </section>
+
+
+
+                                </div><!-- .col-inner -->
+                            </div><!-- .large-12 -->
+                        </div><!-- .row -->
+                    </div>
+
+                </main><!-- #main -->
+
+                <%- include("./layouts/footer.ejs")%>
+
+        </div><!-- #wrapper -->
+
+        <!-- Mobile Sidebar -->
+        <%- include("./layouts/sider.ejs")%>
+            <!-- #mobile-menu -->
+
+            <script id="lazy-load-icons">
+                /* Lazy load icons css file */
+                var fl_icons = document.createElement('link');
+                fl_icons.rel = 'stylesheet';
+                fl_icons.href = 'wp-content/themes/flatsome/assets/css/fl-icons.css';
+                fl_icons.type = 'text/css';
+                var fl_icons_insert = document.getElementsByTagName('link')[0];
+                fl_icons_insert.parentNode.insertBefore(fl_icons, fl_icons_insert);
+            </script>
+            <%- include("./layouts/login.ejs")%>
+          <%- include("./layouts/footer2.ejs")%>

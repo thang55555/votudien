@@ -1,0 +1,123 @@
+
+<%- include("./layouts/head.ejs")%>
+
+<body class="home blog theme-mtw-haiau woocommerce-no-js"><noscript><iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WPQ49BL" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+ <%- include("./layouts/menu.ejs")%>
+    <div class="container metaslider">
+        <img src="wp-content/uploads/2020/12/Thiet-bi-dien-cong-nghiep.jpg"
+            alt="Công Ty Mua Bán Và Sửa Chữa Các Thiết Bị Điện Công Nghiệp">
+    </div>
+    <div class="container mainpage white">
+        <div class="row" id="homeproduct">
+             <%for(item of danhmuc){%>
+            <div id="tw-recent-posts-14" class="widget tw-recent-posts">
+                <div class="tieude_home">
+                    <h2 class="title_link"> <a class="title_link_a" title="PLC" href="/danh-muc/<%=item.slug%>"> <span
+                                class="glyphicon glyphicon-th-list"></span><%=item.name%></a></h2>
+                    <div class="link-cat"></div>
+                </div>
+                <div class="cont_home">
+                         <%for(item2 of product){%>
+                    <div class="col-xs-6 col-md-2 col-sm-3 motsanpham">
+                        <a href="/san-pham/<%=item2._id%>"
+                            title="Module nhiệt độ Omron CP1W-TS104"><img width="400" height="400"
+                                src="./images/update/<%=item2.images[0].name%>"
+                                class="attachment-thumb-home-product size-thumb-home-product wp-post-image" alt=""
+                           /></a>
+                        <div class="caption">
+                            <h3><a href="/san-pham/<%=item2._id%>"
+                                    title="Module nhiệt độ Omron CP1W-TS104"><%=item2.name%></a></h3>
+                            <!-- <div class="post-price">
+                                <div class="price"> <span
+                                        class="woocommerce-Price-amount amount"><bdi>   <%= new
+                                                                                            Intl.NumberFormat("vi-VN", {
+                                                                                            style: "currency" ,
+                                                                                            currency: "VND" ,
+                                                                                            minimumFractionDigits: 0,
+                                                                                            }).format(item2.price)%><span
+                                                class="woocommerce-Price-currencySymbol"></span></bdi></span>
+                                </div>
+                                <div class="salepercent"></div>
+                            </div> -->
+<div class="post-price">
+  <% if (item2.pricesale && item2.pricesale < item2.price) { %>
+    <div class="price-old">
+      <%= new Intl.NumberFormat("vi-VN", {
+            style: "currency",
+            currency: "VND",
+            minimumFractionDigits: 0,
+        }).format(item2.price) %>
+    </div>
+    <div class="price-sale">
+      <%= new Intl.NumberFormat("vi-VN", {
+            style: "currency",
+            currency: "VND",
+            minimumFractionDigits: 0,
+        }).format(item2.pricesale) %>
+    </div>
+    <div class="salepercent">
+      -<%= Math.round((1 - item2.pricesale / item2.price) * 100) %>%
+    </div>
+  <% } else { %>
+    <div class="price-normal">
+      <%= new Intl.NumberFormat("vi-VN", {
+            style: "currency",
+            currency: "VND",
+            minimumFractionDigits: 0,
+        }).format(item2.price) %>
+    </div>
+  <% } %>
+</div>
+<style>
+    .post-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.price-old {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+.price-sale {
+  color: #e53935;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.price-normal {
+  color: #e53935;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.salepercent {
+  background: #ff5722;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+</style>
+
+
+
+
+
+                        </div>
+                    </div>
+                    <%}%>
+                </div>
+            </div>
+               <%}%>
+        </div>
+    </div>
+    
+              <%- include("./layouts/footer.ejs")%>

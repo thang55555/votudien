@@ -1,0 +1,264 @@
+<%- include("./layouts/head.ejs")%>
+
+    <body
+        class="page-template-default page page-id-37 theme-mtw-haiau woocommerce-cart woocommerce-page woocommerce-no-js">
+
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPQ49BL" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <%- include("./layouts/menu.ejs")%> <!-- end wrapper-->
+            <style type="text/css">
+                .woocommerce .woocommerce-result-count {
+                    margin: 0 0 1em;
+                    display: none;
+                }
+            </style>
+            <div class="container mainpage">
+                <div class="breadcrumb"></div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 giohang">
+
+                        <h1 itemprop="name">Giỏ hàng</h1>
+                        <div class="woocommerce">
+                            <div class="woocommerce">
+                                <div class="woocommerce-notices-wrapper">
+                                        <% if (data && data.msg) { %>
+                                    <div class="woocommerce-message" role="alert" tabindex="-1">
+                                        “<%=data.msg%>” đã xóa. <a
+                                            href="/cart/<%=id%>?quantity=<%=quantity%>"
+                                            class="restore-item">Khôi phục?</a> </div>
+                                                  <% } %>
+                                                  <% if (!cart || cart.length === 0) { %>
+                                    <div class="cart-empty woocommerce-info">
+                                        Chưa có sản phẩm nào trong giỏ hàng. </div>
+                                          <% } %>
+                                </div>
+                           
+                            </div>
+
+                                 <% if (!cart || cart.length === 0) { %>
+                                    <% } else { %>
+                            <form class="woocommerce-cart-form" action="/update/gio-hang" method="post">
+
+                                <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents"
+                                    cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove"><span class="screen-reader-text">Xóa sản
+                                                    phẩm</span></th>
+                                            <th class="product-thumbnail"><span class="screen-reader-text">Hình ảnh thu
+                                                    nhỏ</span></th>
+                                            <th class="product-name">Sản phẩm</th>
+                                            <th class="product-price">Giá</th>
+                                            <th class="product-quantity">Số lượng</th>
+                                            <th class="product-subtotal">Tạm tính</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%for(item of cart){%>
+                                            <tr class="woocommerce-cart-form__cart-item cart_item">
+
+                                                <td class="product-remove">
+                                                    <a href="/delete/gio-hang/<%=item.id%>?quantity=<%=item.qty%>" class="remove"
+                                                        aria-label="<%=item.thumbnail%>" data-product_id="43942"
+                                                        data-product_sku="300x400x210x1mm">&times;</a>
+                                                </td>
+
+                                                <td class="product-thumbnail">
+                                                    <a href="/san-pham/<%=item.id%>"><img fetchpriority="high"
+                                                            decoding="async" width="300" height="300"
+                                                            src="./images/update/<%=item.thumbnail%>"
+                                                            class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                                                            alt="<%=item.thumbnail%>" /></a>
+                                                </td>
+
+                                                <td class="product-name" data-title="Sản phẩm">
+                                                    <a href="/san-pham/<%=item.id%>">
+                                                        <%=item.name%>
+                                                    </a>
+                                                </td>
+
+                                                <td class="product-price" data-title="Giá">
+                                                    <span class="woocommerce-Price-amount amount"><bdi>
+                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                currency: "VND" , minimumFractionDigits: 0,
+                                                                }).format(item.price)%><span
+                                                                    class="woocommerce-Price-currencySymbol"></span>
+                                                        </bdi></span>
+                                                </td>
+
+                                                <td class="product-quantity" data-title="Số lượng">
+                                                    <div class="quantity">
+                                                        <label class="screen-reader-text" for="quantity_68da6380ebb56">
+                                                            <%=item.thumbnail%>
+                                                        </label>
+                                                        <input type="number" id="quantity_68da6380ebb56"
+                                                            class="input-text qty text"
+                                                            name="product[<%=item.id%>][qty]" value="<%=item.qty%>"
+                                                            aria-label="Số lượng sản phẩm" min="0" max="" step="1"
+                                                            placeholder="" inputmode="numeric" autocomplete="off" />
+                                                    </div>
+                                                </td>
+
+                                                <td class="product-subtotal" data-title="Tạm tính">
+                                                    <span class="woocommerce-Price-amount amount"><bdi>
+                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                currency: "VND" , minimumFractionDigits: 0,
+                                                                }).format(item.price*item.qty)%><span
+                                                                    class="woocommerce-Price-currencySymbol"></span>
+                                                        </bdi></span>
+                                                </td>
+                                            </tr>
+                                            <%}%>
+
+
+                                                <tr>
+                                                    <td colspan="6" class="actions">
+
+                                                        <div class="coupon">
+                                                            <label for="coupon_code" class="screen-reader-text">Ưu
+                                                                đãi:</label>
+                                                            <input type="text" name="coupon_code" class="input-text"
+                                                                id="coupon_code" value=""
+                                                                placeholder="Nhập mã giảm giá" />
+                                                            <button type="submit" class="button" name="apply_coupon"
+                                                                value="Áp dụng">Áp dụng</button>
+                                                        </div>
+
+                                                        <button type="submit" class="button" name="update_cart"
+                                                            value="Cập nhật giỏ hàng">Cập nhật giỏ hàng</button>
+
+
+                                                        <input type="hidden" id="woocommerce-cart-nonce"
+                                                            name="woocommerce-cart-nonce" value="91e15c31b7" /><input
+                                                            type="hidden" name="_wp_http_referer" value="/gio-hang/" />
+                                                    </td>
+                                                </tr>
+
+                                    </tbody>
+                                </table>
+                            </form>
+
+
+                            <div class="cart-collaterals">
+
+                                <!-- <div class="cross-sells">
+                                    <h2>Bạn có thể thích&hellip;</h2>
+
+                                    <ul class="products columns-2">
+                                        <%for(item of product){%>
+                                            <li
+                                                class="product_list_widget product type-product post-8046 status-publish first instock product_cat-coi-bao product_cat-coi-bao-hanyoung product_tag-hs has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+                                                <a href="/san-pham/<%=item._id%>"
+                                                    class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                                    <div style="position:relative;"><img loading="lazy" decoding="async"
+                                                            width="300" height="300"
+                                                            src="./images/update/<%=item.images[0].name%>"
+                                                            class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                                                            alt="<%=item.name%>" />
+                                                        <div class="advanced-woo-labels awl-position-type-on-image awl-label-type-archive awl-align-left-top"
+                                                            style="display:flex;flex-wrap:wrap;flex-direction:row;text-align:left;width:100%;position:absolute;z-index:9;left:0px;right:auto;top:0px;bottom:auto;transform:none;justify-content:flex-start;">
+                                                            <div class="awl-label-wrap awl-label-id-162806" style="">
+                                                                <span
+                                                                    class="awl-product-label awl-type-label awl-type-label-angle"
+                                                                    style="display:table;position:relative;line-height:1;white-space:nowrap;vertical-align:baseline;font-size:12px;;font-weight:500;font-style:italic;letter-spacing:0px;;color:#ffffff;opacity:1;margin:0px 0px 0px 0px;">
+                                                                    <span class="awl-label-after"
+                                                                        style="display:table-cell;width:0;height:0;position:relative;z-index:2;overflow:hidden;padding:0 0.65em 0 0;"><svg
+                                                                            viewBox="0 0 100 100"
+                                                                            preserveAspectRatio="none"
+                                                                            style="position:absolute;top:0;width:100%;height:100%;fill:#46b3c9;">
+                                                                            <g class="awl-angle-after">
+                                                                                <polygon
+                                                                                    vector-effect="non-scaling-stroke"
+                                                                                    points="0,0 97,0 0,100"
+                                                                                    style="stroke:none;" />
+                                                                                <line class="d-stroke"
+                                                                                    vector-effect="non-scaling-stroke"
+                                                                                    x1="0" y1="0" x2="97" y2="0" />
+                                                                                <line vector-effect="non-scaling-stroke"
+                                                                                    x1="97" y1="0" x2="0" y2="100" />
+                                                                            </g>
+                                                                        </svg></span></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h2 class="woocommerce-loop-product__title">
+                                                        <%=item.name%>
+                                                    </h2>
+                                                    <span class="price">
+                                                        <ins aria-hidden="true"><span
+                                                                class="woocommerce-Price-amount amount"><bdi>
+                                                                    <%= new Intl.NumberFormat("vi-VN", {
+                                                                        style: "currency" , currency: "VND" ,
+                                                                        minimumFractionDigits: 0,
+                                                                        }).format(item.pricesale)%><span
+                                                                            class="woocommerce-Price-currencySymbol"></span>
+                                                                </bdi></span></ins><span class="screen-reader-text">Giá
+                                                            hiện tại là:
+                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                currency: "VND" , minimumFractionDigits: 0,
+                                                                }).format(item.pricesale)%>.
+                                                        </span></span>
+                                                </a>
+                                            </li>
+                                            <% } %>
+
+                                    </ul>
+
+                                </div> -->
+                                <div class="cart_totals ">
+
+
+                                    <h2>Tổng cộng giỏ hàng</h2>
+
+                                    <table cellspacing="0" class="shop_table shop_table_responsive">
+
+                                        <tr class="cart-subtotal">
+                                            <th>Tạm tính</th>
+                                            <td data-title="Tạm tính"><span
+                                                    class="woocommerce-Price-amount amount"><bdi>
+                                                        <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                            currency: "VND" , minimumFractionDigits: 0,
+                                                            }).format(tongtien)%><span
+                                                                class="woocommerce-Price-currencySymbol"></span>
+                                                    </bdi></span>
+                                            </td>
+                                        </tr>
+
+
+
+
+
+
+                                        <tr class="order-total">
+                                            <th>Tổng</th>
+                                            <td data-title="Tổng"><strong><span
+                                                        class="woocommerce-Price-amount amount"><bdi>
+                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                currency: "VND" , minimumFractionDigits: 0,
+                                                                }).format(tongtien)%><span
+                                                                    class="woocommerce-Price-currencySymbol"></span>
+                                                        </bdi></span></strong>
+                                            </td>
+                                        </tr>
+
+
+                                    </table>
+
+                                    <div class="wc-proceed-to-checkout">
+
+                                        <a href="/thanh-toan"
+                                            class="checkout-button button alt wc-forward">
+                                            Tiến hành thanh toán</a>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+
+                    </div><!-- col-xs-12 col-sm-6 col-md-3 -->
+                </div><!-- col-xs-12 col-sm-6 col-md-3 -->
+                <%- include("./layouts/footer.ejs")%>

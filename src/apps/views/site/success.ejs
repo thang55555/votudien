@@ -1,0 +1,46 @@
+<%- include("./layouts/head.ejs", {title:"index"})%>
+<%- include("./layouts/header.ejs")%>
+<%- include("./layouts/menu.ejs")%>
+
+            <!-- body -->
+            <div id="body">
+                <div class="container">
+                    <%- include("./layouts/sidebar.ejs")%>
+
+                        <!--	Order Success	-->
+                        <div id="order-success">
+                            <div class="row">
+                                <div id="order-success-img" class="col-lg-3 col-md-3 col-sm-12">
+                                    <img src="./images/New folder/img-ship.png" />
+                                </div>
+                                <div id="order-success-txt" class="col-lg-9 col-md-9 col-sm-12">
+                                    <h3>bạn đã đặt hàng thành công !</h3>
+                                    <p>Vui lòng kiểm tra email để xem lại thông tin đơn hàng của mình.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--	End Order Success	-->
+
+
+
+
+                </div>
+            </div>
+
+
+            </div>
+            <!-- end body -->
+
+            <%- include("./layouts/footer.ejs")%>
+
+                <script>
+                    // thanh 3 chấm menu
+                    function myFunction(x) {
+                        x.classList.toggle("change");
+                    }
+
+                </script>
+
+                </body>
+
+                </html>

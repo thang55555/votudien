@@ -1,0 +1,92 @@
+<%- include("../layout/head", {title: "Admin bài viết tin tức"})%>
+<%- include("../layout/header")%>
+<%- include("../layout/siderbar")%>
+
+
+
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="/admin/dashboard"><svg class="glyph stroked home">
+                            <use xlink:href="#stroked-home"></use>
+                        </svg></a></li>
+                <li><a href="/admin/danh-sach-bai-viet-tin-tuc">Danh sách bài viết tin tức</a></li>
+                <li>Thêm mới bài viết tin tức</li>
+            </ol>
+        </div><!--/.row-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Thêm mới bài viết</h1>
+            </div>
+        </div><!--/.row-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            <form role="form" method="post" enctype="multipart/form-data" action="/admin/upload-bai-viet-tin-tuc">
+                                <div class="form-group">
+                                    <label>Tiêu đề bài viết (Thẻ title):</label>
+                                    <input required name="tieudebaiviet" type="text" class="form-control" placeholder="Tiêu đề bài viết">
+                                </div>
+                                <div class="form-group"> 
+                                    <label>Thẻ meta description</label>
+                                    <input required name="metadescription" type="text" class="form-control" placeholder="Meta description">
+                                </div>
+                                <div class="form-group">
+                                    <label>Thẻ meta keywords</label>
+                                    <input required name="metakeywords" type="text" class="form-control" placeholder="Meta keywords">
+                                </div>
+                                <div class="form-group">
+                                    <label>Menu tin tức</label>
+                                    <select name="menutintuc_id" class="form-control">
+                                        <% for(item of category){%>
+                                        <option value="<%=item._id%>"> <%=item.menutintuc%></option>
+                                        <%}%>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="col-md-6">
+
+
+
+                            <div class="form-group">
+                                <input name="images" type="file" required>
+                                <br>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label>Mô tả bài viết</label>
+                                <textarea id="description" required name="content" class="form-control" rows="3"></textarea>
+                                <script>
+                                    CKEDITOR.replace('description',{
+                                            extraPlugins:'filebrowser',
+                                            filebrowserBrowseUrl:'/list',//upload location
+                                            filebrowserUploadMethod:'form',
+                                            filebrowserUploadUrl:'/upload'//route
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input  class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="nhap" value="on">
+                                <label class="form-check-label" for="flexSwitchCheckChecked">Đăng ngay</label>
+                              </div>
+
+                            <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>
+                            <button type="reset" class="btn btn-default">Làm mới</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /.col-->
+        </div><!-- /.row -->
+
+    </div> <!--/.main-->
+
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-table.js"></script>
+
+    <%- include("../layout/footer")%>

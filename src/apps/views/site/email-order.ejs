@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .table {
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    .table th, .table td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    .table th {
+      background-color: #f5f5f5;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src="<%= origin %>/static/site/images/update/<%= thongtintrang.images %>" alt="logo" width="120">
+  </div>
+
+  <p>Kính gửi Quý khách <strong><%=order2.name%></strong>,</p>
+
+  <p>Cảm ơn Quý khách đã đặt hàng tại <strong>votudien.com</strong>. Chúng tôi xin xác nhận đơn hàng của Quý khách như sau:</p>
+
+  <h3>🧾 Thông tin đơn hàng</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Đơn giá</th>
+        <th>Thành tiền</th>
+      </tr>
+    </thead>
+    <tbody>
+        <%for(item of order2.item){%>
+      <tr>
+        <td><%=item.name%></td>
+        <td><%=item.qty%></td>
+        <td><%= new
+                                                                                                        Intl.NumberFormat("vi-VN",
+                                                                                                        {
+                                                                                                        style: "currency"
+                                                                                                        ,
+                                                                                                        currency: "VND"
+                                                                                                        ,
+                                                                                                        minimumFractionDigits:
+                                                                                                        0,
+                                                                                                        }).format(item.price)%></td>
+        <td><%= new
+                                                                                                        Intl.NumberFormat("vi-VN",
+                                                                                                        {
+                                                                                                        style: "currency"
+                                                                                                        ,
+                                                                                                        currency: "VND"
+                                                                                                        ,
+                                                                                                        minimumFractionDigits:
+                                                                                                        0,
+                                                                                                        }).format(item.price*item.qty)%></td>
+      </tr>
+        <%}%>
+      <!-- Thêm các dòng khác nếu cần -->
+      <tr>
+        <td colspan="3" style="text-align:right;"><strong>Tổng cộng:</strong></td>
+        <td><strong><%= new
+                                                                                                        Intl.NumberFormat("vi-VN",
+                                                                                                        {
+                                                                                                        style: "currency"
+                                                                                                        ,
+                                                                                                        currency: "VND"
+                                                                                                        ,
+                                                                                                        minimumFractionDigits:
+                                                                                                        0,
+                                                                                                        }).format(tongtien)%></strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Ngày đặt:</strong> <%=order2.date%></p>
+  <p><strong>Địa chỉ giao hàng:</strong> <%=order2.add1%></p>
+  <p><strong>Phương thức thanh toán:</strong>  <% if (order2.thanhtoan === "chuyển khoản") { %>
+                                                  <td>Chuyển khoản ngân hàng</td>
+                                <% } else { %>
+                                                      <td>Thanh toán khi nhận hàng</td>
+                                    <% } %></p>
+
+  <p>Trong vòng 24h Nhân viên chúng tôi sẽ liên hệ với Quý khách để xác nhận và sắp xếp lịch giao/lắp đặt.</p>
+
+  <div class="footer">
+    Mọi thắc mắc, vui lòng liên hệ:<br>
+    📞 Hotline: <%=thongtintrang.sdt%><br>
+    📧 Email: <%=thongtintrang.email%><br>
+    🌐 Website: www.votudien.com
+  </div>
+
+  <p>Xin cảm ơn Quý khách đã tin tưởng và lựa chọn!</p>
+
+  <p>Trân trọng,<br></p>
+
+</body>
+</html>

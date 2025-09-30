@@ -1,0 +1,134 @@
+<%- include("../layout/head", {title: "Admin Thêm mới bài viết dịch vụ" })%>
+    <%- include("../layout/header")%>
+        <%- include("../layout/siderbar")%>
+
+
+            <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li><a href="/admin/dashboard"><svg class="glyph stroked home">
+                                    <use xlink:href="#stroked-home"></use>
+                                </svg></a></li>
+                        <li><a href="/admin/bai-viet-dich-vu">Danh sách bài viết dịch vụ</a></li>
+                        <li>Thêm mới bài viết dịch vụ</li>
+                    </ol>
+                </div><!--/.row-->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Thêm mới bài viết dịch vụ</h1>
+                    </div>
+                </div><!--/.row-->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="col-md-6">
+                                    <form role="form" method="post" enctype="multipart/form-data"
+                                        action="/admin/upload-bai-viet-dich-vu">
+                                        <div class="form-group">
+                                            <label>Tiêu đề sản phẩm (Thẻ title):</label>
+                                            <input required name="tieudesp" type="text" class="form-control"
+                                                placeholder="Tiêu đề sản phẩm...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thẻ meta description</label> 
+                                            <input required name="metadescription" type="text" class="form-control" placeholder="Meta description...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thẻ meta keywords</label>
+                                            <input required name="metakeywords" type="text" class="form-control" placeholder="Meta keywords...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Chủ đầu tư</label>
+                                            <input required name="chudautu" type="text" class="form-control"
+                                                placeholder="Chủ đầu tư...">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Công năng</label>
+                                            <input required name="congnang" type="text" class="form-control"
+                                                placeholder="Công năng...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Địa chỉ</label>
+                                            <input required name="diachi" type="text" class="form-control"
+                                                placeholder="Địa chỉ...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Kinh phí</label>
+                                            <input required name="kinhphi" type="text" class="form-control"
+                                                placeholder="Kinh phí...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Loại hình</label>
+                                            <input required name="loaihinh" type="text" class="form-control"
+                                                placeholder="Loại hình...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Đơn vị thiết kế</label>
+                                            <input required name="donvi" type="text" class="form-control"
+                                                placeholder="Đơn vị thiết kế...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Thông số</label>
+                                            <input required name="dientich" type="text" class="form-control"
+                                                placeholder="Diện tích...">
+                                        </div>
+
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Năm thi công</label>
+                                        <input required name="namthicong" type="text" class="form-control"
+                                            placeholder="Năm thi công...">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nhóm sản phẩm</label>
+                                        <select name="menudichvu_id" class="form-control">
+                                            <% for(item of category){%>
+                                                <option value="<%=item._id%>">
+                                                    <%=item.menudichvu%>
+                                                </option>
+                                                <%}%>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input name="images" type="file" multiple required>
+                                        <br>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Mô tả bài viết</label>
+                                        <textarea id="description" required name="content" class="form-control" rows="3"></textarea>
+                                        <script>
+                                            CKEDITOR.replace('description',{
+                                            extraPlugins:'filebrowser',
+                                            filebrowserBrowseUrl:'/list',//upload location
+                                            filebrowserUploadMethod:'form',
+                                            filebrowserUploadUrl:'/upload'//route
+                                        });
+                                        </script>
+                                    </div>
+
+                                    <div class="form-check form-switch">
+                                        <input  class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" name="nhap" value="on">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">Đăng ngay</label>
+                                      </div>
+                                    <button name="sbm" type="submit" class="btn btn-success">Thêm mới</button>
+                                    <button type="reset" class="btn btn-default">Làm mới</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- /.col-->
+                </div><!-- /.row -->
+
+            </div> <!--/.main-->
+
+            <script src="js/jquery-1.11.1.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+
+            <%- include("../layout/footer")%>

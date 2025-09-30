@@ -1,0 +1,161 @@
+<%- include("../layout/head", {title: "Comment" })%>
+    <%- include("../layout/header")%>
+        <%- include("../layout/siderbar")%>
+
+            <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li><a href="/admin/dashboard"><svg class="glyph stroked home">
+                                    <use xlink:href="#stroked-home"></use>
+                                </svg></a></li>
+                        <li class="active">Danh Sách Đơn Hàng</li>
+                    </ol>
+                </div><!--/.row-->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Danh Sách Đơn Hàng </h1>
+                    </div>
+                </div><!--/.row-->
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <table data-toolbar="#toolbar" data-toggle="table">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="id" data-sortable="true">ID</th>
+                                            <th data-field="name" data-sortable="true">Họ Tên KH </th>
+                                            <th data-field="price" data-sortable="true">Địa chỉ KH</th>
+                                            <th>Email</th>
+                                            <th>Sô Điện Thoại KH</th>
+                                            <th>Sản Phẩm</th>
+                                            <th>Đơn Giá</th>
+                                            <th>Sô Lượng</th>
+                                            <th>Tổng tiền</th>
+                                            <th>Thời gian</th>
+                                            <th>Trạng thái</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(order of products){ %>
+                                            <tr>
+                                                <td>
+                                                    <%= stt++ %>
+                                                </td>
+                                                <td>
+                                                    <%= order.name %>
+                                                </td>
+                                                <td>
+                                                    <%= order.add1 %>
+                                                </td>
+                                                <td>
+                                                    <%= order.mail %>
+                                                </td>
+                                                <td>
+                                                    <%= order.phone %>
+                                                </td>
+
+                                                <!-- Bảng con cho sản phẩm -->
+                                                <td colspan="3">
+                                                    <table style="width:100%; border-collapse: collapse;">
+                                                        <% for(item2 of order.item){ %>
+                                                            <tr>
+                                                                <td style="border:none; padding:4px 8px;">
+                                                                    <%= item2.name %>
+                                                                </td>
+                                                                <td
+                                                                    style="border:none; padding:4px 8px; text-align:right;">
+                                                                    <%= new Intl.NumberFormat("vi-VN", {
+                                                                        style: "currency" , currency: "VND" ,
+                                                                        minimumFractionDigits: 0 }).format(item2.price)
+                                                                        %>
+                                                                </td>
+                                                                <td
+                                                                    style="border:none; padding:4px 8px; text-align:center;">
+                                                                    <%= item2.qty %>
+                                                                </td>
+                                                            </tr>
+                                                            <% } %>
+                                                    </table>
+                                                </td>
+
+
+                                                <!-- Tổng tiền -->
+                                                <td>
+                                                    <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                        currency: "VND" , minimumFractionDigits: 0
+                                                        }).format(order.item.reduce((sum, item2)=> sum + item2.price *
+                                                        item2.qty, 0)) %>
+                                                </td>
+
+                                                <td>
+                                                    <%= order.date %>
+                                                </td>
+                                                <td>
+                                              <span
+                                             class="label label-<%=order.trangthai? 'success': 'danger'%>">
+											 <%=order.trangthai? "Đã xử lý" : "Chưa xử lý" %>
+                                        </span>
+                                                </td>
+                                                <td class="form-group">
+                                                    <form action="/admin/edit-don-hang/<%=order._id%>?page=<%=page%>" role="form"
+                                                        method="post">
+
+                                                        <select name="trangthai" class="form-control">
+                                                            <option value="<%=order.trangthai%>">Chọn</option>
+                                                            <option value="true">Đã xử lý</option>
+                                                            <option value="false"> Chưa xử lý</option>
+
+                                                        </select>
+                                                        <button type="submit" name="sbm"
+                                                            class="btn btn-success">Update</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="panel-footer">
+                         <nav aria-label="Page navigation example" style="    text-align: center">
+                                    <ul class="pagination">
+                                        <% if(hasPrev){%>
+                                            <li class="page-item"><a class="page-link"
+                                                    href="/admin/danh-sach-don-hang?page=<%=prev%>">&laquo;</a></li>
+                                            <% }%>
+                                                <% for(i of pages){%>
+                                                    <% if(i==="..." ){%>
+                                                        <li class="page-item <%= page === i ? 'active' : '' %>"><span
+                                                                class="page-link" <%=i%>></span>
+                                                        </li>
+                                                        <% }else{%>
+                                                            <li class="page-item <%= page === i ? 'active' : '' %>"><a
+                                                                    class="page-link"
+                                                                    href="/admin/danh-sach-don-hang?page=<%=i%>">
+                                                                    <%=i%>
+                                                                </a></li>
+                                                            <%}%>
+                                                                <% }%>
+                                                                    <% if(hasNext){%>
+                                                                        <li class="page-item"><a class="page-link"
+                                                                                href="/admin/danh-sach-don-hang?page=<%=next%>">&raquo;</a>
+                                                                        </li>
+                                                                        <% }%>
+                                    </ul>
+                                </nav>
+                    </div>
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div> <!--/.main-->
+
+            <script src="js/jquery-1.11.1.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/bootstrap-table.js"></script>
+
+
+            <%- include("../layout/footer")%>

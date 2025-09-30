@@ -1,0 +1,83 @@
+<div class="wrapper">
+    <div class="row header">
+        <div class="container" style="position:relative">
+            <div class="colleft col-xs-4 col-md-4 col-sm-10">
+                <a class="logo col-md-4 col-sm-4" href="/" title=""><img width="160" height="48"
+                        src="./images/update/<%=thongtintrang.images%>" alt="<%=thongtintrang.tencongty%>"> </a>
+                <div class="col-xs-12 col-md-8 col-sm-8 frmsearch">
+                    <div class="search">
+                        <form role="search" method="get" id="searchform" class="searchform"
+                            action="/">
+                            <div>
+                                <label class="screen-reader-text" for="s">Tìm kiếm cho:</label>
+                                <input type="text" value="" name="s" id="s" />
+                                <input type="submit" id="searchsubmit" value="Tìm kiếm" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <script language="javascript">document.getElementById('searchsubmit').value = '';</script>
+            </div>
+            <div class="mainnav col-md-8 col-xs-2 col-sm-2">
+                <div class="hidden-xs hidden-sm main-menu">
+                    <div class="menu-menu-container">
+                        <ul id="menu-menu" class="nav navbar-nav">
+                            <li id="menu-item-174229"
+                                class="button-red menu-item menu-item-type-custom menu-item-object-custom menu-item-174229">
+                                <a href="/thuong-hieu">Thương hiệu</a>
+                            </li>
+                               <%for(item of menu){%>
+                            <li id="menu-item-12627"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
+                                <a href="/danh-muc/<%=item.slug%>"><%=item.menua%></a>
+                                <ul class="sub-menu">
+                                       <%for(item2 of item.menub){%>
+                                    <li id="menu-item-187609"
+                                        class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-187609">
+                                        <a href="/danh-muc/<%=item.slug%>/<%=item2.slug%>?id=<%=item2._id%>"><%=item2.name%></a>
+                                    </li>
+                                        <%}%>
+                                </ul>
+                            </li>
+                                   <%}%>
+                        </ul>
+                    </div>
+                </div>
+                <div class="hidden-lg hidden-md col-xs-2" style="float:right;width: 45px;">
+                    <link data-optimized="1"
+                        href="wp-content/litespeed/css/251be3be83dbdb3dfa55f6cf97dffcf94227.css?ver=ffcf9"
+                        rel="stylesheet" media="screen">
+                    <script src="wp-content/themes/mtw-haiau/js/mb-menu.js"></script> <a id="pull"
+                        class="leftmenu glyphicon glyphicon-list"> <i class="fas"></i> </a>
+                    <nav id="navigation" class="primary-navigation mobile-menu-wrapper" role="navigation">
+                        <div class="menu-menu-container">
+                            <ul id="menu-menu-1" class="nav navbar-nav">
+                                <li
+                                    class="button-red menu-item menu-item-type-custom menu-item-object-custom menu-item-174229">
+                                    <a href="/thuong-hieu">Thương hiệu</a>
+                                </li>
+                                       <%for(item of menu){%>
+                                <li
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
+                                    <a href="/danh-muc/<%=item.slug%>"><%=item.menua%></a>
+                                    <ul class="sub-menu">
+                                            <%for(item2 of item.menub){%>
+                                        <li
+                                            class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-187609">
+                                            <a href="/danh-muc/<%=item.slug%>/<%=item2.slug%>"><%=item2.name%></a>
+                                        </li>
+                                           <%}%>
+                                    </ul>
+                                </li>
+                               <%}%>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <a class="giohang" href="/gio-hang" title="Xem giỏ hàng">
+                <span class="fa fa-cart-arrow-down"></span>
+                <span class="count">(<%=totalCartItem%>)</span> </a>
+        </div>
+    </div>
+</div>

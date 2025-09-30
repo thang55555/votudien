@@ -1,0 +1,293 @@
+<%- include("./layouts/head.ejs")%>
+
+
+
+    <body
+        class="page-template-default page page-id-38 theme-mtw-haiau woocommerce-checkout woocommerce-page woocommerce-js"
+        style="">
+
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPQ49BL" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <%- include("./layouts/menu.ejs")%> <!-- end wrapper-->
+            <style type="text/css">
+                .woocommerce .woocommerce-result-count {
+                    margin: 0 0 1em;
+                    display: none;
+                }
+
+                .thanhtoan {}
+
+                .thanhtoan h1,
+                .thanhtoan h3 {
+                    background: #d86827;
+                    color: #FFF;
+                    padding: 12px 15px;
+                    text-transform: uppercase;
+                    font-size: 14px;
+                }
+
+                .thanhtoan .woocommerce .button {
+                    background: #d86827;
+                    color: #FFF;
+                }
+
+                .woocommerce form .form-row input.input-text,
+                .woocommerce form .form-row textarea {
+                    box-sizing: border-box;
+                    width: 100%;
+                    margin: 0;
+                    outline: 0;
+                    line-height: normal;
+                    padding: 6px;
+                }
+
+                .thanhtoan .order_review {
+                    padding: 0;
+                }
+            </style>
+            <iframe height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+            <div class="container mainpage">
+                <div class="breadcrumb"></div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 thanhtoan">
+
+                        <div class="woocommerce">
+                        <form name="checkout" method="post" class="checkout woocommerce-checkout"
+    action="/thanh-toan/order" enctype="multipart/form-data" aria-label="Thanh toán">
+
+
+
+                                <div class="col2-set" id="customer_details">
+                                    <div class="col-1">
+                                        <div class="woocommerce-billing-fields">
+                                            <h3>Thông tin thanh toán</h3>
+
+
+
+                                             <div class="woocommerce-billing-fields__field-wrapper">
+                    <p class="form-row form-row-first" id="billing_first_name_field" data-priority="10">
+                        <label for="billing_first_name">Tên&nbsp;<span class="required">*</span></label>
+                        <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text" name="billing_first_name" id="billing_first_name"
+                                required placeholder="Nhập tên" autocomplete="given-name">
+                        </span>
+                    </p>
+
+                    <p class="form-row form-row-last" id="billing_last_name_field" data-priority="20">
+                        <label for="billing_last_name">Họ&nbsp;<span class="required">*</span></label>
+                        <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text" name="billing_last_name" id="billing_last_name"
+                                required placeholder="Nhập họ" autocomplete="family-name">
+                        </span>
+                    </p>
+
+                    <p class="form-row form-row-wide address-field" id="billing_address_1_field" data-priority="50">
+                        <label for="billing_address_1">Địa chỉ&nbsp;<span class="required">*</span></label>
+                        <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text" name="billing_address_1" id="billing_address_1"
+                                required placeholder="Nhập địa chỉ" autocomplete="address-line1">
+                        </span>
+                    </p>
+
+                    <p class="form-row form-row-wide address-field" id="billing_city_field" data-priority="70">
+                        <label for="billing_city">Thị trấn / Thành phố&nbsp;<span class="required">*</span></label>
+                        <span class="woocommerce-input-wrapper">
+                            <input type="text" class="input-text" name="billing_city" id="billing_city"
+                                required placeholder="Nhập thành phố" autocomplete="address-level2">
+                        </span>
+                    </p>
+
+                    <p class="form-row form-row-wide" id="billing_phone_field" data-priority="100">
+                        <label for="billing_phone">Số điện thoại&nbsp;<span class="required">*</span></label>
+                        <span class="woocommerce-input-wrapper">
+                            <input type="tel" class="input-text" name="billing_phone" id="billing_phone"
+                                required placeholder="Nhập số điện thoại" pattern="[0-9]{10,11}"
+                                title="Số điện thoại phải có 10–11 chữ số" autocomplete="tel">
+                        </span>
+                    </p>
+
+                    <p class="form-row form-row-wide" id="billing_email_field" data-priority="110">
+                        <label for="billing_email">Địa chỉ email&nbsp;<span class="required">*</span></label>
+                        <span class="woocommerce-input-wrapper">
+                            <input type="email" class="input-text" name="billing_email" id="billing_email"
+                                required placeholder="Nhập email" autocomplete="email">
+                        </span>
+                    </p>
+                </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-2">
+                                        <div class="woocommerce-shipping-fields">
+                                        </div>
+                                        <div class="woocommerce-additional-fields">
+
+
+
+                                            <h3>Thông tin bổ sung</h3>
+
+
+                                            <div class="woocommerce-additional-fields__field-wrapper">
+                                                <p class="form-row notes" id="order_comments_field" data-priority="">
+                                                    <label for="order_comments" class="">Ghi chú đơn hàng&nbsp;<span
+                                                            class="optional">(tuỳ chọn)</span></label><span
+                                                        class="woocommerce-input-wrapper"><textarea
+                                                            name="order_comments" class="input-text "
+                                                            id="order_comments"
+                                                            placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."
+                                                            rows="2" cols="5"></textarea></span>
+                                                </p>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <h3 id="order_review_heading">Đơn hàng của bạn</h3>
+
+
+                                <div id="order_review" class="woocommerce-checkout-review-order">
+                                    <table class="shop_table woocommerce-checkout-review-order-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="product-name">Sản phẩm</th>
+                                                <th class="product-total">Tạm tính</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <%for(item of cart){%>
+                                                <tr class="cart_item">
+                                                    <td class="product-name">
+                                                        <%=item.name%>
+                                                            <strong class="product-quantity">×&nbsp;<%=item.qty%>
+                                                                    </strong>
+                                                    </td>
+                                                    <td class="product-total">
+                                                        <span class="woocommerce-Price-amount amount"><bdi>
+                                                                <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                    currency: "VND" , minimumFractionDigits: 0,
+                                                                    }).format(item.price*item.qty)%><span
+                                                                        class="woocommerce-Price-currencySymbol"></span>
+                                                            </bdi></span>
+                                                    </td>
+                                                </tr>
+                                                <%}%>
+                                        </tbody>
+                                        <tfoot>
+
+                                            <tr class="cart-subtotal">
+                                                <th>Tạm tính</th>
+                                                <td><span class="woocommerce-Price-amount amount"><bdi>
+                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                currency: "VND" , minimumFractionDigits: 0,
+                                                                }).format(tongtien)%><span
+                                                                    class="woocommerce-Price-currencySymbol"></span>
+                                                        </bdi></span>
+                                                </td>
+                                            </tr>
+                                            <tr class="order-total">
+                                                <th>Tổng</th>
+                                                <td><strong><span class="woocommerce-Price-amount amount"><bdi>
+                                                                <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                    currency: "VND" , minimumFractionDigits: 0,
+                                                                    }).format(tongtien)%><span
+                                                                        class="woocommerce-Price-currencySymbol"></span>
+                                                            </bdi></span></strong>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+                                    <div id="payment" class="woocommerce-checkout-payment">
+                                        <ul class="wc_payment_methods payment_methods methods">
+                                            <li class="wc_payment_method payment_method_cod">
+                                                <input id="payment_method_cod" type="radio" class="input-radio"
+                                                    name="payment_method" value="cod" checked="checked"
+                                                    data-order_button_text="">
+
+                                                <label for="payment_method_cod">
+                                                    Thanh toán khi nhận hàng </label>
+                                            </li>
+                                            <li class="wc_payment_method payment_method_bacs">
+                                                <input id="payment_method_bacs" type="radio" class="input-radio"
+                                                    name="payment_method" value="chuyển khoản" data-order_button_text="">
+
+                                                <label for="payment_method_bacs">
+                                                    Chuyển khoản ngân hàng </label>
+                                                <div class="payment_box payment_method_bacs" style="display:none;">
+                                                    <table class="woocommerce-product-attributes shop_attributes">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Chuyển khoản theo hình thức Công Ty</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Ngân Hàng Vietcombank<br>
+                                                                    Tên công ty : CÔNG TY CP TM VÀ CÔNG NGHỆ HẢI ÂU<br>
+                                                                    Số tài khoản : 0461000642075<br>
+                                                                    Chi nhánh: Tân Bình Dương</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div class="form-row place-order">
+                                   
+                                            <div class="woocommerce-terms-and-conditions-wrapper">
+                                                <div class="woocommerce-privacy-policy-text">
+                                                    <p>Your personal data will be used to process your order, support
+                                                        your
+                                                        experience throughout this website, and for other purposes
+                                                        described
+                                                        in
+                                                        our <a
+                                                            href="https://codienhaiau.com/chinh-sach-bao-mat-thong-tin/"
+                                                            class="woocommerce-privacy-policy-link"
+                                                            target="_blank">chính
+                                                            sách
+                                                            riêng tư</a>.</p>
+                                                </div>
+                                                
+                                                <p class="form-row validate-required">
+                                                    <label
+                                                        class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                                                        <p class="form-row validate-required">
+            <label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+                <input type="checkbox" name="terms" id="terms" required>
+                <span>Tôi đã đọc và đồng ý với <a href="/dieu-khoan-su-dung" target="_blank">điều khoản và điều kiện</a> của website</span>
+            </label>
+        </p>
+                                                    </label>
+                                                    <input type="hidden" name="terms-field" value="1">
+                                                </p>
+                                            </div>
+
+
+                                        <button type="submit" class="button alt" id="place_order" value="Đặt hàng">Đặt hàng</button>
+
+                                            <input type="hidden" id="woocommerce-process-checkout-nonce"
+                                                name="woocommerce-process-checkout-nonce" value="ada0934f6e"><input
+                                                type="hidden" name="_wp_http_referer"
+                                                value="/?wc-ajax=update_order_review">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </form>
+
+                        </div>
+
+                    </div><!-- col-xs-12 col-sm-6 col-md-3 -->
+                </div><!-- col-xs-12 col-sm-6 col-md-3 -->
+
+                <%- include("./layouts/footer.ejs")%>

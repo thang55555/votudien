@@ -1,0 +1,163 @@
+<%- include("./layouts/head.ejs")%>
+
+    <body
+        class="archive tax-product_cat term-bo-dem term-203 theme-mtw-haiau woocommerce woocommerce-page woocommerce-no-js">
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPQ49BL" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe></noscript>
+        <%- include("./layouts/menu.ejs")%>
+            <link data-optimized="1" href="wp-content/litespeed/css/849f26c3d813910c18884d45e12ec87e3114.css?ver=dd6ca"
+                type="text/css" rel="stylesheet" />
+
+
+            <div class="container mainpage">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 thanhtoan">
+
+                        <h1 itemprop="name">Đơn hàng đã nhận</h1>
+                        <div class="woocommerce">
+                            <div class="woocommerce-order">
+
+
+
+
+                                <p
+                                    class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">
+                                    Cảm ơn bạn. Đơn hàng của bạn đã được nhận.</p>
+
+                                <ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
+
+                                    <li class="woocommerce-order-overview__order order">
+                                        Mã đơn hàng: <strong><%=order.madon%></strong>
+                                    </li>
+
+                                    <li class="woocommerce-order-overview__date date">
+                                        Ngày: <strong><%=order.date%></strong>
+                                    </li>
+
+
+                                    <li class="woocommerce-order-overview__total total">
+                                        Tổng cộng: <strong><span
+                                                class="woocommerce-Price-amount amount"><bdi><%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                            currency: "VND" , minimumFractionDigits: 0,
+                                                            }).format(tongtien)%><span
+                                                        class="woocommerce-Price-currencySymbol"></span></bdi></span></strong>
+                                    </li>
+                                 <% if (order.thanhtoan === "chuyển khoản") { %>
+                                                <li class="woocommerce-order-overview__payment-method method">
+                                                     Phương thức thanh toán: <strong>Chuyển khoản ngân hàng</strong>
+                                                              </li>
+                                <% } else { %>
+                                                     <li class="woocommerce-order-overview__payment-method method">
+                                                       Phương thức thanh toán: <strong>Thanh toán khi nhận hàng</strong>
+                                                                     </li>
+                                    <% } %>
+
+
+                                </ul>
+
+
+                                <div style="background-color: antiquewhite"><strong>Quý khách đã đặt hàng thành công tại
+                                        website votudien.com Vui lòng kiểm tra Zalo, SĐT của mình để nhân viên Công
+                                        ty xác nhận tình trạng đơn hàng hoặc <span
+                                            class="glyphicon glyphicon-phone-alt"></span> <a href="tel:<%=thongtintrang.sdt%>"> 
+                                            <%=thongtintrang.sdt%></a> (Call/Zalo) để được xử lý.</strong><br>
+                                    <strong>Thời gian giao hàng</strong><br>
+                                    Dự kiến 1-2 ngày làm việc với khu vực nội thành HCM, Hà Nội, Bình Dương, Đồng Nai,
+                                    Bà Rịa Vũng Tàu, Long An và các khu vực lân cận<br>
+                                    Dự kiến 2-4 ngày làm việc tại các tỉnh/thành khác<br>
+                                    <strong>** Xin lưu ý: Đối với các đơn hàng cần hỗ trợ gấp theo yêu cầu. Quý khách
+                                        liên hệ nhân viên để được tư vấn.</strong>
+                                </div>
+                                <section class="woocommerce-order-details">
+
+                                    <h2 class="woocommerce-order-details__title">Chi tiết đơn hàng</h2>
+
+                                    <table
+                                        class="woocommerce-table woocommerce-table--order-details shop_table order_details">
+
+                                        <thead>
+                                            <tr>
+                                                <th class="woocommerce-table__product-name product-name">Sản phẩm</th>
+                                                <th class="woocommerce-table__product-table product-total">Tổng</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                                <%for(item of order.item){%>
+                                            <tr class="woocommerce-table__line-item order_item">
+
+                                                <td class="woocommerce-table__product-name product-name">
+                                                    <a
+                                                        href="https://codienhaiau.com/product/ngam-kep-giua-u40mm-cho-pin-nang-luong-mat-troi/"><%=item.name%></a> <strong
+                                                        class="product-quantity">×&nbsp;<%=item.qty%></strong>
+                                                </td>
+
+                                                <td class="woocommerce-table__product-total product-total">
+                                                    <span class="woocommerce-Price-amount amount"><bdi><%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                            currency: "VND" , minimumFractionDigits: 0,
+                                                            }).format(item.price*item.qty)%><span
+                                                                class="woocommerce-Price-currencySymbol"></span></bdi></span>
+                                                </td>
+
+                                            </tr>
+                                                       <%}%>
+                                        </tbody>
+
+                                        <tfoot>
+                                            <tr>
+                                                <th scope="row">Tổng số phụ:</th>
+                                                <td><span class="woocommerce-Price-amount amount"><%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                            currency: "VND" , minimumFractionDigits: 0,
+                                                            }).format(tongtien)%><span
+                                                            class="woocommerce-Price-currencySymbol"></span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Tổng cộng:</th>
+                                                <td><span class="woocommerce-Price-amount amount"><%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                            currency: "VND" , minimumFractionDigits: 0,
+                                                            }).format(tongtien)%><span
+                                                            class="woocommerce-Price-currencySymbol"></span></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Phương thức thanh toán:</th>
+
+                                                 <% if (order.thanhtoan === "chuyển khoản") { %>
+                                                  <td>Chuyển khoản ngân hàng</td>
+                                <% } else { %>
+                                                      <td>Thanh toán khi nhận hàng</td>
+                                    <% } %>
+                                
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+
+                                </section>
+
+                                <section class="woocommerce-customer-details">
+
+
+                                    <h2 class="woocommerce-column__title">Địa chỉ thanh toán</h2>
+
+                                    <address>
+                                        <%=order.name%><br><%=order.add1%><br><%=order.add2%>
+                                        <p class="woocommerce-customer-details--phone"><%=order.phone%></p>
+
+                                        <p class="woocommerce-customer-details--email"><%=order.mail%></p>
+
+                                    </address>
+
+
+
+                                </section>
+
+
+                            </div>
+                        </div>
+
+                    </div><!-- col-xs-12 col-sm-6 col-md-3 -->
+                </div>
+            </div>
+
+            <%- include("./layouts/footer.ejs")%>

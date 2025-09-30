@@ -1,0 +1,91 @@
+<%- include("./layouts/head.ejs")%>
+
+    <body
+        class="home page-template-default page page-id-2 woocommerce-demo-store lightbox lazy-icons nav-dropdown-has-arrow">
+        <div id="wrapper">
+
+            <%- include("./layouts/header.ejs")%>
+
+
+                <main id="main" class="">
+                    <div id="content" class="content-area page-wrapper" role="main">
+                        <div class="row row-main" style="background: white;">
+                            <div class="large-12 col">
+                          <div class="col-inner" style="padding-top: 15px;">
+                             <h1>💳 Chính Sách & Hình Thức Thanh Toán – Rèm Anh Thư</h1>
+
+  <p>Để tạo thuận tiện cho khách hàng khi mua sắm, Rèm Anh Thư cung cấp nhiều hình thức thanh toán linh hoạt, an toàn và minh bạch:</p>
+
+  <h2>🏠 1. Thanh toán khi nhận hàng (COD)</h2>
+  <ul>
+    <li>Áp dụng trên toàn lãnh thổ Việt Nam.</li>
+    <li>Khách kiểm tra hàng trước khi thanh toán.</li>
+    <li>Miễn phí giao hàng với đơn hàng từ 2 triệu.</li>
+  </ul>
+
+  <h2>💸 2. Chuyển khoản ngân hàng</h2>
+    <ul>
+    <li>Quý khách có thể Chuyển khoản 100% giá trị đơn hàng qua thông tin sau:</li>
+    <li>Thông tin tài khoản chuyển khoản:</li>
+  </ul>
+
+  <code>
+Ngân Hàng Thương Mại Cổ Phần Á Châu ACB
+Chủ tài khoản: Đỗ Văn Thắng  
+Số tài khoản: 42540067  
+Nội dung: [Tên khách hàng] + [SĐT] + Thanh toán rèm
+  </code>
+  <p><em>Sau khi chuyển khoản, vui lòng gửi ảnh xác nhận qua Zalo hoặc Fanpage.</em></p>
+
+  <h2>🛒 3. Đặt cọc – Thanh toán theo tiến độ</h2>
+  <ul>
+    <li>Áp dụng với đơn hàng đặt may, theo kích thước riêng.</li>
+    <li>Đặt cọc từ 30–50% trước khi sản xuất.</li>
+    <li>Thanh toán phần còn lại sau khi giao hoặc lắp đặt xong.</li>
+  </ul>
+
+  <h2>✅ Cam kết từ Rèm Anh Thư</h2>
+  <p>Thông tin thanh toán luôn rõ ràng, có đầy đủ hóa đơn VAT. Chúng tôi bảo mật tuyệt đối thông tin khách hàng và xác nhận đơn hàng trước khi thực hiện.</p>
+
+   <style>
+    h1, h2 {
+      color: #007b7f;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 5px;
+      display: block;
+      white-space: pre-line;
+      margin-top: 10px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  </style>
+                          </div>
+                            </div><!-- .large-12 -->
+                        </div><!-- .row -->
+                    </div>
+
+                </main><!-- #main -->
+
+
+                <%- include("./layouts/footer.ejs")%>
+
+        </div><!-- #wrapper -->
+
+        <!-- Mobile Sidebar -->
+        <%- include("./layouts/sider.ejs")%>
+            <!-- #mobile-menu -->
+
+            <script id="lazy-load-icons">
+                /* Lazy load icons css file */
+                var fl_icons = document.createElement('link');
+                fl_icons.rel = 'stylesheet';
+                fl_icons.href = 'wp-content/themes/flatsome/assets/css/fl-icons.css';
+                fl_icons.type = 'text/css';
+                var fl_icons_insert = document.getElementsByTagName('link')[0];
+                fl_icons_insert.parentNode.insertBefore(fl_icons, fl_icons_insert);
+            </script>
+            <%- include("./layouts/login.ejs")%>
+                <%- include("./layouts/footer2.ejs")%>
