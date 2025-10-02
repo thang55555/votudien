@@ -749,7 +749,56 @@ const deletesanpham = async (req, res) => {
 
 }
 
+const viewsanpham = async (req, res) => {
+    const id = req.params.id;
 
+ 
+
+    // Nếu hợp lệ, mới tiếp tục truy vấn
+    const product = await ProductModel.findById(id)
+        .populate('danhmuc1_id')
+        .populate('danhmuc2_id');
+
+    if (!product) {
+        return res.redirect('/404');
+    }
+
+    const spmoi = await ProductModel.aggregate([
+        {
+            $match: {
+                spmoi: true,
+                danhmuc2_id: { $in: product.danhmuc2_id }
+            }
+        },
+        { $sample: { size: 10 } } // Lấy ngẫu nhiên 10 sản phẩm
+    ]);
+
+    const spcungloai = await ProductModel.aggregate([
+        {
+            $match: {
+                spnoibat: true,
+                danhmuc2_id: { $in: product.danhmuc2_id }
+            }
+        },
+        { $sample: { size: 10 } } // 🔹 Lấy ngẫu nhiên 10 sản phẩm
+    ]);
+
+    const seo = product;
+    await ProductModel.updateOne({ _id: id }, { $inc: { view: 1 } });
+    const tintuc = await TintucModel.aggregate([
+        { $match: { trangthai: true } },
+        { $sample: { size: 5 } }
+    ]);
+
+    const msg = req.query.msg;
+
+    res.render("site/chi-tiet-san-pham", {
+        product,
+        spmoi,
+        spcungloai,
+        seo, tintuc, data: { msg }
+    });
+};
 
 
 
@@ -908,6 +957,37 @@ const deletetintuc = async (req, res) => {
     await TintucModel.deleteOne({ _id: id });
     res.redirect('/admin/tin-tuc?page=' + req.query.page);
 
+}
+const viewtintuc = async (req, res) => {
+    const id = req.params.id;
+    // Kiểm tra ID có hợp lệ không
+
+    // Nếu hợp lệ, mới tiếp tục truy vấn
+    const product = await TintucModel.findById(id).lean();
+
+    if (!product) {
+        return res.redirect('/404');
+    }
+
+    const tag = await Danhmuc2Model.find({
+        danhmuc1_id: "685d22173481148a60ca6ba6"
+    }).populate('danhmuc1_id');
+
+    const spmoi = await ProductModel.find({
+        spmoi: true,
+        trangthai: true,
+        danhmuc1_id: "685d22173481148a60ca6ba6"
+    }).sort({ _id: -1 });
+    product.pricesale = "350000";
+    const seo = product;
+    await TintucModel.updateOne({ _id: product._id }, { $inc: { view: 1 } });
+
+    res.render("site/chi-tiet-tin-tuc", {
+        product,
+        tag,
+        spmoi,
+        seo,
+    });
 }
 
 
@@ -1275,9 +1355,9 @@ module.exports = {
     hang, addhang, edithang, uploadhang, updatehang, deletehang,
     danhmuc1, adddanhmuc1, editdanhmuc1, uploaddanhmuc1, updatedanhmuc1, deletedanhmuc1,
     danhmuc2, adddanhmuc2, editdanhmuc2, uploaddanhmuc2, updatedanhmuc2, deletedanhmuc2,
-    sanpham, addsanpham, editsanpham, uploadsanpham, updatesanpham, deletesanpham,
-    tintuc, addtintuc, edittintuc, uploadtintuc, updatetintuc, deletetintuc, view, view2,
+    sanpham, addsanpham, editsanpham, uploadsanpham, updatesanpham, deletesanpham, viewsanpham,
+    tintuc, addtintuc, edittintuc, uploadtintuc, updatetintuc, deletetintuc, view, view2, viewtintuc,
     chantrang, addchantrang, editchantrang, uploadchantrang, updatechantrang, deletechantrang,
     menuchantrang, addmenuchantrang, editmenuchantrang, uploadmenuchantrang, updatemenuchantrang, deletemenuchantrang,
-    editorder, order, dsanh, dsanhtieude, dsanhconent,
+    editorder, order, dsanh, dsanhtieude, dsanhconent, 
 }

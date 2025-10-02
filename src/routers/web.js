@@ -127,6 +127,8 @@ router.post("/admin/upload-san-pham",AuthMiddleware.checkAdmin,UploadMiddleware.
 router.get("/admin/edit-san-pham/:id",AuthMiddleware.checkAdmin, ProductController.editsanpham);
 router.post("/admin/update-san-pham/:id",AuthMiddleware.checkAdmin,UploadMiddleware.array("images", 20), ProductController.updatesanpham);
 router.get("/admin/delete-san-pham/:id",AuthMiddleware.checkAdmin, ProductController.deletesanpham);
+router.get("/admin/view/san-pham/:id",AuthMiddleware.checkAdmin, ProductController.viewsanpham);
+
 router.get("/admin/search",AuthMiddleware.checkAdmin, ProductController.search);
 
 
@@ -136,6 +138,7 @@ router.post("/admin/upload-tin-tuc",AuthMiddleware.checkAdmin, UploadMiddleware.
 router.get("/admin/edit-tin-tuc/:id",AuthMiddleware.checkAdmin, ProductController.edittintuc);
 router.post("/admin/update-tin-tuc/:id",AuthMiddleware.checkAdmin, UploadMiddleware.single("images"),  ProductController.updatetintuc);
 router.get("/admin/delete-tin-tuc/:id",AuthMiddleware.checkAdmin, ProductController.deletetintuc);
+router.get("/admin/view/tin-tuc/:id", AuthMiddleware.checkAdmin, ProductController.viewtintuc);
 router.get("/admin/view",AuthMiddleware.checkAdmin, ProductController.view);
 router.get("/admin/view-tin-tuc",AuthMiddleware.checkAdmin, ProductController.view2);
 

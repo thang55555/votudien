@@ -59,10 +59,10 @@ res.locals.tintuc2 = tintuc2;
 
 
 
-  const footer1 = await ChantrangModel.find().sort({updatedAt: -1});
+  const footer1 = await ChantrangModel.find({trangthai: true}).sort({updatedAt: -1});
   const footer = await Promise.all(
     footer1.map(async (item) => {
-      const footer2 = await MenuchantrangModel.find({ chantrang_id: item._id });
+      const footer2 = await MenuchantrangModel.find({ chantrang_id: item._id, trangthai: true });
       return {
         footera: item.name,
         footerb: footer2

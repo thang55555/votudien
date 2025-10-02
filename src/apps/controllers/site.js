@@ -637,7 +637,7 @@ const chitiettintuc = async (req, res) => {
     }
 
     // Nếu hợp lệ, mới tiếp tục truy vấn
-    const product = await TintucModel.findById(id).lean();
+const product = await TintucModel.findOne({ _id: id, trangthai: true }).lean();
 
     if (!product) {
         return res.redirect('/404');
