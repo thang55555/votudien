@@ -623,6 +623,7 @@ const uploadsanpham = async (req, res) => {
     const add = {
         name: body.name,
         masanpham: body.masanpham,
+        thutuhienthi: body.thutuhienthi,
         slug: slug(body.name),
         price: body.price,
         pricesale: body.pricesale,
@@ -697,6 +698,7 @@ const updatesanpham = async (req, res) => {
     const add = {
         name: body.name,
         masanpham: body.masanpham,
+        thutuhienthi: body.thutuhienthi,
         slug: slug(body.name),
         price: body.price,
         pricesale: body.pricesale,

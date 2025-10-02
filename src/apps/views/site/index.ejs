@@ -11,15 +11,15 @@
     </div>
     <div class="container mainpage white">
         <div class="row" id="homeproduct">
-             <%for(item of danhmuc){%>
+             <%for(item of product){%>
             <div id="tw-recent-posts-14" class="widget tw-recent-posts">
                 <div class="tieude_home">
-                    <h2 class="title_link"> <a class="title_link_a" title="PLC" href="/danh-muc/<%=item.slug%>"> <span
-                                class="glyphicon glyphicon-th-list"></span><%=item.name%></a></h2>
+                    <h2 class="title_link"> <a class="title_link_a" title="PLC" href="/danh-muc/<%=item.product1.slug%>"> <span
+                                class="glyphicon glyphicon-th-list"></span><%=item.product1.name%></a></h2>
                     <div class="link-cat"></div>
                 </div>
                 <div class="cont_home">
-                         <%for(item2 of product){%>
+                         <%for(item2 of item.product2){%>
                     <div class="col-xs-6 col-md-2 col-sm-3 motsanpham">
                         <a href="/san-pham/<%=item2._id%>"
                             title="Module nhiệt độ Omron CP1W-TS104"><img width="400" height="400"

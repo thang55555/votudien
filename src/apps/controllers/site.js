@@ -14,13 +14,24 @@ const MenuchantrangModel = require("../models/menu-chan-trang");
 const ChantrangModel = require("../models/tieu-de-chan-trang");
 //tủ điện ok
 const home = async (req, res) => {
-    const product = await ProductModel.aggregate([
-        { $match: { trangthai: true } }, // lọc trước
-        { $sample: { size: 10 } }        // lấy ngẫu nhiên 10 sản phẩm
-    ]);
+  
     const danhmuc = await Danhmuc1Model.find()
+    const product = []
+    for(item of danhmuc){
+          const products = await ProductModel.aggregate([
+        { $match: { trangthai: true, danhmuc1_id: item._id } },
+      { $sort: { thutuhienthi: 1, updatedAt: -1} },   // sắp xếp tăng dần theo thutuhienthi
+      { $limit: 10 } 
+    ]);
+    const add ={
+        product1 : item,
+        product2 : products
+    }
+    product.push(add)
+    }
+    
 
-    res.render("site/index", { danhmuc, product });
+    res.render("site/index", {product});
 }
 
 

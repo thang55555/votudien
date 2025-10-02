@@ -47,6 +47,10 @@ const productSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    thutuhienthi: {
+        type: Number,
+        default: 0,
+    },
     content: {
         type: Array,
     },

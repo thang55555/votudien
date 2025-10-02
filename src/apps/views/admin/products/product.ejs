@@ -39,6 +39,7 @@
                                             <th>Ảnh chính SP</th>
                                             <th>Nhóm sản phẩm</th>
                                             <th>Danh mục</th>
+                                            <th>Thứ tự</th>
                                             <th data-field="price" data-sortable="true">Giá gốc</th>
                                             <th data-field="pricesale" data-sortable="true">Giá sale</th>
                                             <th>Trạng thái</th>
@@ -75,6 +76,10 @@
                                                     <% for(item of product.danhmuc1_id){%>
                                                         <%=item.name%></br>
                                                             <%}%>
+                                                </td>
+                                                <td>
+                                                        <%=product.thutuhienthi%>
+                                                          
                                                 </td>
                                               
 
