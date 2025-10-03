@@ -91,7 +91,7 @@ span.menu-image-hover-wrapper img {
 
 .catepage>div>div.motsanpham {
     border: 1px solid #f0f7ff;
-    height: 350px;
+    height: auto;
     padding: 8px
 }
 
