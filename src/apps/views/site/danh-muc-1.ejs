@@ -35,29 +35,41 @@
                                             <h2 class="woocommerce-loop-product__title">
                                                 <%=item.name%>
                                             </h2>
-                                            <div class="post-price">
-                                                <% if (item.pricesale && item.pricesale < item.price) { %>
-                                                    <div class="price-old">
-                                                        <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                            currency: "VND" , minimumFractionDigits: 0,
-                                                            }).format(item.price) %>
-                                                    </div>
-                                                    <div class="price-sale">
-                                                        <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                            currency: "VND" , minimumFractionDigits: 0,
-                                                            }).format(item.pricesale) %>
-                                                    </div>
-                                                    <div class="salepercent">
-                                                        -<%= Math.round((1 - item.pricesale / item.price) * 100) %>%
-                                                    </div>
-                                                    <% } else { %>
-                                                        <div class="price-normal">
-                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                                currency: "VND" , minimumFractionDigits: 0,
-                                                                }).format(item.price) %>
-                                                        </div>
-                                                        <% } %>
-                                            </div>
+                                           <div class="post-price">
+  <% if (item.price == 0) { %>
+  <div class="price-contact">
+      Giá: <span style=" color: red;
+  font-weight: bold">LIÊN HỆ</span> 
+    </div>
+  <% } else if (item.pricesale && item.pricesale < item.price) { %>
+    <div class="price-old">
+      <%= new Intl.NumberFormat("vi-VN", { 
+            style: "currency",
+            currency: "VND",
+            minimumFractionDigits: 0 
+        }).format(item.price) %>
+    </div>
+    <div class="price-sale">
+      <%= new Intl.NumberFormat("vi-VN", { 
+            style: "currency",
+            currency: "VND",
+            minimumFractionDigits: 0 
+        }).format(item.pricesale) %>
+    </div>
+    <div class="salepercent">
+      -<%= Math.round((1 - item.pricesale / item.price) * 100) %>%
+    </div>
+  <% } else { %>
+    <div class="price-normal">
+      <%= new Intl.NumberFormat("vi-VN", { 
+            style: "currency",
+            currency: "VND",
+            minimumFractionDigits: 0 
+        }).format(item.price) %>
+    </div>
+  <% } %>
+</div>
+
                                             <style>
                                                 .post-price {
                                                     display: flex;

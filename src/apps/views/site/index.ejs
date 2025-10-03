@@ -42,7 +42,12 @@
                                 <div class="salepercent"></div>
                             </div> -->
 <div class="post-price">
-  <% if (item2.pricesale && item2.pricesale < item2.price) { %>
+  <% if (item2.pricesale == 0) { %>
+    <div class="price-contact">
+    <a> Giá:</a>  <span style=" color: red;
+  font-weight: bold">LIÊN HỆ</span> 
+    </div>
+  <% } else if (item2.pricesale && item2.pricesale < item2.price) { %>
     <div class="price-old">
       <%= new Intl.NumberFormat("vi-VN", {
             style: "currency",
@@ -70,6 +75,7 @@
     </div>
   <% } %>
 </div>
+
 <style>
     .post-price {
   display: flex;

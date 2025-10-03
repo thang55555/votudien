@@ -2,258 +2,313 @@
 
 
 
-<body
-    class="product-template-default single single-product postid-58926 theme-mtw-haiau woocommerce woocommerce-page woocommerce-js"
-    >
+    <body
+        class="product-template-default single single-product postid-58926 theme-mtw-haiau woocommerce woocommerce-page woocommerce-js">
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPQ49BL" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-          <%- include("./layouts/menu.ejs")%><!-- end wrapper--><iframe height="0" width="0" style="display: none; visibility: hidden;"></iframe>
-    <div class="container mainpage">
-        <!--<div class="breadcrumb"></div>-->
-        <div class="breadcrumb"></div>
-        <div class="row">
-            <div id="primary" class="content-area">
-                <main id="main" class="site-main" role="main">
-  <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb"><a href="/">Trang
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPQ49BL" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        <%- include("./layouts/menu.ejs")%><!-- end wrapper--><iframe height="0" width="0"
+                style="display: none; visibility: hidden;"></iframe>
+            <div class="container mainpage">
+                <!--<div class="breadcrumb"></div>-->
+                <div class="breadcrumb"></div>
+                <div class="row">
+                    <div id="primary" class="content-area">
+                        <main id="main" class="site-main" role="main">
+                            <nav class="woocommerce-breadcrumb" aria-label="Breadcrumb"><a href="/">Trang
                                     chủ</a>&nbsp;&#47;&nbsp;<a href="/san-pham">Sản Phẩm</a>&nbsp;&#47;&nbsp;
                                 <%=product.name%>
                             </nav>
-                    <div class="col-md-9 col-sm-12 col-xs-12">
-                           <% if (data && data.msg) { %>
-                                <div class="woocommerce-notices-wrapper" >
-                                    <div class="woocommerce-message" role="alert" tabindex="-1">
-                                        "<%=data.msg%>" đã được thêm vào giỏ hàng. <a href="/gio-hang"
-                                                class="button wc-forward">Xem giỏ hàng</a> </div>
-                                </div>
-                                <% } %>
-                        <div id="product-58926"
-                            class="product type-product post-58926 status-publish first instock product_cat-cam-bien-autonics product_cat-cam-bien-tiem-can product_tag-hs has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
-
-
-
-                            <div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images"
-                                data-columns="4" style="transition: opacity 0.25s ease-in-out; opacity: 1;">
-                                     <figure class="woocommerce-product-gallery__wrapper">
-                                            <div class="woocommerce-product-gallery__image"><a
-                                                    href="./images/update/<%=product.images[0].name%>"><img width="300"
-                                                        height="300" src="./images/update/<%=product.images[0].name%>"
-                                                        class="wp-post-image" alt="<%=product.name%>" /></a></div>
-                                        </figure>
-                            </div>
-
-                            <div class="summary entry-summary">
-                                <h1 class="product_title entry-title">      <%=product.name%></h1>
-                                <style>
-                                    .devvn_single_price {
-                                        background-color: #199bc42e;
-                                        border: 1px dashed #199bc4;
-                                        padding: 10px;
-                                        border-radius: 3px;
-                                        -moz-border-radius: 3px;
-                                        -webkit-border-radius: 3px;
-                                        margin: 0 0 10px;
-                                        color: #000;
-                                        display: block;
-                                    }
-
-                                    .devvn_single_price>span {
-                                        display: block;
-                                    }
-
-                                    .devvn_single_price span.label {
-                                        color: #333;
-                                        font-weight: 400;
-                                        font-size: 14px;
-                                        padding: 10;
-                                        margin: 0;
-                                        width: 82px;
-                                        text-align: left;
-                                        line-height: 18px;
-                                    }
-
-                                    .devvn_single_price span.devvn_price .amount {
-                                        color: #F00;
-                                        font-size: 18px;
-                                        font-weight: bold;
-                                        padding: 3px 0;
-                                        height: 22px;
-                                    }
-
-                                    .devvn_single_price span.devvn_price del .amount,
-                                    .devvn_single_price span.devvn_price del {
-                                        font-size: 14px;
-                                        color: #333;
-                                        font-weight: 400;
-                                    }
-                                </style>
-                                <span class="devvn_single_price">
-                                    <span>
-                                        <span class="label">Giá:</span>
-                                        <span class="devvn_price"><span
-                                                class="woocommerce-Price-amount amount"><bdi> <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(product.pricesale) %><span
-                                                        class="woocommerce-Price-currencySymbol"></span></bdi></span></span>
-                                    </span>
-                                    <span>
-                                        <span class="label">Thị trường:</span>
-                                        <span class="devvn_price"><del><span
-                                                    class="woocommerce-Price-amount amount"><bdi> <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(product.price) %><span
-                                                            class="woocommerce-Price-currencySymbol"></span></bdi></span></del>
-                                            (Giảm -<%= Math.round((1 - product.pricesale / product.price) * 100) %>%)</span>
-                                    </span>
-                                </span>
-                                <div class="woocommerce-product-details__short-description">
-                                <%-product.content2%>
-                                </div>
-                                    <form class="cart" action="/cart/<%=product._id%>" method="post"
-                                           >
-                                            <div class="quantity">
-
-                                                <input type="number" id="quantity_68d967a8badd3"
-                                                    class="input-text qty text" name="quantity" value="1"
-                                                    aria-label="Số lượng sản phẩm" min="1" max="" step="1"
-                                                    placeholder="" inputmode="numeric" autocomplete="off" />
-                                            </div><button type="submit" name="add-to-cart" value="<%=product._id%>"
-                                                class="single_add_to_cart_button button alt">Mua ngay</button>
-                                            <a class="baogia" href="#frm_baogia">Báo giá</a>
-                                        </form>
-
-
-                                <div class="product_meta">
-                                            <span class="sku_wrapper">Mã sản phẩm: <span class="sku">
-                                                    <%=product.masanpham%>
-                                                </span></span>
-                                            <span class="posted_in">Danh mục:
-                                                <%for(item of product.danhmuc1_id){%>
-                                                    <a href="/danh-muc/<%=item.slug%>" rel="tag">
-                                                        <%=item.name%>
-                                                    </a>
-                                                    <% } %>
-                                            </span>
-                                        </div>
-
-                            </div>
-
-                             <div class="woocommerce-tabs wc-tabs-wrapper">
-                                        <ul class="tabs wc-tabs" role="tablist">
-                                            <li class="description_tab" id="tab-title-description" role="tab"
-                                                aria-controls="tab-description">
-                                                <a>
-                                                    Mô tả </a>
-                                            </li>
-                                            <li class="additional_information_tab" id="tab-title-additional_information"
-                                                role="tab" aria-controls="tab-additional_information">
-                                                <a>
-                                                    Thông tin bổ sung </a>
-                                            </li>
-                                        </ul>
-                                        <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab"
-                                            id="tab-description" role="tabpanel"
-                                            aria-labelledby="tab-title-description">
-                                            <%-product.content%>
-                                        </div>
-
+                            <div class="col-md-9 col-sm-12 col-xs-12">
+                                <% if (data && data.msg) { %>
+                                    <div class="woocommerce-notices-wrapper">
+                                        <div class="woocommerce-message" role="alert" tabindex="-1">
+                                            "<%=data.msg%>" đã được thêm vào giỏ hàng. <a href="/gio-hang"
+                                                    class="button wc-forward">Xem giỏ hàng</a> </div>
                                     </div>
+                                    <% } %>
+                                        <div id="product-58926"
+                                            class="product type-product post-58926 status-publish first instock product_cat-cam-bien-autonics product_cat-cam-bien-tiem-can product_tag-hs has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
 
 
-                            <section class="up-sells upsells products">
 
-                                <h2>Có thể bạn thích…</h2>
-
-                                <ul class="products columns-4">
-                                         <%for(item of spcungloai){%>
-                                    <li
-                                        class="product_list_widget product type-product post-58927 status-publish first instock product_cat-cam-bien-autonics product_cat-cam-bien-tiem-can product_tag-hs has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
-                                        <a href="/san-pham/<%=item._id%>"
-                                            class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
-                                            <div style="position:relative;"><img width="300" height="300"
-                                                    src="./images/update/<%=item.images[0].name%>"
-                                                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                                    alt="<%=item.name%>">
-                                                <div class="advanced-woo-labels awl-position-type-on-image awl-label-type-archive awl-align-left-top"
-                                                    style="display:flex;flex-wrap:wrap;flex-direction:row;text-align:left;width:100%;position:absolute;z-index:9;left:0px;right:auto;top:0px;bottom:auto;transform:none;justify-content:flex-start;">
-                                                    <div class="awl-label-wrap awl-label-id-162806" ><span
-                                                            class="awl-product-label awl-type-label awl-type-label-angle"
-                                                            style="display:table;position:relative;line-height:1;white-space:nowrap;vertical-align:baseline;font-size:12px;;font-weight:500;font-style:italic;letter-spacing:0px;;color:#ffffff;opacity:1;margin:0px 0px 0px 0px;"><span
-                                                                class="awl-label-text"
-                                                                style="display:table-cell;padding:0.2em 0.2em 0.2em 0.2em;z-index:1;background:#46b3c9;position:relative;line-height:1;border-radius:0;"><span
-                                                                    class="awl-inner-text">Nhiều người
-                                                                    mua</span></span><span class="awl-label-after"
-                                                                style="display:table-cell;width:0;height:0;position:relative;z-index:2;overflow:hidden;padding:0 0.65em 0 0;"><svg
-                                                                    viewBox="0 0 100 100" preserveAspectRatio="none"
-                                                                    style="position:absolute;top:0;width:100%;height:100%;fill:#46b3c9;">
-                                                                    <g class="awl-angle-after">
-                                                                        <polygon vector-effect="non-scaling-stroke"
-                                                                            points="0,0 97,0 0,100"
-                                                                            style="stroke:none;"></polygon>
-                                                                        <line class="d-stroke"
-                                                                            vector-effect="non-scaling-stroke" x1="0"
-                                                                            y1="0" x2="97" y2="0"></line>
-                                                                        <line vector-effect="non-scaling-stroke" x1="97"
-                                                                            y1="0" x2="0" y2="100"></line>
-                                                                    </g>
-                                                                </svg></span></span></div>
-                                                </div>
+                                            <div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images"
+                                                data-columns="4"
+                                                style="transition: opacity 0.25s ease-in-out; opacity: 1;">
+                                                <figure class="woocommerce-product-gallery__wrapper">
+                                                    <div class="woocommerce-product-gallery__image"><a
+                                                            href="./images/update/<%=product.images[0].name%>"><img
+                                                                width="300" height="300"
+                                                                src="./images/update/<%=product.images[0].name%>"
+                                                                class="wp-post-image" alt="<%=product.name%>" /></a>
+                                                    </div>
+                                                </figure>
                                             </div>
-                                            <h2 class="woocommerce-loop-product__title"><%=item.name%></h2>
-                                            <span class="price"><del aria-hidden="true"><span
-                                                        class="woocommerce-Price-amount amount"><bdi><%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(product.price) %><span
-                                                                class="woocommerce-Price-currencySymbol"></span></bdi></span></del>
-                                                <span class="screen-reader-text">Giá gốc là: <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(product.price) %></span><ins
-                                                    aria-hidden="true"><span
-                                                        class="woocommerce-Price-amount amount"><bdi><%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(product.pricesale) %><span
-                                                                class="woocommerce-Price-currencySymbol"></span></bdi></span></ins><span
-                                                    class="screen-reader-text">Giá hiện tại là:
-                                                    <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(product.pricesale) %></span></span>
-                                        </a>
-                                    </li>
-                                         <% } %>
-                                </ul>
 
-                            </section>
+                                            <div class="summary entry-summary">
+                                                <h1 class="product_title entry-title">
+                                                    <%=product.name%>
+                                                </h1>
+                                                <style>
+                                                    .devvn_single_price {
+                                                        background-color: #199bc42e;
+                                                        border: 1px dashed #199bc4;
+                                                        padding: 10px;
+                                                        border-radius: 3px;
+                                                        -moz-border-radius: 3px;
+                                                        -webkit-border-radius: 3px;
+                                                        margin: 0 0 10px;
+                                                        color: #000;
+                                                        display: block;
+                                                    }
 
-                        </div>
+                                                    .devvn_single_price>span {
+                                                        display: block;
+                                                    }
 
-                        <!--<div class="loadform"><a class="dattruoc" href="#frm_dattruoc">Nếu bạn cần sản phẩm cùng loại với thông số khác phù hợp với công việc của bạn. Bạn click vào đây để ghi yêu cầu.</a></div>-->
-                    </div>
-                    <div class="col-md-3 col-sm-12">
-                        <style type="text/css">
-                            .panel-camket {
-                                border: 1px solid #CCC;
-                                border-radius: 5px;
-                                padding: 0 15px;
-                            }
+                                                    .devvn_single_price span.label {
+                                                        color: #333;
+                                                        font-weight: 400;
+                                                        font-size: 14px;
+                                                        padding: 10;
+                                                        margin: 0;
+                                                        width: 82px;
+                                                        text-align: left;
+                                                        line-height: 18px;
+                                                    }
 
-                            .panel-camket h3 {
-                                border-bottom: 1px solid #CCC;
-                                padding-bottom: 0px;
-                            }
+                                                    .devvn_single_price span.devvn_price .amount {
+                                                        color: #F00;
+                                                        font-size: 18px;
+                                                        font-weight: bold;
+                                                        padding: 3px 0;
+                                                        height: 22px;
+                                                    }
 
-                            .panel-camket .camket {
-                                background: linear-gradient(#ffffff, #efefef 60%, #efefef 90%, #eee9e9);
-                            }
+                                                    .devvn_single_price span.devvn_price del .amount,
+                                                    .devvn_single_price span.devvn_price del {
+                                                        font-size: 14px;
+                                                        color: #333;
+                                                        font-weight: 400;
+                                                    }
+                                                </style>
+                                                <span class="devvn_single_price">
+                                                    <span>
+                                                        <span class="label">Giá:</span>
+                                                        <span class="devvn_price">
+                                                            <% if (product.pricesale==0) { %>
+                                                                <span style=" color: red;
+  font-weight: bold">LIÊN HỆ</span>
+                                                                <% } else { %>
+                                                                    <span class="woocommerce-Price-amount amount">
+                                                                        <bdi>
+                                                                            <%= new Intl.NumberFormat("vi-VN", {
+                                                                                style: "currency" , currency: "VND" ,
+                                                                                minimumFractionDigits: 0
+                                                                                }).format(product.pricesale) %>
+                                                                                <span
+                                                                                    class="woocommerce-Price-currencySymbol"></span>
+                                                                        </bdi>
+                                                                    </span>
+                                                                    <% } %>
+                                                        </span>
+                                                    </span>
 
-                            .panel-view .camket .sft {
-                                margin-top: 15px;
-                                border: 0;
-                                padding: 0 15px;
-                            }
+                                                    <% if (product.price> 0) { %>
+                                                        <span>
+                                                            <span class="label">Thị trường:</span>
+                                                            <span class="devvn_price">
+                                                                <del>
+                                                                    <span class="woocommerce-Price-amount amount">
+                                                                        <bdi>
+                                                                            <%= new Intl.NumberFormat("vi-VN", {
+                                                                                style: "currency" , currency: "VND" ,
+                                                                                minimumFractionDigits: 0
+                                                                                }).format(product.price) %>
+                                                                                <span
+                                                                                    class="woocommerce-Price-currencySymbol"></span>
+                                                                        </bdi>
+                                                                    </span>
+                                                                </del>
+                                                                (Giảm -<%= Math.round((1 - product.pricesale /
+                                                                    product.price) * 100) %>%)
+                                                            </span>
+                                                        </span>
+                                                        <% } %>
 
-                            /*@media only screen and (min-width: 768px) and (max-width: 1920px) {
+                                                </span>
+                                                <div class="woocommerce-product-details__short-description">
+                                                    <%-product.content2%>
+                                                </div>
+                                                <form class="cart" action="/cart/<%=product._id%>" method="post">
+                                                    <div class="quantity">
+
+                                                        <input type="number" id="quantity_68d967a8badd3"
+                                                            class="input-text qty text" name="quantity" value="1"
+                                                            aria-label="Số lượng sản phẩm" min="1" max="" step="1"
+                                                            placeholder="" inputmode="numeric" autocomplete="off" />
+                                                    </div><button type="submit" name="add-to-cart"
+                                                        value="<%=product._id%>"
+                                                        class="single_add_to_cart_button button alt">Mua ngay</button>
+                                                    <a class="baogia" href="#frm_baogia">Báo giá</a>
+                                                </form>
+
+
+                                                <div class="product_meta">
+                                                    <span class="sku_wrapper">Mã sản phẩm: <span class="sku">
+                                                            <%=product.masanpham%>
+                                                        </span></span>
+                                                    <span class="posted_in">Danh mục:
+                                                        <%for(item of product.danhmuc1_id){%>
+                                                            <a href="/danh-muc/<%=item.slug%>" rel="tag">
+                                                                <%=item.name%>
+                                                            </a>
+                                                            <% } %>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="woocommerce-tabs wc-tabs-wrapper">
+                                                <ul class="tabs wc-tabs" role="tablist">
+                                                    <li class="description_tab" id="tab-title-description" role="tab"
+                                                        aria-controls="tab-description">
+                                                        <a>
+                                                            Mô tả </a>
+                                                    </li>
+                                                    <li class="additional_information_tab"
+                                                        id="tab-title-additional_information" role="tab"
+                                                        aria-controls="tab-additional_information">
+                                                        <a>
+                                                            Thông tin bổ sung </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab"
+                                                    id="tab-description" role="tabpanel"
+                                                    aria-labelledby="tab-title-description">
+                                                    <%-product.content%>
+                                                </div>
+
+                                            </div>
+
+
+                                            <section class="up-sells upsells products">
+
+                                                <h2>Có thể bạn thích…</h2>
+
+                                                <ul class="products columns-4">
+                                                    <%for(item of spcungloai){%>
+                                                        <li
+                                                            class="product_list_widget product type-product post-58927 status-publish first instock product_cat-cam-bien-autonics product_cat-cam-bien-tiem-can product_tag-hs has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+                                                            <a href="/san-pham/<%=item._id%>"
+                                                                class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                                                <div style="position:relative;"><img width="300"
+                                                                        height="300"
+                                                                        src="./images/update/<%=item.images[0].name%>"
+                                                                        class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                                                                        alt="<%=item.name%>">
+                                                                    <div class="advanced-woo-labels awl-position-type-on-image awl-label-type-archive awl-align-left-top"
+                                                                        style="display:flex;flex-wrap:wrap;flex-direction:row;text-align:left;width:100%;position:absolute;z-index:9;left:0px;right:auto;top:0px;bottom:auto;transform:none;justify-content:flex-start;">
+                                                                        <div class="awl-label-wrap awl-label-id-162806">
+                                                                            <span
+                                                                                class="awl-product-label awl-type-label awl-type-label-angle"
+                                                                                style="display:table;position:relative;line-height:1;white-space:nowrap;vertical-align:baseline;font-size:12px;;font-weight:500;font-style:italic;letter-spacing:0px;;color:#ffffff;opacity:1;margin:0px 0px 0px 0px;"><span
+                                                                                    class="awl-label-text"
+                                                                                    style="display:table-cell;padding:0.2em 0.2em 0.2em 0.2em;z-index:1;background:#46b3c9;position:relative;line-height:1;border-radius:0;"><span
+                                                                                        class="awl-inner-text">Nhiều
+                                                                                        người
+                                                                                        mua</span></span><span
+                                                                                    class="awl-label-after"
+                                                                                    style="display:table-cell;width:0;height:0;position:relative;z-index:2;overflow:hidden;padding:0 0.65em 0 0;"><svg
+                                                                                        viewBox="0 0 100 100"
+                                                                                        preserveAspectRatio="none"
+                                                                                        style="position:absolute;top:0;width:100%;height:100%;fill:#46b3c9;">
+                                                                                        <g class="awl-angle-after">
+                                                                                            <polygon
+                                                                                                vector-effect="non-scaling-stroke"
+                                                                                                points="0,0 97,0 0,100"
+                                                                                                style="stroke:none;">
+                                                                                            </polygon>
+                                                                                            <line class="d-stroke"
+                                                                                                vector-effect="non-scaling-stroke"
+                                                                                                x1="0" y1="0" x2="97"
+                                                                                                y2="0"></line>
+                                                                                            <line
+                                                                                                vector-effect="non-scaling-stroke"
+                                                                                                x1="97" y1="0" x2="0"
+                                                                                                y2="100"></line>
+                                                                                        </g>
+                                                                                    </svg></span></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <h2 class="woocommerce-loop-product__title">
+                                                                    <%=item.name%>
+                                                                </h2>
+                                                                <span class="price"><del aria-hidden="true"><span
+                                                                            class="woocommerce-Price-amount amount"><bdi>
+                                                                                <%= new Intl.NumberFormat("vi-VN", {
+                                                                                    style: "currency" , currency: "VND"
+                                                                                    , minimumFractionDigits: 0,
+                                                                                    }).format(product.price) %><span
+                                                                                        class="woocommerce-Price-currencySymbol"></span>
+                                                                            </bdi></span></del>
+                                                                    <span class="screen-reader-text">Giá gốc là: <%= new
+                                                                            Intl.NumberFormat("vi-VN", {
+                                                                            style: "currency" , currency: "VND" ,
+                                                                            minimumFractionDigits: 0,
+                                                                            }).format(product.price) %></span><ins
+                                                                        aria-hidden="true"><span
+                                                                            class="woocommerce-Price-amount amount"><bdi>
+                                                                                <%= new Intl.NumberFormat("vi-VN", {
+                                                                                    style: "currency" , currency: "VND"
+                                                                                    , minimumFractionDigits: 0,
+                                                                                    }).format(product.pricesale) %><span
+                                                                                        class="woocommerce-Price-currencySymbol"></span>
+                                                                            </bdi></span></ins><span
+                                                                        class="screen-reader-text">Giá hiện tại là:
+                                                                        <%= new Intl.NumberFormat("vi-VN", {
+                                                                            style: "currency" , currency: "VND" ,
+                                                                            minimumFractionDigits: 0,
+                                                                            }).format(product.pricesale) %>
+                                                                    </span></span>
+                                                            </a>
+                                                        </li>
+                                                        <% } %>
+                                                </ul>
+
+                                            </section>
+
+                                        </div>
+
+                                        <!--<div class="loadform"><a class="dattruoc" href="#frm_dattruoc">Nếu bạn cần sản phẩm cùng loại với thông số khác phù hợp với công việc của bạn. Bạn click vào đây để ghi yêu cầu.</a></div>-->
+                            </div>
+                            <div class="col-md-3 col-sm-12">
+                                <style type="text/css">
+                                    .panel-camket {
+                                        border: 1px solid #CCC;
+                                        border-radius: 5px;
+                                        padding: 0 15px;
+                                    }
+
+                                    .panel-camket h3 {
+                                        border-bottom: 1px solid #CCC;
+                                        padding-bottom: 0px;
+                                    }
+
+                                    .panel-camket .camket {
+                                        background: linear-gradient(#ffffff, #efefef 60%, #efefef 90%, #eee9e9);
+                                    }
+
+                                    .panel-view .camket .sft {
+                                        margin-top: 15px;
+                                        border: 0;
+                                        padding: 0 15px;
+                                    }
+
+                                    /*@media only screen and (min-width: 768px) and (max-width: 1920px) {
 .sticky {
 	position: fixed;
 	top: 0;
@@ -261,9 +316,8 @@
 .sticky + .content {
 	padding-top: 102px;
 }*/
-                            
-                        </style>
-                         <div class="panel-camket">
+                                </style>
+                                <div class="panel-camket">
                                     <h3>LIÊN HỆ MUA HÀNG:</h3>
                                     <div class="camket">
                                         <p><span class="glyphicon glyphicon-phone"></span> Call: <%=thongtintrang.sdt%>
@@ -274,9 +328,9 @@
                                         </p>
                                     </div>
                                 </div>
-                        <div class="panel-camket">
-                            <h3>Những dịch vụ liên quan</h3>
-                           <div class="camket">
+                                <div class="panel-camket">
+                                    <h3>Những dịch vụ liên quan</h3>
+                                    <div class="camket">
                                         <p>
                                             <%for(item of tintuc){%>
                                                 <span class="glyphicon glyphicon-hand-right"></span> <a
@@ -286,199 +340,201 @@
                                                 <% } %>
                                         </p>
                                     </div>
-                        </div>
+                                </div>
+                            </div>
+                        </main>
                     </div>
-                </main>
-            </div>
-        </div>
-        <div style="display:none">
-            <style type="text/css">
-
-                .frm_baogia h2 {
-                    padding-left: 15px;
-                    text-transform: uppercase;
-                    font-weight: bold;
-                }
-
-                .wpcf7 {
-                    background: #ffffff;
-                    padding: 10px;
-                }
-
-                .wpcf7 p label {
-                    width: 100%;
-                }
-
-                .wpcf7 p label span {
-                    width: 100%;
-                    display: block
-                }
-
-                .wpcf7 p label span input,
-                .wpcf7 p label span textarea {
-                    width: 100%;
-                }
-
-                .wpcf7 p label span textarea {
-                    width: 100%;
-                    height: 100px
-                }
-
-                .wpcf7 p input[type=submit] {
-                    background: #4285f4;
-                    padding: 12px 15px;
-                    border-radius: 5px;
-                    border: none;
-                    color: #FFF;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                    font-size: 14px;
-                    margin-top: 10px;
-                }
-
-                .wpcf7 form.sent .wpcf7-response-output {
-                    border-color: #46b450;
-                    position: absolute;
-                    top: 20px;
-                    padding: 10px;
-                    color: #FFF;
-                    height: auto;
-                    background: #46b450;
-                    font-weight: bold;
-                }
-            </style>
-            <div id="frm_baogia" class="frm_baogia">
-                <h2>Yêu cầu báo giá</h2>
-                <strong>Hãy cho chúng tôi cơ hội được phục vụ, Quý khách vui lòng để lại thông tin của mình
-                    giúp.</strong>
-
-                <div class="wpcf7 js" id="wpcf7-f184320-o1" lang="vi" dir="ltr" data-wpcf7-id="184320">
-                    <div class="screen-reader-response">
-                        <p role="status" aria-live="polite" aria-atomic="true"></p>
-                        <ul></ul>
-                    </div>
-                    <form action="/product/cam-bien-tiem-can-autonics-psn17-5dn2/#wpcf7-f184320-o1" method="post"
-                        class="wpcf7-form init" aria-label="Form liên hệ" novalidate="novalidate" data-status="init">
-                        <div style="display: none;">
-                            <input type="hidden" name="_wpcf7" value="184320">
-                            <input type="hidden" name="_wpcf7_version" value="6.0.6">
-                            <input type="hidden" name="_wpcf7_locale" value="vi">
-                            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f184320-o1">
-                            <input type="hidden" name="_wpcf7_container_post" value="0">
-                            <input type="hidden" name="_wpcf7_posted_data_hash" value="">
-                            <input type="hidden" name="_wpcf7dtx_version" value="5.0.3">
-                        </div>
-                        <p><label><span class="wpcf7-form-control-wrap proname" data-name="proname"><input type="text"
-                                        name="proname" class="wpcf7-form-control wpcf7-text wpcf7dtx wpcf7dtx-text"
-                                        aria-invalid="false"
-                                        value="<%=product.name%>"></span></label><br>
-                            <label><span class="wpcf7-form-control-wrap" data-name="Quantity"><input
-                                        class="wpcf7-form-control wpcf7-number wpcf7-validates-as-required wpcf7-validates-as-number"
-                                        aria-required="true" aria-invalid="false" placeholder="Số lượng" value=""
-                                        type="number" name="Quantity"></span></label><br>
-                            <label><span class="wpcf7-form-control-wrap" data-name="Name"><input size="40"
-                                        maxlength="400"
-                                        class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
-                                        aria-required="true" aria-invalid="false" placeholder="Họ và tên" value=""
-                                        type="text" name="Name"></span></label><br>
-                            <label><span class="wpcf7-form-control-wrap" data-name="Phone"><input size="40"
-                                        maxlength="400"
-                                        class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel"
-                                        aria-required="true" aria-invalid="false" placeholder="Số điện thoại" value=""
-                                        type="tel" name="Phone"></span></label><br>
-                            <label><span class="wpcf7-form-control-wrap" data-name="Address"><input size="40"
-                                        maxlength="400" class="wpcf7-form-control wpcf7-text" aria-invalid="false"
-                                        placeholder="Địa chỉ" value="" type="text" name="Address"></span></label><br>
-                            <label><span class="wpcf7-form-control-wrap" data-name="Note"><textarea cols="40" rows="10"
-                                        maxlength="2000" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false"
-                                        placeholder="Thông tin thêm" name="Note"></textarea></span></label><br>
-                            <label><span class="wpcf7-form-control-wrap" data-name="quiz-260"><label><span
-                                            class="wpcf7-quiz-label">5+15=?</span> <input size="40"
-                                            class="wpcf7-form-control wpcf7-quiz" autocomplete="off"
-                                            aria-required="true" aria-invalid="false" type="text"
-                                            name="quiz-260"></label><input type="hidden"
-                                        name="_wpcf7_quiz_answer_quiz-260"
-                                        value="06eec3aeb447cc3f823cef211f19894a"></span></label><br>
-                            <input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit"
-                                value="Gởi yêu cầu"><span class="wpcf7-spinner"></span>
-                        </p>
-                        <div class="wpcf7-response-output" aria-hidden="true"></div>
-                    </form>
                 </div>
-            </div>
-        </div>
-        <div style="display:none">
-            <style type="text/css">
+                <div style="display:none">
+                    <style type="text/css">
+                        .frm_baogia h2 {
+                            padding-left: 15px;
+                            text-transform: uppercase;
+                            font-weight: bold;
+                        }
 
-                .frm_dattruoc h2 {
-                    padding-left: 15px;
-                    text-transform: uppercase;
-                    font-weight: bold;
-                    margin-bottom: 20px;
-                }
+                        .wpcf7 {
+                            background: #ffffff;
+                            padding: 10px;
+                        }
 
-                .wpcf7 {
-                    background: #ffffff;
-                    padding: 15px;
-                }
+                        .wpcf7 p label {
+                            width: 100%;
+                        }
 
-                .wpcf7 p label {
-                    width: 100%;
-                }
+                        .wpcf7 p label span {
+                            width: 100%;
+                            display: block
+                        }
 
-                .wpcf7 p label span {
-                    width: 100%;
-                    display: block
-                }
+                        .wpcf7 p label span input,
+                        .wpcf7 p label span textarea {
+                            width: 100%;
+                        }
 
-                .wpcf7 p label span input,
-                .wpcf7 p label span textarea {
-                    width: 100%;
-                }
+                        .wpcf7 p label span textarea {
+                            width: 100%;
+                            height: 100px
+                        }
 
-                .wpcf7 p label span textarea {
-                    width: 100%;
-                    height: 100px
-                }
+                        .wpcf7 p input[type=submit] {
+                            background: #4285f4;
+                            padding: 12px 15px;
+                            border-radius: 5px;
+                            border: none;
+                            color: #FFF;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            font-size: 14px;
+                            margin-top: 10px;
+                        }
 
-                .wpcf7 p input[type=submit] {
-                    background: #4285f4;
-                    padding: 12px 15px;
-                    border-radius: 5px;
-                    border: none;
-                    color: #FFF;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                    font-size: 14px;
-                    margin-top: 10px;
-                }
+                        .wpcf7 form.sent .wpcf7-response-output {
+                            border-color: #46b450;
+                            position: absolute;
+                            top: 20px;
+                            padding: 10px;
+                            color: #FFF;
+                            height: auto;
+                            background: #46b450;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <div id="frm_baogia" class="frm_baogia">
+                        <h2>Yêu cầu báo giá</h2>
+                        <strong>Hãy cho chúng tôi cơ hội được phục vụ, Quý khách vui lòng để lại thông tin của mình
+                            giúp.</strong>
 
-                .wpcf7 form.sent .wpcf7-response-output {
-                    border-color: #46b450;
-                    position: absolute;
-                    top: 20px;
-                    padding: 10px;
-                    color: #FFF;
-                    height: auto;
-                    background: #46b450;
-                    font-weight: bold;
-                }
-            </style>
-            <div id="frm_dattruoc" class="frm_dattruoc">
-                <h2>Tư vấn sản phẩm theo yêu cầu</h2>
-                <p class="wpcf7-contact-form-not-found"><strong>Lỗi:</strong> Không tìm thấy biểu mẫu liên hệ.</p>
-            </div>
-        </div>
-        <div class="sanphamvuaxem">
-        </div>
-        <div class="sanphamlienquan" id="splq">
-            <section class="relate_products">
-               <h2><a href="/san-pham?orderby=spmoi">SẢN PHẨM MỚI</a> </h2>
-                <ul class="products columns-4">
-                       <%for(item of spmoi){%>
-                    <li
-                        class="product_list_widget product type-product post-67497 status-publish first instock product_cat-cam-bien-ap-suat product_cat-cam-bien-autonics has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
-                         <a href="/san-pham/<%=item._id%>"
+                        <div class="wpcf7 js" id="wpcf7-f184320-o1" lang="vi" dir="ltr" data-wpcf7-id="184320">
+                            <div class="screen-reader-response">
+                                <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                <ul></ul>
+                            </div>
+                            <form action="/product/cam-bien-tiem-can-autonics-psn17-5dn2/#wpcf7-f184320-o1"
+                                method="post" class="wpcf7-form init" aria-label="Form liên hệ" novalidate="novalidate"
+                                data-status="init">
+                                <div style="display: none;">
+                                    <input type="hidden" name="_wpcf7" value="184320">
+                                    <input type="hidden" name="_wpcf7_version" value="6.0.6">
+                                    <input type="hidden" name="_wpcf7_locale" value="vi">
+                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f184320-o1">
+                                    <input type="hidden" name="_wpcf7_container_post" value="0">
+                                    <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                                    <input type="hidden" name="_wpcf7dtx_version" value="5.0.3">
+                                </div>
+                                <p><label><span class="wpcf7-form-control-wrap proname" data-name="proname"><input
+                                                type="text" name="proname"
+                                                class="wpcf7-form-control wpcf7-text wpcf7dtx wpcf7dtx-text"
+                                                aria-invalid="false" value="<%=product.name%>"></span></label><br>
+                                    <label><span class="wpcf7-form-control-wrap" data-name="Quantity"><input
+                                                class="wpcf7-form-control wpcf7-number wpcf7-validates-as-required wpcf7-validates-as-number"
+                                                aria-required="true" aria-invalid="false" placeholder="Số lượng"
+                                                value="" type="number" name="Quantity"></span></label><br>
+                                    <label><span class="wpcf7-form-control-wrap" data-name="Name"><input size="40"
+                                                maxlength="400"
+                                                class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required"
+                                                aria-required="true" aria-invalid="false" placeholder="Họ và tên"
+                                                value="" type="text" name="Name"></span></label><br>
+                                    <label><span class="wpcf7-form-control-wrap" data-name="Phone"><input size="40"
+                                                maxlength="400"
+                                                class="wpcf7-form-control wpcf7-tel wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-tel"
+                                                aria-required="true" aria-invalid="false" placeholder="Số điện thoại"
+                                                value="" type="tel" name="Phone"></span></label><br>
+                                    <label><span class="wpcf7-form-control-wrap" data-name="Address"><input size="40"
+                                                maxlength="400" class="wpcf7-form-control wpcf7-text"
+                                                aria-invalid="false" placeholder="Địa chỉ" value="" type="text"
+                                                name="Address"></span></label><br>
+                                    <label><span class="wpcf7-form-control-wrap" data-name="Note"><textarea cols="40"
+                                                rows="10" maxlength="2000" class="wpcf7-form-control wpcf7-textarea"
+                                                aria-invalid="false" placeholder="Thông tin thêm"
+                                                name="Note"></textarea></span></label><br>
+                                    <label><span class="wpcf7-form-control-wrap" data-name="quiz-260"><label><span
+                                                    class="wpcf7-quiz-label">5+15=?</span> <input size="40"
+                                                    class="wpcf7-form-control wpcf7-quiz" autocomplete="off"
+                                                    aria-required="true" aria-invalid="false" type="text"
+                                                    name="quiz-260"></label><input type="hidden"
+                                                name="_wpcf7_quiz_answer_quiz-260"
+                                                value="06eec3aeb447cc3f823cef211f19894a"></span></label><br>
+                                    <input class="wpcf7-form-control wpcf7-submit has-spinner" type="submit"
+                                        value="Gởi yêu cầu"><span class="wpcf7-spinner"></span>
+                                </p>
+                                <div class="wpcf7-response-output" aria-hidden="true"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:none">
+                    <style type="text/css">
+                        .frm_dattruoc h2 {
+                            padding-left: 15px;
+                            text-transform: uppercase;
+                            font-weight: bold;
+                            margin-bottom: 20px;
+                        }
+
+                        .wpcf7 {
+                            background: #ffffff;
+                            padding: 15px;
+                        }
+
+                        .wpcf7 p label {
+                            width: 100%;
+                        }
+
+                        .wpcf7 p label span {
+                            width: 100%;
+                            display: block
+                        }
+
+                        .wpcf7 p label span input,
+                        .wpcf7 p label span textarea {
+                            width: 100%;
+                        }
+
+                        .wpcf7 p label span textarea {
+                            width: 100%;
+                            height: 100px
+                        }
+
+                        .wpcf7 p input[type=submit] {
+                            background: #4285f4;
+                            padding: 12px 15px;
+                            border-radius: 5px;
+                            border: none;
+                            color: #FFF;
+                            font-weight: bold;
+                            text-transform: uppercase;
+                            font-size: 14px;
+                            margin-top: 10px;
+                        }
+
+                        .wpcf7 form.sent .wpcf7-response-output {
+                            border-color: #46b450;
+                            position: absolute;
+                            top: 20px;
+                            padding: 10px;
+                            color: #FFF;
+                            height: auto;
+                            background: #46b450;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <div id="frm_dattruoc" class="frm_dattruoc">
+                        <h2>Tư vấn sản phẩm theo yêu cầu</h2>
+                        <p class="wpcf7-contact-form-not-found"><strong>Lỗi:</strong> Không tìm thấy biểu mẫu liên hệ.
+                        </p>
+                    </div>
+                </div>
+                <div class="sanphamvuaxem">
+                </div>
+                <div class="sanphamlienquan" id="splq">
+                    <section class="relate_products">
+                        <h2><a href="/san-pham?orderby=spmoi">SẢN PHẨM MỚI</a> </h2>
+                        <ul class="products columns-4">
+                            <%for(item of spmoi){%>
+                                <li
+                                    class="product_list_widget product type-product post-67497 status-publish first instock product_cat-cam-bien-ap-suat product_cat-cam-bien-autonics has-post-thumbnail sale shipping-taxable purchasable product-type-simple">
+                                    <a href="/san-pham/<%=item._id%>"
                                         class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img
                                             width="300" height="300" src="./images/update/<%=item.images[0].name%>"
                                             class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
@@ -486,27 +542,50 @@
                                         <h2 class="woocommerce-loop-product__title">
                                             <%=item.name%>
                                         </h2>
-                            <span class="price"><del aria-hidden="true"><span
-                                                        class="woocommerce-Price-amount amount"><bdi><%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(item.price) %><span
-                                                                class="woocommerce-Price-currencySymbol"></span></bdi></span></del>
-                                                <span class="screen-reader-text">Giá gốc là: <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(item.price) %></span><ins
-                                                    aria-hidden="true"><span
-                                                        class="woocommerce-Price-amount amount"><bdi><%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(item.pricesale) %><span
-                                                                class="woocommerce-Price-currencySymbol"></span></bdi></span></ins><span
-                                                    class="screen-reader-text">Giá hiện tại là:
+                                        <% if (item.price> 0) { %>
+                                            <span class="price">
+                                                <del aria-hidden="true">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>
+                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                currency: "VND" , minimumFractionDigits: 0
+                                                                }).format(item.price) %>
+                                                                <span class="woocommerce-Price-currencySymbol"></span>
+                                                        </bdi>
+                                                    </span>
+                                                </del>
+
+                                                <span class="screen-reader-text">
+                                                    Giá gốc là:
                                                     <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
-                                                        currency: "VND" , minimumFractionDigits: 0,
-                                                        }).format(item.pricesale) %></span></span>
-                        </a>
-                    </li>
-                         <%}%>
-                </ul>
-            </section>
-        </div>
-                      <%- include("./layouts/footer.ejs")%>
+                                                        currency: "VND" , minimumFractionDigits: 0 }).format(item.price)
+                                                        %>
+                                                </span>
+
+                                                <ins aria-hidden="true">
+                                                    <span class="woocommerce-Price-amount amount">
+                                                        <bdi>
+                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                currency: "VND" , minimumFractionDigits: 0
+                                                                }).format(item.pricesale) %>
+                                                                <span class="woocommerce-Price-currencySymbol"></span>
+                                                        </bdi>
+                                                    </span>
+                                                </ins>
+
+                                                <span class="screen-reader-text">
+                                                    Giá hiện tại là:
+                                                    <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                        currency: "VND" , minimumFractionDigits: 0
+                                                        }).format(item.pricesale) %>
+                                                </span>
+                                            </span>
+                                            <% } %>
+
+                                    </a>
+                                </li>
+                                <%}%>
+                        </ul>
+                    </section>
+                </div>
+                <%- include("./layouts/footer.ejs")%>
