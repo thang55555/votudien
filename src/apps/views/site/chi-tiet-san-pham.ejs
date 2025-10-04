@@ -193,7 +193,7 @@
 
                                             </div>
 
-
+                                            <%if(spcungloai.length > 0){%>
                                             <section class="up-sells upsells products">
 
                                                 <h2>Có thể bạn thích…</h2>
@@ -280,7 +280,7 @@
                                                 </ul>
 
                                             </section>
-
+                                            <%}%>
                                         </div>
 
                                         <!--<div class="loadform"><a class="dattruoc" href="#frm_dattruoc">Nếu bạn cần sản phẩm cùng loại với thông số khác phù hợp với công việc của bạn. Bạn click vào đây để ghi yêu cầu.</a></div>-->
@@ -528,6 +528,7 @@
                 <div class="sanphamvuaxem">
                 </div>
                 <div class="sanphamlienquan" id="splq">
+                            <%if(spmoi.length > 0){%>
                     <section class="relate_products">
                         <h2><a href="/san-pham?orderby=spmoi">SẢN PHẨM MỚI</a> </h2>
                         <ul class="products columns-4">
@@ -587,5 +588,6 @@
                                 <%}%>
                         </ul>
                     </section>
+                          <%}%>
                 </div>
                 <%- include("./layouts/footer.ejs")%>
