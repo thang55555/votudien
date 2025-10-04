@@ -562,18 +562,19 @@ const thanhtoan2 = async (req, res) => {
     );
 
     await transporter.sendMail({
-        from: '"Rèm Cửa Anh Thư" <kinhdoanh.deevisco@gmail.com>',
+        from: '"TỦ ĐIỆN AN LẠC" <kinhdoanh.votudien@gmail.com>',
         to: orderData.mail,
-        subject: `Xác nhận mã đơn hàng ${madon} từ Rèm Cửa Anh Thư`,
+        subject: `Xác nhận mã đơn hàng ${madon} từ Tủ Điện An Lạc`,
         html
     });
 
     // Reset giỏ hàng
     session.cart = [];
+    const fullUrl = res.locals.fullUrl || "";
 
     res.render("site/thanh-toan-2", {
         tongtien,
-        order: orderData,
+        order: orderData, fullUrl
     });
 };
 
