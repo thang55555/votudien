@@ -12,6 +12,7 @@ const DanhgiaModel = require("../models/danh-gia");
 const HangModel = require("../models/hang");
 const MenuchantrangModel = require("../models/menu-chan-trang");
 const ChantrangModel = require("../models/tieu-de-chan-trang");
+const BannerModel = require("../models/banner");
 //tủ điện ok
 const home = async (req, res) => {
   
@@ -29,9 +30,9 @@ const home = async (req, res) => {
     }
     product.push(add)
     }
-    
+    const banner = await BannerModel.find();
 
-    res.render("site/index", {product});
+    res.render("site/index", {product, banner});
 }
 
 

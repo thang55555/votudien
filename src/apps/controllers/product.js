@@ -18,6 +18,7 @@ const ChantrangModel = require("../models/tieu-de-chan-trang");
 const MenuchantrangModel = require("../models/menu-chan-trang");
 const OrderModel = require("../models/order");
 const ImagesModel = require("../models/images");
+const BannerModel = require("../models/banner");
 
 
 // nam thành phát
@@ -119,6 +120,10 @@ const updatethongtintrang = async (req, res) => {
         tencongty: body.tencongty,
         diachicty: body.diachicty,
         diachikho: body.diachikho,
+        title: body.title,
+        description: body.description,
+        keywords: body.keywords,
+        linkFB: body.linkFB,
     }
     if (file) {
         fs.renameSync(file.path, path.resolve("src/public/site/images/update", file.originalname));
@@ -128,6 +133,57 @@ const updatethongtintrang = async (req, res) => {
     res.redirect("/admin/thong-tin-trang")
 }
 
+
+
+
+const banner = async (req, res) => {
+    const products = await BannerModel.find();
+    const stt = 1;
+    res.render("./admin/banner/banner", { products, stt })
+}
+const addbanner = async (req, res) => {
+    res.render("./admin/banner/add-banner",)
+}
+const uploadbanner = async (req, res) => {
+    const { file, body } = req;
+    const add = {
+        stt: body.stt || 0,
+    }
+    if (file) {
+        const uploadDir = path.resolve("src/public/site/images/update");
+        // tạo thư mục đích nếu chưa có
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+
+        const targetPath = path.join(uploadDir, file.originalname);
+        fs.renameSync(file.path, targetPath);
+
+        add.images = file.originalname;
+        const add2 = {
+            images: file.originalname,
+            note: "02"
+        }
+        new ImagesModel(add2).save();
+    }
+
+    new BannerModel(add).save();
+    res.redirect("/admin/banner")
+}
+
+const updatebanner = async (req, res) => {
+      const id = req.params.id;
+    const update = {
+        stt : req.query.stt
+    }
+    await BannerModel.updateOne({ _id: id }, { $set: update });
+    res.redirect("/admin/banner")
+}
+const deletebanner = async (req, res) => {
+     const id = req.params.id;
+    await BannerModel.deleteOne({ _id: id });
+    res.redirect("/admin/banner")
+}
 
 
 
@@ -648,10 +704,10 @@ const uploadsanpham = async (req, res) => {
             uploadimg.push(item.originalname);
             fs.renameSync(item.path, path.resolve("src/public/site/images/update", item.originalname));
             const add2 = {
-            images: item.originalname,
-            note: "02"
-        }
-        new ImagesModel(add2).save();
+                images: item.originalname,
+                note: "02"
+            }
+            new ImagesModel(add2).save();
         }
 
         const image = [];
@@ -720,11 +776,11 @@ const updatesanpham = async (req, res) => {
         for (item of files) {
             uploadimg.push(item.originalname);
             fs.renameSync(item.path, path.resolve("src/public/site/images/update", item.originalname));
-             const add2 = {
-            images: item.originalname,
-            note: "02"
-        }
-        new ImagesModel(add2).save();
+            const add2 = {
+                images: item.originalname,
+                note: "02"
+            }
+            new ImagesModel(add2).save();
         }
 
         const image = [];
@@ -752,7 +808,7 @@ const deletesanpham = async (req, res) => {
 const viewsanpham = async (req, res) => {
     const id = req.params.id;
 
- 
+
 
     // Nếu hợp lệ, mới tiếp tục truy vấn
     const product = await ProductModel.findById(id)
@@ -940,7 +996,7 @@ const updatetintuc = async (req, res) => {
         const targetPath = path.resolve("src/public/site/images/update", file.originalname);
         fs.renameSync(file.path, targetPath);
         add.image = file.originalname;
-    const add2 = {
+        const add2 = {
             images: file.originalname,
             note: "02"
         }
@@ -1352,6 +1408,7 @@ module.exports = {
     updatechiasekhachhang,
     deletechiasekhachhang, search,
 
+    banner, addbanner, uploadbanner, updatebanner, deletebanner,
     hang, addhang, edithang, uploadhang, updatehang, deletehang,
     danhmuc1, adddanhmuc1, editdanhmuc1, uploaddanhmuc1, updatedanhmuc1, deletedanhmuc1,
     danhmuc2, adddanhmuc2, editdanhmuc2, uploaddanhmuc2, updatedanhmuc2, deletedanhmuc2,
@@ -1359,5 +1416,5 @@ module.exports = {
     tintuc, addtintuc, edittintuc, uploadtintuc, updatetintuc, deletetintuc, view, view2, viewtintuc,
     chantrang, addchantrang, editchantrang, uploadchantrang, updatechantrang, deletechantrang,
     menuchantrang, addmenuchantrang, editmenuchantrang, uploadmenuchantrang, updatemenuchantrang, deletemenuchantrang,
-    editorder, order, dsanh, dsanhtieude, dsanhconent, 
+    editorder, order, dsanh, dsanhtieude, dsanhconent,
 }

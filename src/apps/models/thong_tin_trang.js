@@ -20,6 +20,18 @@ const thong_tin_trangSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+     title: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    keywords: {
+        type: String,
+        required: true,
+    },
     tieudeFB:{
         type: String,
         required: true,

@@ -105,6 +105,124 @@
 
         $('.wc-tab').css("display", "block");
     });</script>
+    
+
+
+ <!-- icon zalo, fb, call -->
+
+<div class="floating-icons">
+  <a href="tel:<%=thongtintrang.sdt%>" class="icon-wrapper">
+    <div class="icon-ring"></div>
+    <div class="icon-inner-footer">
+      <picture>
+        <source srcset="./image/icon-call.webp" type="image/webp">
+        <img src="./image/icon-call.png" alt="Gọi điện" loading="lazy" width="40" height="40">
+      </picture>
+    </div>
+  </a>
+
+  <a href="https://zalo.me/<%=thongtintrang.sdt%>" class="icon-wrapper" target="_blank" rel="noopener noreferrer">
+    <div class="icon-ring"></div>
+    <div class="icon-inner-footer">
+      <picture>
+        <source srcset="./image/icon-zalo.webp" type="image/webp">
+        <img src="./image/icon-zalo.png" alt="Zalo" loading="lazy" width="40" height="40">
+      </picture>
+    </div>
+  </a>
+
+  <a href="<%=thongtintrang.linkFB%>" class="icon-wrapper" target="_blank" rel="noopener noreferrer">
+    <div class="icon-ring"></div>
+    <div class="icon-inner-footer">
+      <picture>
+        <source srcset="./image/icon-facebook.webp" type="image/webp">
+        <img src="./image/icon-facebook.png" alt="Facebook" loading="lazy" width="40" height="40">
+      </picture>
+    </div>
+  </a>
+</div>
+
+
+<style>
+  .floating-icons {
+  position: fixed;
+  top: 55%;
+  left: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 9999;
+}
+
+.icon-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  animation: shake 2s infinite ease-in-out;
+}
+
+.icon-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url('./image/vong-quay.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: spin 5s linear infinite;
+  border-radius: 50%;
+}
+
+.icon-inner-footer {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: white;
+}
+
+.icon-inner-footer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Hiệu ứng quay tròn vòng hoa văn */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hiệu ứng lắc nhẹ icon */
+@keyframes shake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(25deg);
+  }
+  40% {
+    transform: rotate(-25deg);
+  }
+  60% {
+    transform: rotate(25deg);
+  }
+  80% {
+    transform: rotate(-25deg);
+  }
+}
+
+
+
+
+
+
+</style>
 </body>
 
 </html>

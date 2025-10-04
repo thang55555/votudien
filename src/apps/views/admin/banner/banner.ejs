@@ -1,0 +1,97 @@
+<%- include("../layout/head", {title: "Product" })%>
+    <%- include("../layout/header")%>
+        <%- include("../layout/siderbar")%>
+
+
+            <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li><a href="/admin/dashboard"><svg class="glyph stroked home">
+                                    <use xlink:href="#stroked-home"></use>
+                                </svg></a></li>
+                        <li>Danh sách banner</li>
+                    </ol>
+                </div><!--/.row-->
+
+
+                <div id="toolbar" class="btn-group">
+                    <a href="/admin/add-banner" class="btn btn-success">
+                        <i class="glyphicon glyphicon-plus"></i> Thêm banner
+                    </a>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <table data-toolbar="#toolbar" data-toggle="table">
+
+                                    <thead>
+                                        <tr>
+                                            <th data-field="id" data-sortable="true">ID</th>
+                                            <th data-field="name" data-sortable="true">Ảnh banner</th>
+                                            <th>Số thứ tự</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for(product of products){%>
+                                            <tr>
+                                                <td>
+                                                    <%=stt++%>
+                                                </td>
+                                                <td>
+                                                    <img height="150px" width="150px"
+                                                        src="../site/images/update/<%=product.images%>" />
+
+                                                </td>
+                                                <td>
+                                                    <div>
+                                                        <input required name="stt" id="stt-<%=product._id%>"
+                                                            class="form-control" type="number" value="<%=product.stt%>">
+                                                    </div>
+                                                </td>
+
+                                                <td class="form-group">
+                                                    <a onclick="updateBanner('<%=product._id%>')"
+                                                        class="btn btn-primary">
+                                                        <i class="glyphicon glyphicon-pencil"></i>
+                                                    </a>
+                                                    <a onclick="clickDelete('<%=product._id%>')" class="btn btn-danger">
+                                                        <i class="glyphicon glyphicon-remove"></i>
+                                                    </a>
+                                                </td>
+
+
+                                            </tr>
+                                            <% }%>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!--/.row-->
+            </div> <!--/.main-->
+
+            <script src="js/jquery-1.11.1.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/bootstrap-table.js"></script>
+            <script>
+                function handleConfirm(id) {
+                    const isConfirm = confirm(`Bạn có chắc chắn xóa không?`)
+                    const link = () => window.location.href = `/admin/delete-banner/${id}`
+                    return isConfirm ? link() : false
+                }
+                const clickDelete = (id) => handleConfirm(id)
+            </script>
+
+
+            <script>
+                function updateBanner(id) {
+                    const sttValue = document.getElementById("stt-" + id).value;
+                    window.location.href = `/admin/update-banner/${id}?stt=${sttValue}`;
+                }
+            </script>
+
+
+            <%- include("../layout/footer")%>
