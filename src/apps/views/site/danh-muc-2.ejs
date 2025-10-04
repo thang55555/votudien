@@ -21,66 +21,61 @@
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 catepage">
 
-                <div class="row">
-  <ul class="list-unstyled row">
-    <% for (let item of product) { %>
-      <li class="col-md-2 col-sm-6 col-xs-6 motsanpham 
+                        <div class="row">
+                            <ul class="list-unstyled row">
+                                <% for (let item of product) { %>
+                                    <li class="col-md-2 col-sm-6 col-xs-6 
                  product_list_widget product type-product 
                  post-150506 status-publish first instock 
                  product_cat-bo-dem product_cat-bo-dem-omron 
                  product_tag-san-pham-ban-chay has-post-thumbnail 
                  shipping-taxable purchasable product-type-simple">
-        <a href="/san-pham/<%= item._id %>" 
-           class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+                                        <a href="/san-pham/<%= item._id %>"
+                                            class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 
-          <img width="300" height="300"
-               src="./images/update/<%= item.images[0].name %>"
-               class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-               alt="<%= item.name %>" />
+                                            <img width="300" height="300"
+                                                src="./images/update/<%= item.images[0].name %>"
+                                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
+                                                alt="<%= item.name %>" />
 
-          <h2 class="woocommerce-loop-product__title">
-            <%= item.name %>
-          </h2>
+                                            <h2 class="woocommerce-loop-product__title">
+                                                <%= item.name %>
+                                            </h2>
 
-          <div class="post-price">
-            <% if (item.price == 0) { %>
-      <div class="price-contact">
-      Giá: <span style=" color: red;
-  font-weight: bold">LIÊN HỆ</span> 
-    </div>
-            <% } else if (item.pricesale && item.pricesale < item.price) { %>
-              <div class="price-old">
-                <%= new Intl.NumberFormat("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                      minimumFractionDigits: 0
-                  }).format(item.price) %>
-              </div>
-              <div class="price-sale">
-                <%= new Intl.NumberFormat("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                      minimumFractionDigits: 0
-                  }).format(item.pricesale) %>
-              </div>
-              <div class="salepercent">
-                -<%= Math.round((1 - item.pricesale / item.price) * 100) %>%
-              </div>
-            <% } else { %>
-              <div class="price-normal">
-                <%= new Intl.NumberFormat("vi-VN", {
-                      style: "currency",
-                      currency: "VND",
-                      minimumFractionDigits: 0
-                  }).format(item.price) %>
-              </div>
-            <% } %>
-          </div>
-        </a>
-      </li>
-    <% } %>
-  </ul>
-</div>
+                                            <div class="post-price">
+                                                <% if (item.pricesale==0) { %>
+                                                    <div class="price-contact">
+                                                        Giá: <span style=" color: red; font-weight: bold">LIÊN HỆ</span>
+                                                    </div>
+                                                    <% } else if (item.pricesale && item.pricesale < item.price) { %>
+                                                        <div class="price-old">
+                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                currency: "VND" , minimumFractionDigits: 0
+                                                                }).format(item.price) %>
+                                                        </div>
+                                                        <div class="price-sale">
+                                                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                currency: "VND" , minimumFractionDigits: 0
+                                                                }).format(item.pricesale) %>
+                                                        </div>
+                                                        <div class="salepercent">
+                                                            -<%= Math.round((1 - item.pricesale / item.price) * 100) %>%
+                                                        </div>
+                                                        <% } else { %>
+                                                            <div class="price-normal">
+                                                                <%= new Intl.NumberFormat("vi-VN", { style: "currency" ,
+                                                                    currency: "VND" , minimumFractionDigits: 0
+                                                                    }).format(item.price) %>
+                                                            </div>
+                                                    <% } %>
+                                                        
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                <% } %>
+                            </ul>
+                        </div>
 
                         <span class="paging">
                             <div class='wp-pagenavi' role='navigation'>
