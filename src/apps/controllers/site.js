@@ -562,7 +562,7 @@ const thanhtoan2 = async (req, res) => {
     );
 
     await transporter.sendMail({
-        from: '"TỦ ĐIỆN AN LẠC" <kinhdoanh.votudien@gmail.com>',
+        from: '"TỦ ĐIỆN AN LẠC" <tudienanlac@gmail.com>',
         to: orderData.mail,
         subject: `Xác nhận mã đơn hàng ${madon} từ Tủ Điện An Lạc`,
         html

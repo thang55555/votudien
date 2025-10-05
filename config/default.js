@@ -35,8 +35,8 @@ module.exports = {
         port: 587,
         secure: false,
         auth: {
-            user: "kinhdoanh.deevisco@gmail.com",
-            pass: "knll qcns fiwb xnob",
+            user: "tudienanlac@gmail.com",
+            pass: "hhxp igdk eudc tmyv",
         },
     }
 };

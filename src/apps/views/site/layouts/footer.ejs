@@ -1,6 +1,27 @@
 <div class="container footer">
     <div class="container">
         <div class="row">
+
+           <div class="col-xs-6 col-md-3 col-sm-3 cotfooter">
+                <div class="list-left">
+                    <h3 class="widgettitlefooter">DANH MỤC SẢN PHẨM</h3>
+                    <div class="menu-footer-2-container">
+                        <ul id="menu-footer-2" class="menu">
+                               <%for(item of menu){%>
+                            <li id="menu-item-85046"
+                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85046"><a
+                                    href="/danh-muc/<%=item.slug%>"><%=item.menua%></a></li>
+                                        <%}%>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
               <%for(item of footer){%>
             <div class="col-xs-6 col-md-3 col-sm-3 cotfooter">
                 <div class="list-left">
