@@ -105,7 +105,7 @@ const search = async (req, res) => {
 
 //gợi ý tìm kiếm
 const searchsuggest = async (req, res) => {
-    const keyword = req.query.keyword?.trim() || "";
+    const keyword = req.query.s?.trim() || "";
     if (!keyword) return res.json([]);
 
     const regex = new RegExp(keyword, 'i');

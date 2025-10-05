@@ -1,124 +1,169 @@
 <div class="wrapper">
-    <div class="row header">
-        <div class="container" style="position:relative">
-            <div class="colleft col-xs-4 col-md-4 col-sm-10">
-                <a class="logo col-md-4 col-sm-4" href="/" title=""><img src="./images/update/<%=thongtintrang.images%>"
-                        alt="<%=thongtintrang.tencongty%>"> </a>
-                <div class="col-xs-12 col-md-8 col-sm-8 frmsearch">
-                    <div class="search">
-                        <form role="search" method="get" id="searchform" class="searchform" action="/search">
-                            <div>
-                                <label class="screen-reader-text" for="s">Tìm kiếm cho:</label>
-                                <input type="text" value="" name="s" id="s" />
-                                <input type="submit" id="searchsubmit" value="Tìm kiếm" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <script language="javascript">document.getElementById('searchsubmit').value = 'Tìm kiếm';</script>
-            </div>
-            <div class="mainnav col-md-8 col-xs-2 col-sm-2">
+  <div class="row header">
+    <div class="container" style="position:relative">
+      <div class="colleft col-xs-4 col-md-4 col-sm-10">
+        <a class="logo col-md-4 col-sm-4" href="/" title=""><img src="./images/update/<%=thongtintrang.images%>"
+            alt="<%=thongtintrang.tencongty%>"> </a>
+        <div class="col-xs-12 col-md-8 col-sm-8 frmsearch">
+          <div class="search">
+         <form role="search" method="get" id="searchform" class="searchform" action="/search">
+  <div style="position: relative;">
+    <label class="screen-reader-text" for="s">Tìm kiếm cho:</label>
+    <input type="text" value="" name="s" id="s" autocomplete="off" />
+    <input type="submit" id="searchsubmit" value="Tìm kiếm" />
 
-
-
-
-
-<div class="hidden-xs hidden-sm main-menu">
-  <div class="menu-menu-container">
-    <ul id="menu-menu" class="nav navbar-nav">
-      <li><a href="/">Trang chủ</a></li>
-      <li><a href="/san-pham">Sản Phẩm</a></li>
-      <% for (item of menu) { %>
-        <li class="menu-item">
-          <a href="/danh-muc/<%=item.slug%>"><%=item.menua%></a>
-          <ul class="sub-menu">
-            <% for (item2 of item.menub) { %>
-              <li>
-                <a href="/danh-muc/<%=item.slug%>/<%=item2.slug%>?id=<%=item2._id%>">
-                  <%=item2.name%>
-                </a>
-              </li>
-            <% } %>
-          </ul>
-        </li>
-      <% } %>
+    <!-- hộp gợi ý -->
+    <ul id="suggestions" 
+        style="position: absolute; top: 100%; left: 0; right: 0;
+               background: white; border: 1px solid #ddd; 
+               list-style: none; margin: 0; padding: 0; display: none; z-index: 1000;">
     </ul>
   </div>
-</div>
- 
+</form>
 
-<style>
-    .main-menu .menu-menu-container {
-  display: flex;
-  justify-content: center; /* căn giữa */
+<script>
+const input = document.getElementById("s");
+const suggestionsBox = document.getElementById("suggestions");
+
+input.addEventListener("input", async () => {
+  const keyword = input.value.trim();
+  if (!keyword) {
+    suggestionsBox.style.display = "none";
+    suggestionsBox.innerHTML = "";
+    return;
+  }
+
+  try {
+    const res = await fetch(`/search-suggest?s=${encodeURIComponent(keyword)}`);
+    const data = await res.json();
+
+    if (data.length === 0) {
+      suggestionsBox.style.display = "none";
+      return;
+    }
+
+    suggestionsBox.innerHTML = data.map(item => 
+      `<li style="padding: 6px; cursor: pointer;" 
+           onclick="selectSuggestion('${item.name}')">${item.name}</li>`
+    ).join("");
+
+    suggestionsBox.style.display = "block";
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+function selectSuggestion(value) {
+  input.value = value;
+  suggestionsBox.style.display = "none";
+  document.getElementById("searchform").submit();
 }
 
-.main-menu ul.nav {
-  display: flex;
-  justify-content: space-evenly; /* giãn cách đều các mục */
-  width: 100%; /* chiếm hết chiều ngang */
-  max-width: 800px; /* chỉnh max nếu muốn gọn hơn */
-  margin: 0 auto;
-  padding: 0;
-}
+document.addEventListener("click", (e) => {
+  if (!document.getElementById("searchform").contains(e.target)) {
+    suggestionsBox.style.display = "none";
+  }
+});
+</script>
 
-.main-menu ul.nav li {
-  list-style: none;
-}
-
-
-
-</style>
-
-
-
-
-                <div class="hidden-lg hidden-md col-xs-2" style="float:right;width: 45px;">
-                    <link data-optimized="1"
-                        href="wp-content/litespeed/css/251be3be83dbdb3dfa55f6cf97dffcf94227.css?ver=ffcf9"
-                        rel="stylesheet" media="screen">
-                    <script src="wp-content/themes/mtw-haiau/js/mb-menu.js"></script> <a id="pull"
-                        class="leftmenu glyphicon glyphicon-list"> <i class="fas"></i> </a>
-                    <nav id="navigation" class="primary-navigation mobile-menu-wrapper" role="navigation">
-                        <div class="menu-menu-container">
-                            <ul id="menu-menu-1" class="nav navbar-nav">
-                                <li id="menu-item-12627"
-                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
-                                    <a href="/">Trang chủ</a>
-
-                                </li>
-                                <li id="menu-item-12627"
-                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
-                                    <a href="/san-pham">Sản Phẩm</a>
-
-                                </li>
-                                <%for(item of menu){%>
-                                    <li
-                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
-                                        <a href="/danh-muc/<%=item.slug%>">
-                                            <%=item.menua%>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <%for(item2 of item.menub){%>
-                                                <li
-                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-187609">
-                                                    <a
-                                                        href="/danh-muc/<%=item.slug%>/<%=item2.slug%>?id=<%=item2._id%>">
-                                                        <%=item2.name%>
-                                                    </a>
-                                                </li>
-                                                <%}%>
-                                        </ul>
-                                    </li>
-                                    <%}%>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-            <a class="giohang" href="/gio-hang" title="Xem giỏ hàng">
-                <span class="fa fa-cart-arrow-down"></span>
-                <span class="count">(<%=totalCartItem%>)</span> </a>
+          </div>
         </div>
+        <script language="javascript">document.getElementById('searchsubmit').value = 'Tìm kiếm';</script>
+      </div>
+      <div class="mainnav col-md-8 col-xs-2 col-sm-2">
+
+        <div class="hidden-xs hidden-sm main-menu">
+          <div class="menu-menu-container">
+            <ul id="menu-menu" class="nav navbar-nav">
+              <li><a href="/">Trang chủ</a></li>
+              <li><a href="/san-pham">Sản Phẩm</a></li>
+              <% for (item of menu) { %>
+                <li class="menu-item">
+                  <a href="/danh-muc/<%=item.slug%>">
+                    <%=item.menua%>
+                  </a>
+                  <ul class="sub-menu">
+                    <% for (item2 of item.menub) { %>
+                      <li>
+                        <a href="/danh-muc/<%=item.slug%>/<%=item2.slug%>?id=<%=item2._id%>">
+                          <%=item2.name%>
+                        </a>
+                      </li>
+                      <% } %>
+                  </ul>
+                </li>
+                <% } %>
+            </ul>
+          </div>
+        </div>
+
+        <style>
+          .main-menu .menu-menu-container {
+            display: flex;
+            justify-content: center;
+            /* căn giữa */
+          }
+
+          .main-menu ul.nav {
+            display: flex;
+            justify-content: space-evenly;
+            /* giãn cách đều các mục */
+            width: 100%;
+            /* chiếm hết chiều ngang */
+            max-width: 800px;
+            /* chỉnh max nếu muốn gọn hơn */
+            margin: 0 auto;
+            padding: 0;
+          }
+
+          .main-menu ul.nav li {
+            list-style: none;
+          }
+        </style>
+
+        <div class="hidden-lg hidden-md col-xs-2" style="float:right;width: 45px;">
+          <link data-optimized="1" href="wp-content/litespeed/css/251be3be83dbdb3dfa55f6cf97dffcf94227.css?ver=ffcf9"
+            rel="stylesheet" media="screen">
+          <script src="wp-content/themes/mtw-haiau/js/mb-menu.js"></script> <a id="pull"
+            class="leftmenu glyphicon glyphicon-list"> <i class="fas"></i> </a>
+          <nav id="navigation" class="primary-navigation mobile-menu-wrapper" role="navigation">
+            <div class="menu-menu-container">
+              <ul id="menu-menu-1" class="nav navbar-nav">
+                <li id="menu-item-12627"
+                  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
+                  <a href="/">Trang chủ</a>
+
+                </li>
+                <li id="menu-item-12627"
+                  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
+                  <a href="/san-pham">Sản Phẩm</a>
+
+                </li>
+                <%for(item of menu){%>
+                  <li
+                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
+                    <a href="/danh-muc/<%=item.slug%>">
+                      <%=item.menua%>
+                    </a>
+                    <ul class="sub-menu">
+                      <%for(item2 of item.menub){%>
+                        <li class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-187609">
+                          <a href="/danh-muc/<%=item.slug%>/<%=item2.slug%>?id=<%=item2._id%>">
+                            <%=item2.name%>
+                          </a>
+                        </li>
+                        <%}%>
+                    </ul>
+                  </li>
+                  <%}%>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <a class="giohang" href="/gio-hang" title="Xem giỏ hàng">
+        <span class="fa fa-cart-arrow-down"></span>
+        <span class="count">(<%=totalCartItem%>)</span> </a>
     </div>
+  </div>
 </div>

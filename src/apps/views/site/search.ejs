@@ -81,7 +81,7 @@
               <div class='wp-pagenavi' role='navigation'>
 
                 <% if (hasPrev) { %>
-                  <a class="page larger" href="/danh-muc/<%= products.slug %>?page=<%= prev %>">&laquo;</a>
+                  <a class="page larger" href="/search?page=<%= prev %>&s=<%=keyword%>">&laquo;</a>
                   <% } %>
 
                     <% for (let i of pages) { %>
@@ -94,7 +94,7 @@
                             <%= i %>
                           </span>
                           <% } else { %>
-                            <a class="page larger" href="/danh-muc/<%= products.slug %>?page=<%= i %>">
+                            <a class="page larger" href="/search?page=<%= i %>&s=<%=keyword%>">
                               <%= i %>
                             </a>
                             <% } %>
@@ -102,7 +102,7 @@
 
                                 <% if (hasNext) { %>
                                   <a class="page larger"
-                                    href="/danh-muc/<%= products.slug %>?page=<%= next %>">&raquo;</a>
+                                    href="/search?page=<%= next %>&s=<%=keyword%>">&raquo;</a>
                                   <% } %>
 
               </div>
