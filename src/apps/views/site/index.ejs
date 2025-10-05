@@ -26,8 +26,8 @@
   </div>
 
   <!-- Nút điều hướng -->
-  <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
-  <a class="next" onclick="moveSlide(1)">&#10095;</a>
+  <a class="prev" href="#" onclick="moveSlide(-1)">&#10094;</a>
+  <a class="next" href="#" onclick="moveSlide(1)">&#10095;</a>
 
   <!-- Dấu chấm -->
   <div class="dots" id="dots"></div>
@@ -173,7 +173,7 @@ showSlide(0);
 <div class="post-price">
   <% if (item2.pricesale == 0) { %>
     <div class="price-contact">
-    <a> Giá:</a>  <span style=" color: red;
+   <span style="color: #333;">Giá:</span>  <span style=" color: #e60000;
   font-weight: bold">LIÊN HỆ</span> 
     </div>
   <% } else if (item2.pricesale && item2.pricesale < item2.price) { %>
