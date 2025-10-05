@@ -1094,7 +1094,7 @@ div.woof_block_html_items {
     #homeproduct .widget {
         background: #FFF;
         display: block;
-        height: -webkit-fill-available;
+        height: auto;
         padding: 0 0 15px
     }
 
