@@ -88,26 +88,10 @@ const search = async (req, res) => {
     const totalPages = Math.ceil(totalRows / limit);
     const products = matchedProducts.slice(skip, skip + limit);
 
-    const seo = {
-        title: totalRows > 0
-            ? `Kết quả tìm kiếm cho "${keyword}"`
-            : `Không tìm thấy sản phẩm phù hợp với "${keyword}"`,
-        description: totalRows > 0
-            ? `Tìm thấy ${totalRows} sản phẩm phù hợp với từ khóa "${keyword}".`
-            : `Không có sản phẩm phù hợp với từ khóa "${keyword}".`,
-        keywords: keyword,
-        image: "rem-vai-phong-khach-1-2.jpg",
-        pricesale: "350000",
-        name: keyword,
-        _id: "search",
-        view: "9785"
-    };
-
     res.render("site/search", {
         keyword,
         keyword2: orderBy,
         product: products,
-        seo,
         page,
         totalPages,
         totalRows,
