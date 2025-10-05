@@ -1,151 +1,157 @@
 <%- include("./layouts/head.ejs")%>
-    <title><%=products.title%></title>
-    <meta name="description" content="<%=products.description%>" />
-    <meta name="keywords" content="<%=products.keywords%>" />
-    <meta property="og:title" content="<%=products.title%>" />
-    <meta property="og:description" content="<%=products.description%>" />
-    <meta property="og:keywords" content="<%=products.keywords%>" />
-   
+  <title>
+    <%=products.title%>
+  </title>
+  <meta name="description" content="<%=products.description%>" />
+  <meta name="keywords" content="<%=products.keywords%>" />
+  <meta property="og:title" content="<%=products.title%>" />
+  <meta property="og:description" content="<%=products.description%>" />
+  <meta property="og:keywords" content="<%=products.keywords%>" />
 
-</head>
 
-    <body
-        class="archive tax-product_cat term-bo-dem term-203 theme-mtw-haiau woocommerce woocommerce-page woocommerce-no-js">
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPQ49BL" height="0" width="0"
-                style="display:none;visibility:hidden"></iframe></noscript>
-        <%- include("./layouts/menu.ejs")%>
-            <link data-optimized="1" href="wp-content/litespeed/css/849f26c3d813910c18884d45e12ec87e3114.css?ver=dd6ca"
-                type="text/css" rel="stylesheet" />
-            <div class="container mainpage">
-                <div class="breadcrumb"></div>
-                <div class="row ">
-                    <div class="col-xs-12 col-sm-12 col-md-12 ">
-                        <nav class="woocommerce-breadcrumb breadcrumbs"><a href="/">Trang chủ</a> <span
-                                class="divider">/</span> <a href="/san-pham">Sản phẩm</a> <span class="divider">/</span>
-                            <%=products.name%>
-                        </nav>
+  </head>
+
+  <body
+    class="archive tax-product_cat term-bo-dem term-203 theme-mtw-haiau woocommerce woocommerce-page woocommerce-no-js">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WPQ49BL" height="0" width="0"
+        style="display:none;visibility:hidden"></iframe></noscript>
+    <%- include("./layouts/menu.ejs")%>
+      <link data-optimized="1" href="wp-content/litespeed/css/849f26c3d813910c18884d45e12ec87e3114.css?ver=dd6ca"
+        type="text/css" rel="stylesheet" />
+      <div class="container mainpage">
+        <div class="breadcrumb"></div>
+        <div class="row ">
+          <div class="col-xs-12 col-sm-12 col-md-12 ">
+            <nav class="woocommerce-breadcrumb breadcrumbs"><a href="/">Trang chủ</a> <span class="divider">/</span> <a
+                href="/san-pham">Sản phẩm</a> <span class="divider">/</span>
+              <%=products.name%>
+            </nav>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+      <div class="container mainpage white">
+        <div class="row" id="homeproduct">
+
+          <div id="tw-recent-posts-14" class="widget tw-recent-posts">
+
+            <div class="cont_home">
+              <%for(item of product){%>
+                <div class="col-xs-6 col-md-2 col-sm-3 motsanpham">
+                  <a href="/san-pham/<%=item._id%>" title="<%=item.name%>"><img width="400" height="400"
+                      src="./images/update/<%=item.images[0].name%>"
+                      class="attachment-thumb-home-product size-thumb-home-product wp-post-image"
+                      alt="<%=item.images[0].name%>"></a>
+                  <div class="caption">
+                    <h3><a href="/san-pham/<%=item._id%>" title="<%=item.name%>">
+                        <%=item.name%>
+                      </a></h3>
+
+                    <div class="post-price">
+                      <% if (item.pricesale==0) { %>
+                        <div class="price-contact">
+                          <a> Giá:</a> <span style=" color: red;
+  font-weight: bold">LIÊN HỆ</span>
+                        </div>
+                        <% } else if (item.pricesale && item.pricesale < item.price) { %>
+                          <div class="price-old">
+                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                              minimumFractionDigits: 0, }).format(item.price) %>
+                          </div>
+                          <div class="price-sale">
+                            <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                              minimumFractionDigits: 0, }).format(item.pricesale) %>
+                          </div>
+                          <div class="salepercent">
+                            -<%= Math.round((1 - item.pricesale / item.price) * 100) %>%
+                          </div>
+                          <% } else { %>
+                            <div class="price-normal">
+                              <%= new Intl.NumberFormat("vi-VN", { style: "currency" , currency: "VND" ,
+                                minimumFractionDigits: 0, }).format(item.price) %>
+                            </div>
+                            <% } %>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 catepage">
-
-                        <div class="row">
-                            <%for(item of product){%>
-                                <div class="col-md-2 col-sm-6 col-xs-6 motsanpham">
-                                    <li
-                                        class="product_list_widget product type-product post-150506 status-publish first instock product_cat-bo-dem product_cat-bo-dem-omron product_tag-san-pham-ban-chay has-post-thumbnail shipping-taxable purchasable product-type-simple">
-                                        <a href="/san-pham/<%=item._id%>"
-                                            class="woocommerce-LoopProduct-link woocommerce-loop-product__link"><img
-                                                width="300" height="300" src="./images/update/<%=item.images[0].name%>"
-                                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                                alt="<%=item.name%>" />
-                                            <div class="advanced-woo-labels awl-position-type-before-title awl-label-type-archive awl-align-left"
-                                                style="display:flex;flex-wrap:wrap;flex-direction:row;text-align:left;width:100%;position:relative;z-index:1;justify-content:flex-start;">
-
-                                            </div>
-                                            <h2 class="woocommerce-loop-product__title">
-                                                <%=item.name%>
-                                            </h2>
-                                           <div class="post-price">
-  <% if (item.price == 0) { %>
-  <div class="price-contact">
-      Giá: <span style=" color: red;
-  font-weight: bold">LIÊN HỆ</span> 
-    </div>
-  <% } else if (item.pricesale && item.pricesale < item.price) { %>
-    <div class="price-old">
-      <%= new Intl.NumberFormat("vi-VN", { 
-            style: "currency",
-            currency: "VND",
-            minimumFractionDigits: 0 
-        }).format(item.price) %>
-    </div>
-    <div class="price-sale">
-      <%= new Intl.NumberFormat("vi-VN", { 
-            style: "currency",
-            currency: "VND",
-            minimumFractionDigits: 0 
-        }).format(item.pricesale) %>
-    </div>
-    <div class="salepercent">
-      -<%= Math.round((1 - item.pricesale / item.price) * 100) %>%
-    </div>
-  <% } else { %>
-    <div class="price-normal">
-      <%= new Intl.NumberFormat("vi-VN", { 
-            style: "currency",
-            currency: "VND",
-            minimumFractionDigits: 0 
-        }).format(item.price) %>
-    </div>
-  <% } %>
-</div>
-
-                                            <style>
-                                                .post-price {
-                                                    display: flex;
-                                                    align-items: center;
-                                                    gap: 8px;
-                                                    margin-top: 5px;
-                                                }
-
-                                                .price-old {
-                                                    color: #999;
-                                                    text-decoration: line-through;
-                                                    font-size: 14px;
-                                                }
-
-                                                .price-sale {
-                                                    color: #e53935;
-                                                    font-weight: bold;
-                                                    font-size: 18px;
-                                                }
-
-                                                .price-normal {
-                                                    color: #e53935;
-                                                    font-weight: bold;
-                                                    font-size: 18px;
-                                                }
-
-                                                .salepercent {
-                                                    background: #ff5722;
-                                                    color: #fff;
-                                                    font-size: 12px;
-                                                    font-weight: bold;
-                                                    padding: 2px 6px;
-                                                    border-radius: 4px;
-                                                }
-                                            </style>
-                                        </a>
-                                    </li>
-                                </div>
-                                <% } %>
-</div>
-<span class="paging">
-  <div class='wp-pagenavi' role='navigation'>
-
-    <% if (hasPrev) { %>
-      <a class="page larger" href="/danh-muc/<%= products.slug %>?page=<%= prev %>">&laquo;</a>
-    <% } %>
-
-    <% for (let i of pages) { %>
-      <% if (i === page) { %>
-        <span aria-current='page' class='current'><%= i %></span>
-      <% } else if (i === "...") { %>
-        <span class="page larger"><%= i %></span>
-      <% } else { %>
-        <a class="page larger" href="/danh-muc/<%= products.slug %>?page=<%= i %>"><%= i %></a>
-      <% } %>
-    <% } %>
-
-    <% if (hasNext) { %>
-      <a class="page larger" href="/danh-muc/<%= products.slug %>?page=<%= next %>">&raquo;</a>
-    <% } %>
-
-  </div>
-</span>
-
-                    </div>
-
+                  </div>
                 </div>
+                <% } %>
             </div>
+            <span class="paging">
+              <div class='wp-pagenavi' role='navigation'>
 
-            <%- include("./layouts/footer.ejs")%>
+                <% if (hasPrev) { %>
+                  <a class="page larger" href="/danh-muc/<%= products.slug %>?page=<%= prev %>">&laquo;</a>
+                  <% } %>
+
+                    <% for (let i of pages) { %>
+                      <% if (i===page) { %>
+                        <span aria-current='page' class='current'>
+                          <%= i %>
+                        </span>
+                        <% } else if (i==="..." ) { %>
+                          <span class="page larger">
+                            <%= i %>
+                          </span>
+                          <% } else { %>
+                            <a class="page larger" href="/danh-muc/<%= products.slug %>?page=<%= i %>">
+                              <%= i %>
+                            </a>
+                            <% } %>
+                              <% } %>
+
+                                <% if (hasNext) { %>
+                                  <a class="page larger"
+                                    href="/danh-muc/<%= products.slug %>?page=<%= next %>">&raquo;</a>
+                                  <% } %>
+
+              </div>
+            </span>
+          </div>
+          <style>
+            .post-price {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            }
+
+            .price-old {
+              color: #999;
+              text-decoration: line-through;
+              font-size: 14px;
+            }
+
+            .price-sale {
+              color: #e53935;
+              font-weight: bold;
+              font-size: 18px;
+            }
+
+            .price-normal {
+              color: #e53935;
+              font-weight: bold;
+              font-size: 18px;
+            }
+
+            .salepercent {
+              background: #ff5722;
+              color: #fff;
+              font-size: 12px;
+              font-weight: bold;
+              padding: 2px 6px;
+              border-radius: 4px;
+            }
+          </style>
+
+        </div>
+      </div>
+
+
+
+      <%- include("./layouts/footer.ejs")%>

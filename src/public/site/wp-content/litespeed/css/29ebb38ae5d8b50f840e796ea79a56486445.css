@@ -604,7 +604,7 @@ span.paging {
     .motsanpham img {
         padding: 5px;
         width: 100%;
-        height: -webkit-fill-available
+   
     }
 
     .motsanpham h3 {
@@ -1019,12 +1019,6 @@ div.woof_block_html_items {
         padding: 10px
     }
 
-    .motsanpham img {
-        padding: 5px;
-        width: 100%;
-        height: -webkit-fill-available
-    }
-
     .motsanpham h3 {
         font-size: 14px;
         line-height: 20px;
@@ -1193,12 +1187,6 @@ div.woof_block_html_items {
         background: #00aeef;
         font-weight: 700;
         top: -15px
-    }
-
-    .motsanpham img {
-        padding: 0;
-        width: 100%;
-        height: -webkit-fill-available
     }
 
     .cont_home>div {
