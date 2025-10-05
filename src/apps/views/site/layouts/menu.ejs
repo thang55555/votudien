@@ -2,12 +2,11 @@
     <div class="row header">
         <div class="container" style="position:relative">
             <div class="colleft col-xs-4 col-md-4 col-sm-10">
-                <a class="logo col-md-4 col-sm-4" href="/" title=""><img 
-                        src="./images/update/<%=thongtintrang.images%>" alt="<%=thongtintrang.tencongty%>"> </a>
+                <a class="logo col-md-4 col-sm-4" href="/" title=""><img src="./images/update/<%=thongtintrang.images%>"
+                        alt="<%=thongtintrang.tencongty%>"> </a>
                 <div class="col-xs-12 col-md-8 col-sm-8 frmsearch">
                     <div class="search">
-                        <form role="search" method="get" id="searchform" class="searchform"
-                            action="/">
+                        <form role="search" method="get" id="searchform" class="searchform" action="/">
                             <div>
                                 <label class="screen-reader-text" for="s">Tìm kiếm cho:</label>
                                 <input type="text" value="" name="s" id="s" />
@@ -22,21 +21,35 @@
                 <div class="hidden-xs hidden-sm main-menu">
                     <div class="menu-menu-container">
                         <ul id="menu-menu" class="nav navbar-nav">
-                           
-                               <%for(item of menu){%>
                             <li id="menu-item-12627"
                                 class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
-                                <a href="/danh-muc/<%=item.slug%>"><%=item.menua%></a>
-                                <ul class="sub-menu">
-                                       <%for(item2 of item.menub){%>
-                                    <li id="menu-item-187609"
-                                        class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-187609">
-                                        <a href="/danh-muc/<%=item.slug%>/<%=item2.slug%>?id=<%=item2._id%>"><%=item2.name%></a>
-                                    </li>
-                                        <%}%>
-                                </ul>
+                                <a href="/">Trang chủ</a>
+                                
                             </li>
-                                   <%}%>
+                            <li id="menu-item-12627"
+                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
+                                <a href="/san-pham">Sản Phẩm</a>
+                                
+                            </li>
+
+                            <%for(item of menu){%>
+                                <li id="menu-item-12627"
+                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
+                                    <a href="/danh-muc/<%=item.slug%>">
+                                        <%=item.menua%>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <%for(item2 of item.menub){%>
+                                            <li id="menu-item-187609"
+                                                class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-187609">
+                                                <a href="/danh-muc/<%=item.slug%>/<%=item2.slug%>?id=<%=item2._id%>">
+                                                    <%=item2.name%>
+                                                </a>
+                                            </li>
+                                            <%}%>
+                                    </ul>
+                                </li>
+                                <%}%>
                         </ul>
                     </div>
                 </div>
@@ -49,21 +62,26 @@
                     <nav id="navigation" class="primary-navigation mobile-menu-wrapper" role="navigation">
                         <div class="menu-menu-container">
                             <ul id="menu-menu-1" class="nav navbar-nav">
-                              
-                                       <%for(item of menu){%>
-                                <li
-                                    class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
-                                    <a href="/danh-muc/<%=item.slug%>"><%=item.menua%></a>
-                                    <ul class="sub-menu">
+
+                                <%for(item of menu){%>
+                                    <li
+                                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-12627">
+                                        <a href="/danh-muc/<%=item.slug%>">
+                                            <%=item.menua%>
+                                        </a>
+                                        <ul class="sub-menu">
                                             <%for(item2 of item.menub){%>
-                                        <li
-                                            class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-187609">
-                                            <a href="/danh-muc/<%=item.slug%>/<%=item2.slug%>?id=<%=item2._id%>"><%=item2.name%></a>
-                                        </li>
-                                           <%}%>
-                                    </ul>
-                                </li>
-                               <%}%>
+                                                <li
+                                                    class="menu-item menu-item-type-taxonomy menu-item-object-product_cat menu-item-187609">
+                                                    <a
+                                                        href="/danh-muc/<%=item.slug%>/<%=item2.slug%>?id=<%=item2._id%>">
+                                                        <%=item2.name%>
+                                                    </a>
+                                                </li>
+                                                <%}%>
+                                        </ul>
+                                    </li>
+                                    <%}%>
                             </ul>
                         </div>
                     </nav>
