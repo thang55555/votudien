@@ -1190,7 +1190,7 @@ div.woof_block_html_items {
     }
 
     .cont_home>div {
-        height: 260px;
+        height: auto;
         background: #FFF;
         border: 1px solid #CCC
     }
