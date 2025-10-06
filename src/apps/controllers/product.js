@@ -124,6 +124,7 @@ const updatethongtintrang = async (req, res) => {
         description: body.description,
         keywords: body.keywords,
         linkFB: body.linkFB,
+        gioithieu: body.gioithieu,
     }
     if (file) {
         fs.renameSync(file.path, path.resolve("src/public/site/images/update", file.originalname));
