@@ -589,20 +589,8 @@ const tintuc = async (req, res) => {
         TintucModel.countDocuments(),
     ]);
     const totalPages = Math.ceil(totalRows / limit);
-
-    const thongtintrang = res.locals.thongtintrang;
-    const seo = {
-        title: "Rèm Cửa Cao Cấp Anh Thư | Thiết Kế Đẹp, Giá Tốt",
-        description: `Rèm cửa Anh Thư chuyên cung cấp các loại rèm vải cao cấp, rèm tự động, rèm sáo gỗ... Thi công chuyên nghiệp, bảo hành lâu dài. Gọi ngay: ${thongtintrang.sdt}`,
-        keywords: "rèm cửa, rèm cửa cao cấp, rèm vải, rèm tự động, rèm cửa Anh Thư, rèm sáo gỗ",
-        image: "rem-vai-phong-khach-1-2.jpg",
-        pricesale: "350000",
-        name: "Rèm Cửa Cao Cấp Anh Thư | Thiết Kế Đẹp, Giá Tốt",
-        _id: "tintuc",
-        view: "24954"
-    };
     res.render("site/tin-tuc", {
-        product, seo,
+        product,
         page,
         totalRows,
         totalPages,
