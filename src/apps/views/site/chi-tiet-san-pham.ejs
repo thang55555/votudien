@@ -179,7 +179,7 @@
 
                                             </div>
 
-                                            <div class="woocommerce-tabs wc-tabs-wrapper">
+                                            <!-- <div class="woocommerce-tabs wc-tabs-wrapper">
                                                 <ul class="tabs wc-tabs" role="tablist">
                                                     <li class="description_tab" id="tab-title-description" role="tab"
                                                         aria-controls="tab-description">
@@ -199,7 +199,94 @@
                                                     <%-product.content%>
                                                 </div>
 
-                                            </div>
+                                            </div> -->
+<div class="woocommerce-tabs wc-tabs-wrapper">
+    <ul class="tabs wc-tabs" role="tablist">
+        <li class="description_tab active" id="tab-title-description" role="tab" aria-controls="tab-description">
+            <a href="#">Mô tả</a>
+        </li>
+        <li class="additional_information_tab" id="tab-title-additional_information" role="tab"
+            aria-controls="tab-additional_information">
+            <a href="#">Thông tin bổ sung</a>
+        </li>
+    </ul>
+
+    <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content wc-tab"
+        id="tab-description" role="tabpanel" aria-labelledby="tab-title-description">
+        <%- product.content %>
+    </div>
+
+    <div class="woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content wc-tab"
+        id="tab-additional_information" role="tabpanel" aria-labelledby="tab-title-additional_information"
+        style="display:none;">
+        <%- product.content2 %>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".wc-tabs li");
+    const panels = document.querySelectorAll(".woocommerce-Tabs-panel");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function (event) {
+            // ✅ Ngăn chặn hành vi mặc định của <a href="#">
+            event.preventDefault();
+
+            // Bỏ active khỏi tất cả tab
+            tabs.forEach(t => t.classList.remove("active"));
+            // Ẩn tất cả nội dung
+            panels.forEach(p => p.style.display = "none");
+
+            // Kích hoạt tab hiện tại
+            this.classList.add("active");
+
+            // Hiển thị nội dung tương ứng
+            const target = this.getAttribute("aria-controls");
+            document.getElementById(target).style.display = "block";
+        });
+    });
+});
+</script>
+
+
+<style>
+.wc-tabs {
+  display: flex;
+  margin-bottom: 0;
+  list-style: none;
+  padding-left: 0;
+}
+.wc-tabs li {
+  margin: 0;
+}
+.wc-tabs li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: none;
+  transition: 0.2s;
+}
+.wc-tabs li.active a {
+  color: #0073aa;
+  font-weight: bold;
+}
+.wc-tab {
+  display: none;
+  padding: 20px;
+  border-top: none;
+}
+.wc-tab.active {
+  display: block;
+}
+</style>
+
+
+
+
+
+
 
                                             <%if(spcungloai.length > 0){%>
                                             <section class="up-sells upsells products">
