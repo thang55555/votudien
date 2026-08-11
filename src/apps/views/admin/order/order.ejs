@@ -101,18 +101,17 @@
                                         </span>
                                                 </td>
                                                 <td class="form-group">
-                                                    <form action="/admin/edit-don-hang/<%=order._id%>?page=<%=page%>" role="form"
-                                                        method="post">
+                                                   
 
-                                                        <select name="trangthai" class="form-control">
-                                                            <option value="<%=order.trangthai%>">Chọn</option>
-                                                            <option value="true">Đã xử lý</option>
-                                                            <option value="false"> Chưa xử lý</option>
-
-                                                        </select>
-                                                        <button type="submit" name="sbm"
-                                                            class="btn btn-success">Update</button>
-                                                    </form>
+                                                    <form action="/admin/edit-don-hang/<%=order._id%>?page=<%=page%>" role="form" method="post">
+								
+												<select name="trangthai" class="form-control" onchange="this.form.submit()">
+													<option value="<%=item.trangthai%>">Chọn</option>
+													<option value="true">Đã xử lý</option>
+													<option value="flash"> Chưa xử lý</option>
+												
+												</select>
+											</form>
                                                 </td>
                                             </tr>
                                             <% } %>
