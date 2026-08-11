@@ -1,174 +1,236 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 
+    <!-- Form tìm kiếm -->
     <form role="search" action="/admin/search">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search" name="keyword">
+            <input type="text" class="form-control" placeholder="Search..." name="keyword">
         </div>
     </form>
+
+    <!-- Menu điều hướng -->
     <div class="sidenav">
-        <a href="/admin/dashboard"><svg class="glyph stroked dashboard-dial">
-                <use xlink:href="#stroked-dashboard-dial"></use>
-            </svg>Dashboard</a>
-        <button class="dropdown-btn"><svg class="glyph stroked home">
-                <use xlink:href="#stroked-home" />
-            </svg>Thông tin trang
+        
+        <!-- Dashboard -->
+        <a href="/admin/dashboard">
+            <i class="fa-solid fa-chart-line"></i> Dashboard
+        </a>
+
+        <!-- Thông tin trang -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-house"></i> Thông tin trang</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/admin/thong-tin-trang">Thông tin trang </a>
-            <!-- <a href="/admin/gioi-thieu-trang">Giới thiệu trang</a> -->
+            <a href="/admin/thong-tin-trang">Thông tin trang</a>
         </div>
 
-        <button class="dropdown-btn"><svg class="glyph stroked app-window">
-                <use xlink:href="#stroked-app-window"></use>
-            </svg>Banner
+        <!-- Banner -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-image"></i> Banner</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/admin/banner">Danh Sách Banner </a>
-            <a href="/admin/add-banner">Thêm Mới Banner </a>
+            <a href="/admin/banner">Danh Sách Banner</a>
+            <a href="/admin/add-banner">Thêm Mới Banner</a>
         </div>
 
-        <button class="dropdown-btn"><svg class="glyph stroked app-window">
-                <use xlink:href="#stroked-app-window"></use>
-            </svg>Hãng Sản Phẩm
+        <!-- Hãng Sản Phẩm -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-industry"></i> Hãng Sản Phẩm</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/admin/hang">Danh Sách Hãng </a>
-            <a href="/admin/add-hang">Thêm Mới Hãng </a>
+            <a href="/admin/hang">Danh Sách Hãng</a>
+            <a href="/admin/add-hang">Thêm Mới Hãng</a>
         </div>
 
-        <button class="dropdown-btn"><svg class="glyph stroked app-window">
-                <use xlink:href="#stroked-app-window"></use>
-            </svg>Danh mục Menu
+        <!-- Danh mục Menu -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-bars"></i> Danh mục Menu</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/admin/danh-muc">Danh sách danh mục menu </a>
-            <a href="/admin/add-danh-muc">Thêm mới danh mục menu </a>
+            <a href="/admin/danh-muc">Danh sách danh mục menu</a>
+            <a href="/admin/add-danh-muc">Thêm mới danh mục menu</a>
         </div>
 
-        <button class="dropdown-btn"><svg class="glyph stroked calendar">
-                <use xlink:href="#stroked-calendar" />
-            </svg>Menu sản phẩm
+        <!-- Menu sản phẩm -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-list-check"></i> Menu sản phẩm</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/admin/danh-muc-2">Danh sách menu sản phẩm </a>
+            <a href="/admin/danh-muc-2">Danh sách menu sản phẩm</a>
             <a href="/admin/add-danh-muc-2">Thêm mới menu sản phẩm</a>
         </div>
 
-        <button class="dropdown-btn"><svg class="glyph stroked bag">
-                <use xlink:href="#stroked-bag"></use>
-            </svg>Danh sách sản phẩm
+        <!-- Danh sách sản phẩm -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-box-open"></i> Sản phẩm</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/admin/san-pham">Danh sách sản phẩm </a>
+            <a href="/admin/san-pham">Danh sách sản phẩm</a>
             <a href="/admin/add-san-pham">Thêm mới sản phẩm</a>
         </div>
-        <button class="dropdown-btn"><svg class="glyph stroked bag">
-                <use xlink:href="#stroked-bag"></use>
-            </svg>Tin tức
+
+        <!-- Tin tức -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-newspaper"></i> Tin tức</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/admin/tin-tuc">Danh sách bài viết </a>
+            <a href="/admin/tin-tuc">Danh sách bài viết</a>
             <a href="/admin/add-tin-tuc">Thêm mới bài viết</a>
         </div>
 
-
-        <button class="dropdown-btn"><svg class="glyph stroked bag">
-                <use xlink:href="#stroked-bag"></use>
-            </svg>Chân trang
+        <!-- Chân trang -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-shoe-prints"></i> Chân trang</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/admin/chan-trang">Danh sách chân trang </a>
+            <a href="/admin/chan-trang">Danh sách chân trang</a>
             <a href="/admin/add-chan-trang">Thêm mới chân trang</a>
         </div>
 
-
-        <button class="dropdown-btn"><svg class="glyph stroked bag">
-                <use xlink:href="#stroked-bag"></use>
-            </svg>View
+        <!-- View -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-eye"></i> View</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="/admin/view">Danh sách view bài viết </a>
+            <a href="/admin/view">Danh sách view bài viết</a>
             <a href="/admin/view-tin-tuc">Danh sách view tin tức</a>
         </div>
 
-        <!-- <button class="dropdown-btn"><svg class="glyph stroked chain">
-                <use xlink:href="#stroked-chain"></use>
-            </svg>Danh sách video
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="/admin/danh-sach-video">Danh sách video </a>
-            <a href="/admin/add-video">Thêm mới video</a>
-        </div>
-
-        <button class="dropdown-btn"><svg class="glyph stroked empty message">
-                <use xlink:href="#stroked-empty-message" />
-            </svg>Menu Tin tức
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="/admin/danh-sach-menu-tin-tuc">Danh sách Menu Tin tức </a>
-            <a href="/admin/add-menu-tin-tuc">Thêm mới Menu Tin tức</a>
-            <a href="/admin/danh-sach-bai-viet-tin-tuc">Danh sách bài viết </a>
-            <a href="/admin/add-bai-viet-tin-tuc">Thêm mới bài viết </a>
-        </div>
-
-        <button class="dropdown-btn"><svg class="glyph stroked female user">
-                <use xlink:href="#stroked-female-user" />
-            </svg>Menu Dịch vụ
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="/admin/add-menu-dich-vu">Thêm mới menu dịch vụ</a>
-            <a href="/admin/menu-dich-vu">Danh sách menu dịch vụ </a>
-            <a href="/admin/add-bai-viet-dich-vu">Thêm mới bài viết</a>
-            <a href="/admin/bai-viet-dich-vu">Danh sách bài viết </a>
-        </div> -->
-
-        <button class="dropdown-btn"><svg class="glyph stroked two messages">
-                <use xlink:href="#stroked-two-messages" />
-            </svg> Đơn hàng
+        <!-- Đơn hàng -->
+        <button class="dropdown-btn">
+            <span><i class="fa-solid fa-cart-shopping"></i> Đơn hàng</span>
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
             <a href="/admin/danh-sach-don-hang">Danh sách đơn hàng</a>
         </div>
 
-           <!-- <button class="dropdown-btn"><svg class="glyph stroked two messages">
-                <use xlink:href="#stroked-two-messages" />
-            </svg> Chia sẻ khách hàng
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="/admin/add-chia-se-khach-hang">Thêm mới chia sẻ</a>
-            <a href="/admin/chia-se-khach-hang">Danh sách chia sẻ</a>
-        </div>
-
-        <button class="dropdown-btn"><svg class="glyph stroked two messages">
-                <use xlink:href="#stroked-two-messages" />
-            </svg> Thước lỗ ban
-            <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-            <a href="/admin/thuoc-lo-ban">Thước lỗ ban</a>
-        </div> -->
-   <button class="dropdown-btn" style="padding: 0;">
-        <a href="/admin/danh-sach-anh">
-      
-            <svg class="glyph stroked camera "><use xlink:href="#stroked-camera"/></svg>Album ảnh
-            <i class="fa fa-caret-down"></i></a>
-        </button>
-
+        <!-- Album ảnh (Đã sửa lại cấu trúc chuẩn thẻ a nằm ngoài button hoặc ngược lại tránh lỗi HTML) -->
+        <a href="/admin/danh-sach-anh" class="sidebar-single-link">
+            <i class="fa-solid fa-camera"></i> Album ảnh
+        </a>
 
     </div>
 
 </div><!--/.sidebar-->
+
+<style>
+    /* Sidebar chung */
+    .sidebar {
+        background: #1e293b;
+        /* Màu tối hiện đại */
+        min-height: 100vh;
+        padding-top: 20px;
+        color: #cbd5e1;
+    }
+
+    .sidenav a,
+    .dropdown-btn {
+        padding: 12px 20px;
+        text-decoration: none;
+        font-size: 14px;
+        color: #cbd5e1;
+        display: block;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    /* Hiệu ứng khi di chuột */
+    .sidenav a:hover,
+    .dropdown-btn:hover {
+        background: #334155;
+        color: #fff;
+    }
+
+    /* Dropdown container */
+    .dropdown-container {
+        display: none;
+        background-color: #0f172a;
+        /* Màu tối hơn để tạo phân cấp */
+        padding-left: 30px;
+    }
+
+    .dropdown-container a {
+        font-size: 13px;
+        padding: 10px;
+        color: #94a3b8;
+    }
+
+    .dropdown-container a:hover {
+        color: #fff;
+    }
+
+    /* Icon và Caret */
+    .dropdown-btn i.caret {
+        float: right;
+        font-size: 12px;
+    }
+
+    .sidebar .form-control {
+        background: #334155;
+        border: none;
+        color: #fff;
+        margin: 10px 20px;
+        width: 85%;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        bottom: 0;
+        width: 16.666667%;
+        background: #111;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .sidenav {
+        height: 100%;
+    }
+
+    .sidebar-menu {
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 20px;
+    }
+
+    .sidebar-menu::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .sidebar-menu::-webkit-scrollbar-thumb {
+        background: #666;
+        border-radius: 3px;
+    }
+
+    /* Loại bỏ viền xanh/đen mặc định khi click vào tất cả các phần tử */
+    *:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    /* Riêng đối với các button hoặc link trong dashboard */
+    .panel-widget,
+    .dropdown-btn,
+    a:focus,
+    button:focus {
+        outline: none !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+</style>

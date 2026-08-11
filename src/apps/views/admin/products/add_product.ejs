@@ -37,18 +37,38 @@
                                             <label>Thứ tự hiển thị:</label>
                                             <input required name="thutuhienthi" class="form-control" type="number" placeholder="">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Thẻ title:</label>
-                                            <input required name="title" class="form-control" placeholder="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Thẻ description:</label>
-                                            <input required name="description" class="form-control" placeholder="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Thẻ keywords:</label>
-                                            <input required name="keywords" class="form-control" placeholder="">
-                                        </div>
+
+<div class="form-group">
+    <label>Thẻ title <span id="label_title"></span></label>
+    <input required onkeyup="updateAll(this.value, 'bar_title', 'label_title', 50, 60)" 
+           name="title" type="text" class="form-control" placeholder="Title">
+    
+    <div class="progress-container">
+        <div id="bar_title" class="progress-bar"></div>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <label>Thẻ meta description <span id="label_meta"></span></label>
+    <input required onkeyup="updateAll(this.value, 'bar_meta', 'label_meta', 140, 160)" 
+           name="description" type="text" class="form-control" placeholder="Meta description...">
+    
+    <div class="progress-container">
+        <div id="bar_meta" class="progress-bar"></div>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <label>Thẻ meta keywords <span id="label_keywords"></span></label>
+    <input required onkeyup="updateAll(this.value, 'bar_keywords', 'label_keywords', 100, 200)" 
+           name="keywords" type="text" class="form-control" placeholder="Meta keywords...">
+    
+    <div class="progress-container">
+        <div id="bar_keywords" class="progress-bar"></div>
+    </div>
+</div>
 
                                         <div class="form-group">
                                             <label>Giá gốc sản phẩm</label>
