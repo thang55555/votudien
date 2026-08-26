@@ -323,11 +323,27 @@ const danhmuc2 = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = 50;
     const skip = (page - 1) * limit;
-    const id = req.query.id;
 
-    const products = await Danhmuc2Model.findById(id).populate('danhmuc1_id');
+    let id = req.query.id;
+
+    // Làm sạch ID
+    id = String(id || "").trim().replace(/^['"]|['"]$/g, "");
+
+    // Kiểm tra ObjectId
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.redirect('/404');
+    }
+
+    const products = await Danhmuc2Model
+        .findById(id)
+        .populate('danhmuc1_id');
+
     if (!products) return res.redirect('/404');
-    const filter = { trangthai: true, danhmuc2_id: { $in: [products._id] } };
+
+    const filter = {
+        trangthai: true,
+        danhmuc2_id: { $in: [products._id] }
+    };
 
     const sortOptions = {
         price: { pricesale: 1 },
@@ -335,10 +351,15 @@ const danhmuc2 = async (req, res) => {
         date: { updatedAt: -1 },
         popularity: { _id: -1 },
     };
+
     const sort = sortOptions[orderBy] || { _id: 1 };
 
     const [product, totalRows] = await Promise.all([
-        ProductModel.find(filter).sort(sort).skip(skip).limit(limit),
+        ProductModel.find(filter)
+            .sort(sort)
+            .skip(skip)
+            .limit(limit),
+
         ProductModel.countDocuments(filter),
     ]);
 
@@ -347,10 +368,15 @@ const danhmuc2 = async (req, res) => {
     products.image = "rem-vai-phong-khach-1-2.jpg";
     products.pricesale = "350000";
     products.view = "9833";
-    await Danhmuc2Model.updateOne({ _id: products._id }, { $inc: { view: 1 } });
+
+    await Danhmuc2Model.updateOne(
+        { _id: products._id },
+        { $inc: { view: 1 } }
+    );
 
     res.render("site/danh-muc-2", {
-        product, orderBy,
+        product,
+        orderBy,
         keyword,
         products,
         seo: products,
